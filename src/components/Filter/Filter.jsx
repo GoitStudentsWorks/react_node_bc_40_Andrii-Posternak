@@ -1,6 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { changeFilter } from 'redux/filter/filterSlice';
-import { Label, Input } from 'components/Filter/Filter.styled';
+import { InputAdornment, Input } from '@mui/material';
+import PersonSearchIcon from '@mui/icons-material/PersonSearch';
+import { Label } from 'components/Filter/Filter.styled';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -8,10 +10,14 @@ export const Filter = () => {
   return (
     <Label>
       <Input
-        type="text"
+        id="input-with-icon-adornment"
         placeholder="Find contact"
-        name="filter"
         onChange={event => dispatch(changeFilter(event.target.value))}
+        startAdornment={
+          <InputAdornment position="start">
+            <PersonSearchIcon aria-label="search" />
+          </InputAdornment>
+        }
       />
     </Label>
   );

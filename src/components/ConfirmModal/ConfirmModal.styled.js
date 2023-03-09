@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
+import ErrorIcon from '@mui/icons-material/Error';
 
 export const Backdrop = styled.div`
   position: absolute;
@@ -19,8 +20,9 @@ export const Form = styled.form`
   transform: translate(-50%, -50%);
   background-color: #ffffff;
   display: flex;
+  // flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  gap: 10px;
   width: 520px;
   height: 100px;
   border: 1px solid #c8c6c6;
@@ -35,6 +37,8 @@ export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  // justify-content: space-evenly;
+  // width: 100%;
   gap: 10px;
 `;
 
@@ -67,4 +71,10 @@ export const CancelBtn = styled(CancelIcon)`
     scale: 1.1;
     transition: 250ms;
   }
+`;
+
+export const WarningIcon = styled(ErrorIcon)`
+  width: 50px !important;
+  height: 50px !important;
+  fill: red !important;
 `;

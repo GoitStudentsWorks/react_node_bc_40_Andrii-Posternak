@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
 import { addContact } from 'redux/contacts/contactsOperations';
-import { Form, Label, Input } from 'components/ContactForm/ContactForm.styled';
-import { Button } from 'components/Button/Button.styled';
+
+import { TextField, Box, Container, Button } from '@mui/material';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
@@ -49,32 +49,46 @@ export const ContactForm = () => {
   };
 
   return (
-    <Form onSubmit={onSubmitForm}>
-      <Label>
-        Name
-        <Input
-          type="text"
-          name="name"
-          value={name}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-          onChange={onChange}
-        />
-      </Label>
-      <Label>
-        Number
-        <Input
-          type="tel"
-          name="number"
-          value={number}
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-          onChange={onChange}
-        />
-      </Label>
-      <Button type="submit">Add contact</Button>
-    </Form>
+    <Container component="div" maxWidth="xs">
+      <Box
+        sx={{
+          marginTop: 8,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <Box component="form" onSubmit={onSubmitForm} noValidate sx={{ mt: 1 }}>
+          <TextField
+            margin="normal"
+            fullWidth
+            required
+            id="name"
+            label="Name"
+            name="name"
+            value={name}
+            onChange={onChange}
+          />
+          <TextField
+            margin="normal"
+            fullWidth
+            required
+            label="Number"
+            name="number"
+            id="number"
+            value={number}
+            onChange={onChange}
+          />
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+          >
+            Add contact
+          </Button>
+        </Box>
+      </Box>
+    </Container>
   );
 };

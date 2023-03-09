@@ -9,18 +9,18 @@ export const AuthWrap = styled.div`
 
 export const ButtonAuth = styled(NavLink)`
   text-decoration: none;
+  font-size: 14px;
+  text-transform: uppercase;
   color: inherit;
   padding: 10px;
-  border: 1px solid #34a1eb;
+  border: none;
   border-radius: 10px;
 
   &.active {
-    background-color: #34a1eb;
-    color: white;
+    outline: 1px solid white;
   }
 
   :hover {
-    background-color: #2583c2;
-    color: white;
+    outline: 1px solid white;
   }
 `;

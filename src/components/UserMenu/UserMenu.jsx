@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { ButtonAuth } from 'components/AuthNav/AuthNav.styled';
 import { logoutUser } from 'redux/auth/authOperations';
 import { selectUser } from 'redux/auth/authSelectors';
-import { Wrap } from 'components/UserMenu/UserMenu.styled';
+import { Loguot, Wrap } from 'components/UserMenu/UserMenu.styled';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
@@ -14,8 +13,8 @@ export const UserMenu = () => {
 
   return (
     <Wrap>
-      <p>{userAuth?.email}</p>
-      <ButtonAuth onClick={handleLoguot}>Logout</ButtonAuth>
+      <p>{userAuth?.name}</p>
+      <Loguot aria-label="lolgout" onClick={handleLoguot} />
     </Wrap>
   );
 };
