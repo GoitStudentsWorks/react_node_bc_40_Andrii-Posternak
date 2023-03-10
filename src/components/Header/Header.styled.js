@@ -1,17 +1,15 @@
 import styled from 'styled-components';
 
-export const HeaderWrap = styled.header`
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const Logo = styled.h1`
+export const Logo = styled.a`
   font-size: 20px;
   display: flex;
-  gap: 5px;
   align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+
+  :hover,
+  :focus {
+    outline: 1px solid #ffffff;
+  }
 `;

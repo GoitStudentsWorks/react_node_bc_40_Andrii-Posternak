@@ -3,24 +3,22 @@ import styled from 'styled-components';
 
 export const AuthWrap = styled.div`
   display: flex;
-  gap: 10px;
   align-items: center;
+  gap: 10px;
 `;
 
 export const ButtonAuth = styled(NavLink)`
-  text-decoration: none;
   font-size: 14px;
   text-transform: uppercase;
-  color: inherit;
   padding: 10px;
-  border: none;
   border-radius: 10px;
 
   &.active {
-    outline: 1px solid white;
+    outline: 1px solid #ffffff;
   }
 
-  :hover {
-    outline: 1px solid white;
+  :hover,
+  :focus {
+    outline: 1px solid #ffffff;
   }
 `;

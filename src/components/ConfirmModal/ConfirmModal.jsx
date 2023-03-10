@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contacts/contactsOperations';
 import PropTypes from 'prop-types';
+import Notify from 'helpers/notifiOptions';
+import { deleteContact } from 'redux/contacts/contactsOperations';
 import {
   Backdrop,
   Form,
@@ -9,6 +10,7 @@ import {
   ConfirmBtn,
   CancelBtn,
   WarningIcon,
+  WarningText,
 } from 'components/ConfirmModal/ConfirmModal.styled';
 
 export const ConfirmModal = ({ setIsDelete, contact }) => {
@@ -22,15 +24,16 @@ export const ConfirmModal = ({ setIsDelete, contact }) => {
     event.preventDefault();
     dispatch(deleteContact(contact.id));
     closeForm();
+    Notify.success(`Contact "${contact.name}" deleted successfully`);
   };
 
   return (
     <Backdrop>
       <Form onSubmit={onSubmitForm}>
         <WarningIcon aria-label="warning" />
-        <p>
-          Are you sure you want to delete the contact <br /> "{contact.name}"?
-        </p>
+        <WarningText>
+          Are you sure you want to delete the contact "{contact.name}"?
+        </WarningText>
         <ButtonContainer>
           <Button type="submit">
             <ConfirmBtn aria-label="confirm" />

@@ -4,20 +4,31 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 export const ContainerList = styled.div`
+  position: relative;
   box-sizing: border-box;
   font-size: 20px;
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  width: 600px;
-  padding: 20px;
+  width: 100%;
+  padding: 60px 0 20px;
   margin-left: auto;
   margin-right: auto;
+
+  @media screen and (min-width: 480px) {
+    width: 440px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 600px;
+  }
 `;
 
 export const List = styled.ul`
-  padding: 0 0 0 20px;
+  padding-left: 10px;
   overflow-y: scroll;
-  height: 200px;
+  min-height: 222px;
+  height: calc(100vh - 523px);
 
   ::-webkit-scrollbar-track {
     background-color: transparent;
@@ -44,14 +55,14 @@ export const ContactItem = styled.li`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 90%;
+  width: calc(100% - 30px);
   height: 40px;
   border-radius: 4px;
   background-color: #1976d2;
   color: #ffffff;
   box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
     0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-  padding: 0 20px;
+  padding: 0 10px;
   margin-bottom: 5px;
 
   &:hover {
@@ -63,13 +74,7 @@ export const ContactItem = styled.li`
 export const NameWrap = styled.div`
   display: flex;
   align-items: center;
-  width: 200px;
-`;
-
-export const Number = styled.a`
-  text-decoration: none;
-  outline: none;
-  color: #ffffff;
+  width: 150px;
 `;
 
 export const BtnWrap = styled.div`
@@ -78,16 +83,24 @@ export const BtnWrap = styled.div`
 `;
 
 export const Avatar = styled(AccountCircleIcon)`
-  margin-right: 10px;
+  margin-right: 5px;
+
+  @media screen and (min-width: 480px) {
+    margin-right: 10px;
+  }
 `;
 
 export const UpdateBtn = styled(EditIcon)`
   cursor: pointer;
-  margin-right: 10px;
+  margin-right: 5px;
 
   &:hover {
     color: #30f52a;
     scale: 1.1;
+  }
+
+  @media screen and (min-width: 480px) {
+    margin-right: 10px;
   }
 `;
 

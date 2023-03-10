@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import TextField from '@mui/material/TextField';
+import Notify from 'helpers/notifiOptions';
 import { updateContact } from 'redux/contacts/contactsOperations';
 import {
   Backdrop,
@@ -28,6 +29,7 @@ export const UpdateForm = ({ setIsUpdate, contact }) => {
       })
     );
     closeForm();
+    Notify.success(`Contact "${event.target.name.value}" updated successfully`);
   };
 
   return (

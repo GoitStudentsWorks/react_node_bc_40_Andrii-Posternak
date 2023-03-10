@@ -18,24 +18,41 @@ export const Form = styled.form`
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #ffffff;
-  display: flex;
-  align-items: center;
   gap: 10px;
-  width: 520px;
-  height: 100px;
+  width: calc(100% - 40px);
+  height: 200px;
   border: 1px solid #c8c6c6;
   border-radius: 5px;
   box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
     0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
   padding: 10px;
   margin: 0 auto;
+
+  @media screen and (min-width: 380px) {
+    height: 100px;
+    display: flex;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 480px) {
+    width: 420px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 560px;
+  }
 `;
 
 export const ButtonContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
-  gap: 10px;
+  margin-top: 10px;
+
+  @media screen and (min-width: 380px) {
+    flex-direction: column;
+    gap: 10px;
+  }
 `;
 
 export const Button = styled.button`

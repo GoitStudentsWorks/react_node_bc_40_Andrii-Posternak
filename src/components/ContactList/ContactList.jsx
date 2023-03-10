@@ -8,7 +8,6 @@ import {
   ContactItem,
   ContainerList,
   NameWrap,
-  Number,
   BtnWrap,
   DeleteBtn,
   UpdateBtn,
@@ -35,35 +34,37 @@ export const ContactList = () => {
   };
 
   return (
-    <ContainerList>
-      <Loader />
+    <>
       {isUpdate && <UpdateForm setIsUpdate={setIsUpdate} contact={contact} />}
       {isDelete && <ConfirmModal setIsDelete={setIsDelete} contact={contact} />}
-      <List>
-        {[...filteredContact]
-          .sort((previousName, nextName) =>
-            previousName.name.localeCompare(nextName.name)
-          )
-          .map(({ id, name, number }) => (
-            <ContactItem key={id}>
-              <NameWrap>
-                <Avatar aria-label="avatar" />
-                <p>{name}:</p>
-              </NameWrap>
-              <Number href="tel: {number}">{number}</Number>
-              <BtnWrap>
-                <UpdateBtn
-                  aria-label="edit"
-                  onClick={() => changeContact({ id, name, number })}
-                />
-                <DeleteBtn
-                  aria-label="delete"
-                  onClick={() => removeContact({ id, name, number })}
-                />
-              </BtnWrap>
-            </ContactItem>
-          ))}
-      </List>
-    </ContainerList>
+      <ContainerList>
+        <Loader />
+        <List>
+          {[...filteredContact]
+            .sort((previousName, nextName) =>
+              previousName.name.localeCompare(nextName.name)
+            )
+            .map(({ id, name, number }) => (
+              <ContactItem key={id}>
+                <NameWrap>
+                  <Avatar aria-label="avatar" />
+                  <p>{name}</p>
+                </NameWrap>
+                <p>{number}</p>
+                <BtnWrap>
+                  <UpdateBtn
+                    aria-label="edit"
+                    onClick={() => changeContact({ id, name, number })}
+                  />
+                  <DeleteBtn
+                    aria-label="delete"
+                    onClick={() => removeContact({ id, name, number })}
+                  />
+                </BtnWrap>
+              </ContactItem>
+            ))}
+        </List>
+      </ContainerList>
+    </>
   );
 };

@@ -1,16 +1,32 @@
-import { useEffect } from 'react';
+import { useEffect, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectToken } from 'redux/auth/authSelectors';
 import { getCurrentUser } from 'redux/auth/authOperations';
 import { SharedLayout } from 'components/SharedLayout/SharedLayout';
 import { routes } from 'constants/routes';
 import { PrivateRoute } from 'components/PrivateRoute/PrivateRoute';
 import { PublicRoute } from 'components/PublicRoute/PublicRoute';
-import { Register } from 'pages/Register/Register';
-import { Login } from 'pages/Login/Login';
-import { Contacts } from 'pages/Contacts/Contacts';
+
+const Home = lazy(() =>
+  import('pages/Home/Home').then(module => ({ default: module.Home }))
+);
+const Contacts = lazy(() =>
+  import('pages/Contacts/Contacts').then(module => ({
+    default: module.Contacts,
+  }))
+);
+const Login = lazy(() =>
+  import('pages/Login/Login').then(module => ({ default: module.Login }))
+);
+const Register = lazy(() =>
+  import('pages/Register/Register').then(module => ({
+    default: module.Register,
+  }))
+);
 
 export const App = () => {
+  const isAuth = useSelector(selectToken);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,6 +36,11 @@ export const App = () => {
   return (
     <Routes>
       <Route path={routes.home} element={<SharedLayout />}>
+        {isAuth ? (
+          <Route index element={<Navigate to={routes.contacts} />} />
+        ) : (
+          <Route index element={<Home />} />
+        )}
         <Route
           path={routes.register}
           element={<PublicRoute component={<Register />} />}

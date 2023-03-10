@@ -20,10 +20,9 @@ export const Form = styled.form`
   transform: translate(-50%, -50%);
   background-color: #ffffff;
   display: flex;
-  // flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 520px;
+  width: calc(100% - 40px);
   height: 100px;
   border: 1px solid #c8c6c6;
   border-radius: 5px;
@@ -31,14 +30,42 @@ export const Form = styled.form`
     0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
   padding: 10px;
   margin: 0 auto;
+
+  @media screen and (min-width: 480px) {
+    width: 420px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 560px;
+  }
+`;
+
+export const WarningIcon = styled(ErrorIcon)`
+  width: 30px !important;
+  height: 30px !important;
+  fill: red !important;
+
+  @media screen and (min-width: 480px) {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 50px !important;
+    height: 50px !important;
+  }
+`;
+
+export const WarningText = styled.p`
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
 `;
 
 export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  // justify-content: space-evenly;
-  // width: 100%;
   gap: 10px;
 `;
 
@@ -71,10 +98,4 @@ export const CancelBtn = styled(CancelIcon)`
     scale: 1.1;
     transition: 250ms;
   }
-`;
-
-export const WarningIcon = styled(ErrorIcon)`
-  width: 50px !important;
-  height: 50px !important;
-  fill: red !important;
 `;

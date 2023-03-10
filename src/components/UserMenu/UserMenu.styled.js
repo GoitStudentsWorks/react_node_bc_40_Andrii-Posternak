@@ -3,14 +3,16 @@ import LogoutIcon from '@mui/icons-material/Logout';
 
 export const Wrap = styled.div`
   display: flex;
-  gap: 10px;
   align-items: center;
+  gap: 10px;
 `;
 
 export const Loguot = styled(LogoutIcon)`
   cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
 
   :hover {
-    color: #eb4b5b;
+    outline: 1px solid #ffffff;
   }
 `;

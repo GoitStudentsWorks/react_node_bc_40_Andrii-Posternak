@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { TextField, Box, Container, Button } from '@mui/material';
+import Notify from 'helpers/notifiOptions';
 import { selectContacts } from 'redux/selectors';
 import { addContact } from 'redux/contacts/contactsOperations';
-
-import { TextField, Box, Container, Button } from '@mui/material';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
@@ -26,11 +26,12 @@ export const ContactForm = () => {
     );
 
     if (isContactExist) {
-      alert(`${name} is already in contacts`);
+      Notify.failure(`"${name}" is already in contacts`);
       resetForm();
     } else {
       dispatch(addContact({ name, number }));
       resetForm();
+      Notify.success(`Contact "${name}" successfully created`);
     }
   };
 
@@ -52,7 +53,7 @@ export const ContactForm = () => {
     <Container component="div" maxWidth="xs">
       <Box
         sx={{
-          marginTop: 8,
+          marginTop: 4,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
