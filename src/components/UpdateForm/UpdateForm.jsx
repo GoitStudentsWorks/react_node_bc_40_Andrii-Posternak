@@ -1,8 +1,10 @@
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useFormik } from 'formik';
 import TextField from '@mui/material/TextField';
 import Notify from 'helpers/notifiOptions';
 import { updateContact } from 'redux/contacts/contactsOperations';
+import { contactSchema } from 'schemas';
 import {
   Backdrop,
   Form,
@@ -19,40 +21,51 @@ export const UpdateForm = ({ setIsUpdate, contact }) => {
     setIsUpdate(false);
   };
 
-  const onSubmitForm = event => {
-    event.preventDefault();
-    dispatch(
-      updateContact({
-        id: contact.id,
-        name: event.target.name.value,
-        number: event.target.number.value,
-      })
-    );
-    closeForm();
-    Notify.success(`Contact "${event.target.name.value}" updated successfully`);
-  };
+  const formik = useFormik({
+    initialValues: {
+      name: contact.name,
+      number: contact.number,
+    },
+
+    validationSchema: contactSchema,
+
+    onSubmit: values => {
+      dispatch(
+        updateContact({
+          id: contact.id,
+          ...values,
+        })
+      );
+      closeForm();
+      Notify.success(`Contact "${values.name}" updated successfully`);
+    },
+  });
 
   return (
     <Backdrop>
-      <Form onSubmit={onSubmitForm}>
+      <Form onSubmit={formik.handleSubmit}>
         <TextField
           margin="normal"
           fullWidth
-          required
           autoFocus
           id="name"
-          label="Name"
+          label="Name *"
           name="name"
-          defaultValue={contact.name}
+          defaultValue={formik.values.name}
+          onChange={formik.handleChange}
+          error={formik.touched.name && Boolean(formik.errors.name)}
+          helperText={formik.touched.name && formik.errors.name}
         />
         <TextField
           margin="normal"
           fullWidth
-          required
           id="number"
-          label="Number"
+          label="Number *"
           name="number"
-          defaultValue={contact.number}
+          defaultValue={formik.values.number}
+          onChange={formik.handleChange}
+          error={formik.touched.number && Boolean(formik.errors.number)}
+          helperText={formik.touched.number && formik.errors.number}
         />
         <ButtonContainer>
           <Button type="submit">

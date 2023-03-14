@@ -1,53 +1,38 @@
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useFormik } from 'formik';
 import { TextField, Box, Container, Button } from '@mui/material';
 import Notify from 'helpers/notifiOptions';
 import { selectContacts } from 'redux/selectors';
 import { addContact } from 'redux/contacts/contactsOperations';
+import { contactSchema } from 'schemas';
 
 export const ContactForm = () => {
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
-
   const dispatch = useDispatch();
 
   const contacts = useSelector(selectContacts);
 
-  const resetForm = () => {
-    setName('');
-    setNumber('');
-  };
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      number: '',
+    },
 
-  const onSubmitForm = event => {
-    event.preventDefault();
+    validationSchema: contactSchema,
 
-    const isContactExist = contacts.find(
-      contact => contact.name.toLowerCase() === name.trim().toLowerCase()
-    );
-
-    if (isContactExist) {
-      Notify.failure(`"${name}" is already in contacts`);
-      resetForm();
-    } else {
-      dispatch(addContact({ name, number }));
-      resetForm();
-      Notify.success(`Contact "${name}" successfully created`);
-    }
-  };
-
-  const onChange = event => {
-    const { name, value } = event.target;
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-      case 'number':
-        setNumber(value);
-        break;
-      default:
-        console.log('nothing entered');
-    }
-  };
+    onSubmit: values => {
+      const isContactExist = contacts.find(
+        contact =>
+          contact.name.toLowerCase() === values.name.trim().toLowerCase()
+      );
+      if (isContactExist) {
+        Notify.failure(`"${values.name}" is already in contacts`);
+      } else {
+        dispatch(addContact(values));
+        formik.resetForm();
+        Notify.success(`Contact "${values.name}" successfully created`);
+      }
+    },
+  });
 
   return (
     <Container component="div" maxWidth="xs">
@@ -59,26 +44,28 @@ export const ContactForm = () => {
           alignItems: 'center',
         }}
       >
-        <Box component="form" onSubmit={onSubmitForm} noValidate sx={{ mt: 1 }}>
+        <Box component="form" sx={{ mt: 1 }} onSubmit={formik.handleSubmit}>
           <TextField
             margin="normal"
             fullWidth
-            required
             id="name"
-            label="Name"
+            label="Name *"
             name="name"
-            value={name}
-            onChange={onChange}
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            error={formik.touched.name && Boolean(formik.errors.name)}
+            helperText={formik.touched.name && formik.errors.name}
           />
           <TextField
             margin="normal"
             fullWidth
-            required
-            label="Number"
-            name="number"
             id="number"
-            value={number}
-            onChange={onChange}
+            label="Number *"
+            name="number"
+            value={formik.values.number}
+            onChange={formik.handleChange}
+            error={formik.touched.number && Boolean(formik.errors.number)}
+            helperText={formik.touched.number && formik.errors.number}
           />
           <Button
             type="submit"

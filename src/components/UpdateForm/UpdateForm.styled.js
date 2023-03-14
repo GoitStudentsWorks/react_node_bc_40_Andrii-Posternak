@@ -16,7 +16,7 @@ export const Form = styled.form`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -100%);
   background-color: #ffffff;
   gap: 10px;
   width: calc(100% - 40px);

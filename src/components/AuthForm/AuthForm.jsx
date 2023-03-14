@@ -1,5 +1,6 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { useFormik } from 'formik';
+
 import {
   Avatar,
   Button,
@@ -11,29 +12,25 @@ import {
   Container,
 } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { registerSchema, loginSchema } from 'schemas';
 
 export const AuthForm = ({ authType, btnTitle, onSubmit }) => {
-  const [form, setForm] = useState(
-    authType === 'login'
-      ? { email: '', password: '' }
-      : { email: '', password: '', name: '' }
-  );
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      email: '',
+      password: '',
+    },
 
-  const { name, email, password } = form;
+    validationSchema: authType === 'login' ? loginSchema : registerSchema,
 
-  const handleChange = event => {
-    const { name, value } = event.target;
-    setForm(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = event => {
-    event.preventDefault();
-    onSubmit(form);
-    setForm({ email: '', password: '', name: '' });
-  };
+    onSubmit: values => {
+      onSubmit(values);
+    },
+  });
 
   return (
-    <Container component="div" maxWidth="xs">
+    <Container component="div" maxWidth="xs" style={{ minWidth: '420px' }}>
       <Box
         sx={{
           marginTop: 8,
@@ -48,39 +45,44 @@ export const AuthForm = ({ authType, btnTitle, onSubmit }) => {
         <Typography component="h1" variant="h5">
           {btnTitle}
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Box component="form" sx={{ mt: 1 }} onSubmit={formik.handleSubmit}>
           {authType === 'register' && (
             <TextField
               margin="normal"
               fullWidth
-              required
+              type="text"
               id="name"
-              label="Name"
+              label="Name *"
               name="name"
-              value={name}
-              onChange={handleChange}
+              value={formik.values.name}
+              onChange={formik.handleChange}
+              error={formik.touched.name && Boolean(formik.errors.name)}
+              helperText={formik.touched.name && formik.errors.name}
             />
           )}
           <TextField
             margin="normal"
             fullWidth
-            required
+            type="email"
             id="email"
-            label="Email Address"
+            label="Email *"
             name="email"
-            value={email}
-            onChange={handleChange}
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            error={formik.touched.email && Boolean(formik.errors.email)}
+            helperText={formik.touched.email && formik.errors.email}
           />
           <TextField
             margin="normal"
             fullWidth
-            required
             type="password"
             id="password"
-            label="Password"
+            label="Password *"
             name="password"
-            value={password}
-            onChange={handleChange}
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
           />
           <Button
             type="submit"
