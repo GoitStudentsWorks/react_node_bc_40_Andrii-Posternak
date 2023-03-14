@@ -10,7 +10,7 @@ export const Header = () => {
   const isAuth = useSelector(selectToken);
 
   return (
-    <AppBar position="static" style={{ minWidth: '420px' }}>
+    <AppBar position="static" style={{ minWidth: '380px' }}>
       <Toolbar sx={{ justifyContent: 'space-between' }}>
         <Logo href="/phonebook">
           <img src={logo} alt="phonebook" width="24" />
