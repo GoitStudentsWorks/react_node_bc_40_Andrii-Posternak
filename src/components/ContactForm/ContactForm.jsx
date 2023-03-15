@@ -38,7 +38,7 @@ export const ContactForm = () => {
     <Container component="div" maxWidth="xs">
       <Box
         sx={{
-          marginTop: 4,
+          marginTop: 2,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',

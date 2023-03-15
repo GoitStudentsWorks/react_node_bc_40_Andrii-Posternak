@@ -28,7 +28,7 @@ export const List = styled.ul`
   padding-left: 10px;
   overflow-y: scroll;
   min-height: 222px;
-  height: calc(100vh - 523px);
+  height: calc(100vh - 507px);
 
   ::-webkit-scrollbar-track {
     background-color: transparent;
@@ -67,7 +67,16 @@ export const ContactItem = styled.li`
 
   &:hover {
     scale: 1.03;
+    background-color: #1565c0;
     transition: 250ms;
+  }
+
+  @media screen and (max-width: 419px) {
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 `;
 
@@ -77,9 +86,21 @@ export const NameWrap = styled.div`
   width: 150px;
 `;
 
+export const Number = styled.p`
+  @media screen and (max-width: 419px) {
+    margin-left: 20px;
+  }
+`;
+
 export const BtnWrap = styled.div`
   display: flex;
   align-items: center;
+
+  @media screen and (max-width: 419px) {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 14px;
+  }
 `;
 
 export const Avatar = styled(AccountCircleIcon)`

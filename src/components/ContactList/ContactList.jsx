@@ -12,6 +12,7 @@ import {
   DeleteBtn,
   UpdateBtn,
   Avatar,
+  Number,
 } from 'components/ContactList/ContactList.styled';
 import { ConfirmModal } from 'components/ConfirmModal/ConfirmModal';
 
@@ -50,7 +51,7 @@ export const ContactList = () => {
                   <Avatar aria-label="avatar" />
                   <p>{name}</p>
                 </NameWrap>
-                <p>{number}</p>
+                <Number>{number}</Number>
                 <BtnWrap>
                   <UpdateBtn
                     aria-label="edit"

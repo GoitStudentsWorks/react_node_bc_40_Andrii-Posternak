@@ -30,7 +30,7 @@ export const AuthForm = ({ authType, btnTitle, onSubmit }) => {
   });
 
   return (
-    <Container component="div" maxWidth="xs" style={{ minWidth: '380px' }}>
+    <Container component="div" maxWidth="xs">
       <Box
         sx={{
           marginTop: 8,
