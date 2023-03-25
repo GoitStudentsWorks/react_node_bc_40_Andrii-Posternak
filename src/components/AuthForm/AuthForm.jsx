@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
-
+import { routes } from 'constants/routes';
+import Notify from 'helpers/notifiOptions';
 import {
   Avatar,
   Button,
@@ -15,19 +17,39 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { registerSchema, loginSchema } from 'schemas';
 
 export const AuthForm = ({ authType, btnTitle, onSubmit }) => {
-  const formik = useFormik({
-    initialValues: {
-      name: '',
-      email: '',
-      password: '',
-    },
+  const navigate = useNavigate();
+  const formik = useFormik(
+    authType === 'register'
+      ? {
+          initialValues: {
+            name: '',
+            email: '',
+            password: '',
+          },
 
-    validationSchema: authType === 'login' ? loginSchema : registerSchema,
+          validationSchema: registerSchema,
 
-    onSubmit: values => {
-      onSubmit(values);
-    },
-  });
+          onSubmit: values => {
+            onSubmit(values);
+            formik.resetForm();
+            Notify.success(`You have successfully registered`);
+            navigate(routes.login);
+          },
+        }
+      : {
+          initialValues: {
+            email: '',
+            password: '',
+          },
+
+          validationSchema: loginSchema,
+
+          onSubmit: values => {
+            onSubmit(values);
+            formik.resetForm();
+          },
+        }
+  );
 
   return (
     <Container component="div" maxWidth="xs">

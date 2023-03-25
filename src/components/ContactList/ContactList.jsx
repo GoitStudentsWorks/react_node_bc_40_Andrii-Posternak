@@ -45,7 +45,7 @@ export const ContactList = () => {
             .sort((previousName, nextName) =>
               previousName.name.localeCompare(nextName.name)
             )
-            .map(({ id, name, number }) => (
+            .map(({ _id: id, name, number }) => (
               <ContactItem key={id}>
                 <NameWrap>
                   <Avatar aria-label="avatar" />

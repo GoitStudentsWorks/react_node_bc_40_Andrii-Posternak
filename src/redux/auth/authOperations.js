@@ -66,9 +66,6 @@ export const getCurrentUser = createAsyncThunk(
       const data = await getCurrentUserApi();
       return data;
     } catch (error) {
-      // setTimeout(() => {
-      //   thunkAPI.dispatch(logoutUser());
-      // }, 0);
       logoutUser();
       return thunkAPI.rejectWithValue(error.message);
     }

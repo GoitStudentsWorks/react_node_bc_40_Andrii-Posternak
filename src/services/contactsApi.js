@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+axios.defaults.baseURL = 'https://phonebook-api-kery.onrender.com/api';
 
 export const fetchContactsApi = async () => {
   const response = await axios.get('/contacts');
@@ -18,6 +18,7 @@ export const deleteContactApi = async id => {
 };
 
 export const updateContactApi = async (id, updatedContact) => {
-  const response = await axios.patch(`/contacts/${id}`, updatedContact);
+  const response = await axios.put(`/contacts/${id}`, updatedContact);
+
   return response.data;
 };

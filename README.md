@@ -5,6 +5,9 @@ User authorization is implemented in the application. You can create new
 contacts, edit them and delete them. Protection against accidental deletion of
 contacts is provided. The project was created using Create React App.
 
+This APP uses its own
+[REST API](https://github.com/Andrii-Posternak/REST-API-phonebook)
+
 ![an example interface](./assets/phonebook.jpg)
 
 ## Created with
