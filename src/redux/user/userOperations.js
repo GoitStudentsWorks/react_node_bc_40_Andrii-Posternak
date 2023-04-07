@@ -62,3 +62,80 @@ const logIn =
       dispatch(loginError(error.message));
     }
   };
+
+const logOut = () => async dispatch => {
+  dispatch(logoutRequest());
+  try {
+    await axios.post('/users/logout');
+    token.unset();
+    dispatch(logoutSuccess());
+  } catch (error) {
+    dispatch(logoutError(error.message));
+  }
+};
+
+const getCurrentUser = () => async (dispatch, getState) => {
+  const persistedTokenOfLoggedUser = getState().user.token;
+  if (!persistedTokenOfLoggedUser) {
+    return;
+  }
+  token.set(persistedTokenOfLoggedUser);
+  dispatch(getCurrentUserRequest());
+
+  try {
+    const { data } = await axios.get('/users/current');
+    dispatch(getCurrentUserSuccess(data));
+  } catch (error) {
+    dispatch(getCurrentUserError(error.message));
+  }
+};
+
+const calculateLoggedInUser =
+  ({ height, age, currentWeight, desiredWeight, bloodType }) =>
+  async dispatch => {
+    const userParameters = {
+      height,
+      age,
+      currentWeight,
+      desiredWeight,
+      bloodType,
+    };
+    dispatch(calculateUserRequest());
+    try {
+      const { data } = await axios.patch(`/calculator`, userParameters);
+      dispatch(calculateUserSuccess(data));
+    } catch (error) {
+      dispatch(calculateUserError(error));
+    }
+  };
+
+const publicUserCalculate =
+  ({ height, age, currentWeight, desiredWeight, bloodType }) =>
+  async dispatch => {
+    const userParameters = {
+      height,
+      age,
+      currentWeight,
+      desiredWeight,
+      bloodType,
+    };
+
+    dispatch(publicUserCalculateRequest());
+    try {
+      const { data } = await axios.patch(`/public`, userParameters);
+      dispatch(publicUserCalculateSuccess(data));
+    } catch (error) {
+      dispatch(publicUserCalculateError(error));
+    }
+  };
+
+const userOperations = {
+  register,
+  logIn,
+  logOut,
+  getCurrentUser,
+  calculateLoggedInUser,
+  publicUserCalculate,
+};
+
+export default userOperations;
