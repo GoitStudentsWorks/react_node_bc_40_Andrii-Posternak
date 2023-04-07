@@ -1,4 +1,4 @@
-export const Loader = () => {
+export const DiaryAddProductForm = () => {
   return (
     <div>
       <div></div>

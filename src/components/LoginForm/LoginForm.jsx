@@ -1,4 +1,4 @@
-export const Loader = () => {
+export const LoginForm = () => {
   return (
     <div>
       <div></div>

@@ -1,4 +1,4 @@
-export const Loader = () => {
+export const Logo = () => {
   return (
     <div>
       <div></div>

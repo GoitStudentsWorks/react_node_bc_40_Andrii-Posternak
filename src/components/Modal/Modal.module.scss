@@ -1,0 +1,12 @@
+@import '../../index.scss';
+
+.tWrapper {
+  @include to-tablet-media {
+  }
+
+  @include tablet-media {
+  }
+
+  @include desktop-media {
+  }
+}

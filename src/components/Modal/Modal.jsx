@@ -1,4 +1,4 @@
-export const Loader = () => {
+export const Modal = () => {
   return (
     <div>
       <div></div>

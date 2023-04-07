@@ -1,4 +1,4 @@
-export const Loader = () => {
+export const RightSideBar = () => {
   return (
     <div>
       <div></div>

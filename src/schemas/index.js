@@ -1,5 +1,6 @@
-import { loginSchema } from 'schemas/loginSchema';
-import { registerSchema } from 'schemas/registerSchema';
-import { contactSchema } from 'schemas/contactSchema';
+import { loginSchema } from './loginSchema';
+import { registerSchema } from './registerSchema';
+import { calorieSchema } from './calorieSchema';
+import { newProductSchema } from './newProductSchema';
 
-export { loginSchema, registerSchema, contactSchema };
+export { loginSchema, registerSchema, calorieSchema, newProductSchema };

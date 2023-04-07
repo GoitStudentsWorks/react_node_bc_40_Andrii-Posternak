@@ -1,4 +1,4 @@
-export const Loader = () => {
+export const DailyCalorieIntake = () => {
   return (
     <div>
       <div></div>

@@ -4,24 +4,34 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from 'redux/auth/authSelectors';
 import { getCurrentUser } from 'redux/auth/authOperations';
 import { SharedLayout } from 'components/SharedLayout/SharedLayout';
-import { routes } from 'constants/routes';
+import { routes } from 'utils/routes';
 import { PrivateRoute } from 'components/PrivateRoute/PrivateRoute';
 import { PublicRoute } from 'components/PublicRoute/PublicRoute';
 
-const Home = lazy(() =>
-  import('pages/Home/Home').then(module => ({ default: module.Home }))
-);
-const Contacts = lazy(() =>
-  import('pages/Contacts/Contacts').then(module => ({
-    default: module.Contacts,
+const MainPage = lazy(() =>
+  import('pages/MainPage/MainPage').then(module => ({
+    default: module.MainPage,
   }))
 );
-const Login = lazy(() =>
-  import('pages/Login/Login').then(module => ({ default: module.Login }))
+const DiaryPage = lazy(() =>
+  import('pages/DiaryPage/DiaryPage').then(module => ({
+    default: module.DiaryPage,
+  }))
 );
-const Register = lazy(() =>
-  import('pages/Register/Register').then(module => ({
-    default: module.Register,
+const CalculatorPage = lazy(() =>
+  import('pages/CalculatorPage/CalculatorPage').then(module => ({
+    default: module.CalculatorPage,
+  }))
+);
+
+const LoginPage = lazy(() =>
+  import('pages/LoginPage/LoginPage').then(module => ({
+    default: module.LoginPage,
+  }))
+);
+const RegistrationPage = lazy(() =>
+  import('pages/RegistrationPage/RegistrationPage').then(module => ({
+    default: module.RegistrationPage,
   }))
 );
 
@@ -36,22 +46,22 @@ export const App = () => {
   return (
     <Routes>
       <Route path={routes.home} element={<SharedLayout />}>
-        {isAuth ? (
-          <Route index element={<Navigate to={routes.contacts} />} />
-        ) : (
-          <Route index element={<Home />} />
-        )}
+        <Route index element={<MainPage />} />
         <Route
           path={routes.register}
-          element={<PublicRoute component={<Register />} />}
+          element={<PublicRoute component={<RegistrationPage />} />}
         />
         <Route
           path={routes.login}
-          element={<PublicRoute component={<Login />} />}
+          element={<PublicRoute component={<LoginPage />} />}
         />
         <Route
-          path={routes.contacts}
-          element={<PrivateRoute component={<Contacts />} />}
+          path={routes.diary}
+          element={<PrivateRoute component={<DiaryPage />} />}
+        />
+        <Route
+          path={routes.calculator}
+          element={<PrivateRoute component={<CalculatorPage />} />}
         />
         <Route path="*" element={<Navigate to={routes.home} />} />
       </Route>

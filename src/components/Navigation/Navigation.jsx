@@ -1,4 +1,4 @@
-export const Loader = () => {
+export const Navigation = () => {
   return (
     <div>
       <div></div>

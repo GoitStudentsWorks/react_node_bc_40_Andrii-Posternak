@@ -1,4 +1,4 @@
-export const Loader = () => {
+export const UserInfo = () => {
   return (
     <div>
       <div></div>

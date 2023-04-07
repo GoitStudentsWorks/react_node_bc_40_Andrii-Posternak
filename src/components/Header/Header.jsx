@@ -1,23 +1,13 @@
-import { useSelector } from 'react-redux';
-import { AuthNav } from 'components/AuthNav/AuthNav';
-import { UserMenu } from 'components/UserMenu/UserMenu';
-import { selectToken } from 'redux/auth/authSelectors';
-import { AppBar, Toolbar } from '@mui/material';
-import logo from 'images/logo.png';
-import { Logo } from './Header.styled';
+import { Logo } from 'components/Logo/Logo';
+import { UserInfo } from 'components/UserInfo/UserInfo';
+import { Navigation } from 'components/Navigation/Navigation';
 
 export const Header = () => {
-  const isAuth = useSelector(selectToken);
-
   return (
-    <AppBar position="static">
-      <Toolbar sx={{ justifyContent: 'space-between' }}>
-        <Logo href="/phonebook">
-          <img src={logo} alt="phonebook" width="24" height="24" />
-          Phonebook
-        </Logo>
-        {!isAuth ? <AuthNav /> : <UserMenu />}
-      </Toolbar>
-    </AppBar>
+    <>
+      <Logo />
+      <UserInfo />
+      <Navigation />
+    </>
   );
 };
