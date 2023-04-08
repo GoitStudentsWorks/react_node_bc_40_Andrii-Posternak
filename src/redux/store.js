@@ -10,6 +10,8 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import userReducer from './user/userReducer';
+import mealsReducer from './meals/mealsReducer';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -28,6 +30,7 @@ const userPersistConfig = {
 const store = configureStore({
   reducer: {
     user: persistReducer(userPersistConfig, userReducer),
+    meals: mealsReducer,
   },
   middleware,
   // devTools: process.env.NODE_ENV === 'development',
