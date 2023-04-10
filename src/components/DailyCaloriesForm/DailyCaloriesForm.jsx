@@ -1,7 +1,38 @@
 // import { DailyCalorieIntake } from 'components/DailyCalorieIntake/DailyCalorieIntake';
-import { Formik, Form } from 'formik';
+import { Formik, Field, Form } from 'formik';
 
 export const DailyCaloriesForm = () => {
+  const InputField = ({ label, type, value, name, onChange, onBlur }) => (
+    <label>
+      <Field
+        required
+        type={type}
+        value={value}
+        name={name}
+        onChange={onChange}
+        onBlur={onBlur}
+      />
+      <div>{label}</div>
+    </label>
+  );
+
+  const RadioButton = ({ name, value, id, onChange, onBlur }) => (
+    <li>
+      <Field
+        type="radio"
+        value={value}
+        name={name}
+        id={id}
+        onChange={onChange}
+        onBlur={onBlur}
+      />
+      <label htmlFor={id}>{value}</label>
+      <div>
+        <div></div>
+      </div>
+    </li>
+  );
+
   return (
     <>
       <Formik
@@ -19,16 +50,23 @@ export const DailyCaloriesForm = () => {
             <div>
               <div>
                 <div>
+                  <InputField label="Height *" type="number" name={'height'} />
                   <div>
                     <p></p>
                   </div>
                 </div>
                 <div>
+                  <InputField label="Age *" type="number" name={'age'} />
                   <div>
                     <p></p>
                   </div>
                 </div>
                 <div>
+                  <InputField
+                    label="Current weight *"
+                    type="number"
+                    name={'weight'}
+                  />
                   <div>
                     <p></p>
                   </div>
@@ -36,6 +74,11 @@ export const DailyCaloriesForm = () => {
               </div>
               <div>
                 <div>
+                  <InputField
+                    label="Desired weight *"
+                    type="number"
+                    name={'desiredWeight'}
+                  />
                   <div>
                     <p></p>
                   </div>
@@ -43,7 +86,28 @@ export const DailyCaloriesForm = () => {
                 <div>
                   <h3>Blood type *</h3>
 
-                  <ul></ul>
+                  <ul>
+                    <RadioButton
+                      name="bloodType"
+                      value="1"
+                      id="1-radio-button"
+                    />
+                    <RadioButton
+                      name="bloodType"
+                      value="2"
+                      id="2-radio-button"
+                    />
+                    <RadioButton
+                      name="bloodType"
+                      value="3"
+                      id="3-radio-button"
+                    />
+                    <RadioButton
+                      name="bloodType"
+                      value="4"
+                      id="4-radio-button"
+                    />
+                  </ul>
                   <div>
                     <p></p>
                   </div>
