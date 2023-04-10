@@ -2,8 +2,9 @@ import { CalculatorCalorieForm } from 'components/CalculatorCalorieForm/Calculat
 
 export const CalculatorPage = () => {
   return (
-    <>
+    <div className="container">
+      <h1>calculator page</h1>
       <CalculatorCalorieForm />
-    </>
+    </div>
   );
 };

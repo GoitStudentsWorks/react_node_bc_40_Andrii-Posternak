@@ -2,8 +2,10 @@ import { DailyCaloriesForm } from 'components/DailyCaloriesForm/DailyCaloriesFor
 
 export const MainPage = () => {
   return (
-    <>
+    <div className="container">
+      <h1>main page</h1>
+
       <DailyCaloriesForm />
-    </>
+    </div>
   );
 };

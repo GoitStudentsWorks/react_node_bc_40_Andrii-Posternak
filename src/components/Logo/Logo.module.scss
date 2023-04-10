@@ -1,6 +1,8 @@
 @import '../../index.scss';
 
 .tWrapper {
+  color: red;
+
   @include to-tablet-media {
   }
 

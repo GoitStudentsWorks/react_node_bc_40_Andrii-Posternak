@@ -4,10 +4,12 @@ import { DiaryProductsList } from 'components/DiaryProductsList/DiaryProductsLis
 
 export const DiaryPage = () => {
   return (
-    <>
+    <div className="container">
+      <h1>dairy page</h1>
+
       <DiaryDateCalendar />
       <DiaryAddProductForm />
       <DiaryProductsList />
-    </>
+    </div>
   );
 };

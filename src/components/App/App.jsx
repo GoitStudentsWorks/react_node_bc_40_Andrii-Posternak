@@ -1,8 +1,7 @@
-import { useEffect, lazy } from 'react';
+import { lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectToken } from 'redux/auth/authSelectors';
-import { getCurrentUser } from 'redux/auth/authOperations';
+// import { useDispatch } from 'react-redux';
+// import { getCurrentUser } from 'redux/auth/authOperations';
 import { SharedLayout } from 'components/SharedLayout/SharedLayout';
 import { routes } from 'utils/routes';
 import { PrivateRoute } from 'components/PrivateRoute/PrivateRoute';
@@ -36,12 +35,11 @@ const RegistrationPage = lazy(() =>
 );
 
 export const App = () => {
-  const isAuth = useSelector(selectToken);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getCurrentUser());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getCurrentUser());
+  // }, [dispatch]);
 
   return (
     <Routes>

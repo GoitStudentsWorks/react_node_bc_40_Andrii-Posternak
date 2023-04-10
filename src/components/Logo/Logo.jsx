@@ -1,7 +1,9 @@
+import styles from './Logo.module.scss';
+
 export const Logo = () => {
   return (
     <div>
-      <div></div>
+      <div className={styles.tWrapper}>Logo</div>
     </div>
   );
 };
