@@ -1,5 +1,6 @@
 // import { DailyCalorieIntake } from 'components/DailyCalorieIntake/DailyCalorieIntake';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Form, Field } from 'formik';
+import { PersistFormikValues } from 'formik-persist-values';
 
 export const DailyCaloriesForm = () => {
   const InputField = ({ label, type, value, name, onChange, onBlur }) => (
@@ -43,32 +44,48 @@ export const DailyCaloriesForm = () => {
           desiredWeight: '',
           bloodType: '',
         }}
+        validateOnBlur
       >
-        {() => (
+        {({ values, errors, touched, handleChange, handleBlur }) => (
           <Form>
             <h1>Calculate your daily calorie intake right now</h1>
             <div>
               <div>
                 <div>
-                  <InputField label="Height *" type="number" name={'height'} />
+                  <InputField
+                    label="Height *"
+                    type="number"
+                    name={'height'}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.height}
+                  />
                   <div>
-                    <p></p>
+                    {touched.height && errors.height && <p>{errors.height}</p>}
                   </div>
                 </div>
                 <div>
-                  <InputField label="Age *" type="number" name={'age'} />
-                  <div>
-                    <p></p>
-                  </div>
+                  <InputField
+                    label="Age *"
+                    type="number"
+                    name={'age'}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.age}
+                  />
+                  <div>{touched.age && errors.age && <p>{errors.age}</p>}</div>
                 </div>
                 <div>
                   <InputField
                     label="Current weight *"
                     type="number"
                     name={'weight'}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.weight}
                   />
                   <div>
-                    <p></p>
+                    {touched.weight && errors.weight && <p>{errors.weight}</p>}
                   </div>
                 </div>
               </div>
@@ -78,9 +95,14 @@ export const DailyCaloriesForm = () => {
                     label="Desired weight *"
                     type="number"
                     name={'desiredWeight'}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.desiredWeight}
                   />
                   <div>
-                    <p></p>
+                    {touched.desiredWeight && errors.desiredWeight && (
+                      <p>{errors.desiredWeight}</p>
+                    )}
                   </div>
                 </div>
                 <div>
@@ -88,28 +110,38 @@ export const DailyCaloriesForm = () => {
 
                   <ul>
                     <RadioButton
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                       name="bloodType"
                       value="1"
                       id="1-radio-button"
                     />
                     <RadioButton
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                       name="bloodType"
                       value="2"
                       id="2-radio-button"
                     />
                     <RadioButton
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                       name="bloodType"
                       value="3"
                       id="3-radio-button"
                     />
                     <RadioButton
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                       name="bloodType"
                       value="4"
                       id="4-radio-button"
                     />
                   </ul>
                   <div>
-                    <p></p>
+                    {touched.bloodType && errors.bloodType && (
+                      <p>{errors.bloodType}</p>
+                    )}
                   </div>
                 </div>
               </div>
@@ -119,6 +151,8 @@ export const DailyCaloriesForm = () => {
                 Start losing weight
               </button>
             </div>
+
+            <PersistFormikValues name="calc-form" ignoreValues="bloodType" />
           </Form>
         )}
       </Formik>
