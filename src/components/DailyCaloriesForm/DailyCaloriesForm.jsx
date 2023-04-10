@@ -2,6 +2,7 @@
 
 import { Formik, Form, Field } from 'formik';
 import { PersistFormikValues } from 'formik-persist-values';
+import styles from './DailyCaloriesForm.module.scss';
 
 export const DailyCaloriesForm = () => {
   const InputField = ({ label, type, value, name, onChange, onBlur }) => (
@@ -55,11 +56,11 @@ export const DailyCaloriesForm = () => {
           handleBlur,
           handleSubmit,
         }) => (
-          <Form onSubmit={handleSubmit}>
+          <Form className={styles.caloriesForm} onSubmit={handleSubmit}>
             <h1>Calculate your daily calorie intake right now</h1>
-            <div>
-              <div>
-                <div>
+            <div className={styles.formContainerMain}>
+              <div className={styles.formContainerLeft}>
+                <div className={styles.labelContainer}>
                   <InputField
                     label="Height *"
                     type="number"
@@ -68,11 +69,15 @@ export const DailyCaloriesForm = () => {
                     onBlur={handleBlur}
                     value={values.height}
                   />
-                  <div>
-                    {touched.height && errors.height && <p>{errors.height}</p>}
+                  <div className={styles.caloriesFormErrorContainer}>
+                    {touched.height && errors.height && (
+                      <p className={styles.caloriesFormError}>
+                        {errors.height}
+                      </p>
+                    )}
                   </div>
                 </div>
-                <div>
+                <div className={styles.labelContainer}>
                   <InputField
                     label="Age *"
                     type="number"
@@ -81,9 +86,13 @@ export const DailyCaloriesForm = () => {
                     onBlur={handleBlur}
                     value={values.age}
                   />
-                  <div>{touched.age && errors.age && <p>{errors.age}</p>}</div>
+                  <div className={styles.caloriesFormErrorContainer}>
+                    {touched.age && errors.age && (
+                      <p className={styles.caloriesFormError}>{errors.age}</p>
+                    )}
+                  </div>
                 </div>
-                <div>
+                <div className={styles.labelContainer}>
                   <InputField
                     label="Current weight *"
                     type="number"
@@ -92,13 +101,17 @@ export const DailyCaloriesForm = () => {
                     onBlur={handleBlur}
                     value={values.weight}
                   />
-                  <div>
-                    {touched.weight && errors.weight && <p>{errors.weight}</p>}
+                  <div className={styles.caloriesFormErrorContainer}>
+                    {touched.weight && errors.weight && (
+                      <p className={styles.caloriesFormError}>
+                        {errors.weight}
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
-              <div>
-                <div>
+              <div className={styles.formContainerRight}>
+                <div className={styles.labelContainer}>
                   <InputField
                     label="Desired weight *"
                     type="number"
@@ -107,16 +120,18 @@ export const DailyCaloriesForm = () => {
                     onBlur={handleBlur}
                     value={values.desiredWeight}
                   />
-                  <div>
+                  <div className={styles.caloriesFormErrorContainer}>
                     {touched.desiredWeight && errors.desiredWeight && (
-                      <p>{errors.desiredWeight}</p>
+                      <p className={styles.caloriesFormError}>
+                        {errors.desiredWeight}
+                      </p>
                     )}
                   </div>
                 </div>
-                <div>
+                <div className={styles.radioButtonContainer}>
                   <h3>Blood type *</h3>
 
-                  <ul>
+                  <ul className={styles.radioButtonList}>
                     <RadioButton
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -146,15 +161,17 @@ export const DailyCaloriesForm = () => {
                       id="4-radio-button"
                     />
                   </ul>
-                  <div>
+                  <div className={styles.caloriesFormErrorContainer}>
                     {touched.bloodType && errors.bloodType && (
-                      <p>{errors.bloodType}</p>
+                      <p className={styles.caloriesFormError}>
+                        {errors.bloodType}
+                      </p>
                     )}
                   </div>
                 </div>
               </div>
             </div>
-            <div>
+            <div className={styles.form_button}>
               <button type="submit" variant="start">
                 Start losing weight
               </button>
