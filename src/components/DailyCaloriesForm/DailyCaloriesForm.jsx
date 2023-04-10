@@ -1,4 +1,5 @@
 // import { DailyCalorieIntake } from 'components/DailyCalorieIntake/DailyCalorieIntake';
+
 import { Formik, Form, Field } from 'formik';
 import { PersistFormikValues } from 'formik-persist-values';
 
@@ -46,8 +47,15 @@ export const DailyCaloriesForm = () => {
         }}
         validateOnBlur
       >
-        {({ values, errors, touched, handleChange, handleBlur }) => (
-          <Form>
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+        }) => (
+          <Form onSubmit={handleSubmit}>
             <h1>Calculate your daily calorie intake right now</h1>
             <div>
               <div>
