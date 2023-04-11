@@ -59,7 +59,9 @@ export const Navigation = () => {
           </li>
         </ul>
       )}
-      {isBurgerMenuOpen && <MenuModal isActive={getActive} />}
+      {isBurgerMenuOpen && (
+        <MenuModal isActive={getActive} onClick={isToggle} />
+      )}
     </nav>
   );
 };

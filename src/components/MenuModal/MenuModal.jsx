@@ -4,18 +4,22 @@ import style from './MenuModal.module.scss';
 import { NavLink } from 'react-router-dom';
 import { routes } from 'utils/routes';
 
-export const MenuModal = memo(({ isActive }) => {
+export const MenuModal = memo(({ isActive, onClick }) => {
   return (
     <>
       <div className={style.modal}>
         <ul>
           <li>
-            <NavLink to={routes.diary} className={isActive}>
+            <NavLink to={routes.diary} onClick={onClick} className={isActive}>
               Diary
             </NavLink>
           </li>
           <li>
-            <NavLink to={routes.calculator} className={isActive}>
+            <NavLink
+              to={routes.calculator}
+              onClick={onClick}
+              className={isActive}
+            >
               Calculator
             </NavLink>
           </li>
@@ -27,4 +31,5 @@ export const MenuModal = memo(({ isActive }) => {
 
 MenuModal.propTypes = {
   isActive: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
