@@ -5,6 +5,7 @@ import { PersistFormikValues } from 'formik-persist-values';
 
 import styles from './DailyCaloriesForm.module.scss';
 import { calorieSchema } from 'helpers/validation';
+import { Button } from 'components/Button/Button';
 
 export const DailyCaloriesForm = () => {
   const InputField = ({ label, type, value, name, onChange, onBlur }) => (
@@ -175,9 +176,14 @@ export const DailyCaloriesForm = () => {
               </div>
             </div>
             <div className={styles.form_button}>
-              <button type="submit" variant="start">
+              <Button
+                size={'large'}
+                mainStyle={'active'}
+                type={'submit'}
+                // handleClick={''}
+              >
                 Start losing weight
-              </button>
+              </Button>
             </div>
 
             <PersistFormikValues name="calc-form" ignoreValues="bloodType" />
