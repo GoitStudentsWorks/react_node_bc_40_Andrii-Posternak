@@ -1,19 +1,5 @@
 @import '../../index.scss';
-
-// .tWrapper {
-//   @include to-tablet-media {
-//   }
-
-//   @include tablet-media {
-//   }
-
-//   @include desktop-media {
-//   }
-// }
-
-
-
-
+@import '../../stylesheet/vars';
 
 
 .caloriesForm {
@@ -23,14 +9,14 @@
   padding: 32px 65px 0 20px;
   font-family: Verdana, Arial, sans-serif;
 
-  @media screen and (min-width: 768px) {
+ @include tablet-media {
     width: 704px;
     padding-top: 100px;
     padding-left: 32px;
     padding-right: 32px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include desktop-media  {
     padding-top: 267px;
   }
 }
@@ -39,11 +25,11 @@ div .form_button {
   display: block;
   text-align: center;
 
-  @media screen and (min-width: 768px) {
+  @include tablet-media {
     text-align: left;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include desktop-media  {
     text-align: right;
     margin-right: 80px;
   }
@@ -60,7 +46,7 @@ div .form_button {
 }
 
 .caloriesForm label {
-  color: #9b9faa;
+  color: $mainTextColor;
   display: block;
   padding-top: 5px;
   height: 25px;
@@ -72,7 +58,7 @@ div .form_button {
   cursor: text;
   font-size: 14px;
   line-height: 1.2;
-  color: #9b9faa;
+  color: $mainTextColor;
   transform: translateY(-20px);
   transition: all 0.3s;
 }
@@ -80,7 +66,7 @@ div .form_button {
 .caloriesForm input {
   width: 100%;
   border: none;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid $decorLine;
   background-color: transparent;
   outline: 0;
   font-weight: 700;
@@ -90,7 +76,7 @@ div .form_button {
   color: #ccccf0;
   transition: all 0.3s;
 
-  @media screen and (min-width: 768px) {
+ @include tablet-media {
     width: 240px;
     padding-right: 32px;
   }
@@ -103,12 +89,19 @@ div .form_button {
 
 .caloriesForm input:valid~.labelText {
   font-size: 12px;
-  color: #9B9FAA;
+  color: $mainTextColor;
   transform: translateY(-35px);
 }
 
 .labelContainer {
   margin-bottom: 15px;
+
+  @include tablet-media {
+  .labelContainer {
+    margin-bottom: 25px;
+  }
+  }
+
 }
 
 .caloriesForm input::-webkit-scrollbar-thumb {
@@ -148,7 +141,7 @@ div .form_button {
   font-weight: bold;
   font-size: 14px;
   line-height: 1.2;
-  color: #9b9faa;
+  color: $mainTextColor;
 }
 
 .radioButtonList {
@@ -159,7 +152,7 @@ div .form_button {
 }
 
 .radioButtonList li {
-  color: #9b9faa;
+  color: $mainTextColor;
   display: block;
   position: relative;
   float: left;
@@ -189,13 +182,13 @@ div .form_button {
 
 .radioButtonList li:hover label {
   font-weight: bold;
-  color: #fc842d;
+  color: $accentTextColor;
 }
 
 .radioButtonList li .check {
   display: block;
   position: absolute;
-  border: 1px solid #e0e0e0;
+  border: 1px solid $decorLine;
   border-radius: 100%;
   height: 20px;
   width: 20px;
@@ -206,7 +199,7 @@ div .form_button {
 }
 
 .radioButtonList li:hover .check {
-  border: 1px solid #fc842d;
+  border: 1px solid $accentTextColor;
 }
 
 .radioButtonList li .check::before {
@@ -222,61 +215,73 @@ div .form_button {
 }
 
 input[type='radio']:checked~.check {
-  border: 1px solid #e0e0e0;
+  border: 1px solid $decorLine;
 }
 
 input[type='radio']:checked~.check::before {
-  background: #fc842d;
+  background: $accentTextColor;
 }
 
 input[type='radio']:checked~label {
   font-weight: bold;
-  color: #fc842d;
+  color: $accentTextColor;
 }
-
-@media (min-width: 768px) {
   .form_button {
+     @include tablet-media {
     margin-left: 0;
     text-align: right;
+     }
   }
 
-  .formContainerMain {
+    .formContainerMain {
+       @include tablet-media {
     display: flex;
     width: 544px;
     margin-top: 68px;
+       }
+
+       @include desktop-media {
+    max-width: 704px;
+  }
   }
 
-  .formContainerLeft,
+
+   .formContainerLeft,
   .formContainerRight {
+     @include tablet-media {
     width: 50%;
   }
-
-  .labelContainer {
-    margin-bottom: 25px;
   }
 
-  .caloriesForm h1 {
+ .caloriesForm h1 {
+  @include tablet-media {
     font-size: 34px;
     line-height: 1.2;
   }
+ @include desktop-media  {
 
-  .radioButton:not(:last-child) {
-    margin-right: 16px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .caloriesForm {
     height: auto;
     min-height: auto;
     width: 745px;
-  }
+  
 
-  .formContainerMain {
-    max-width: 704px;
-  }
-
-  .caloriesForm h1 {
     font-size: 34px;
   }
-}
+  }
+
+
+   .radioButton:not(:last-child) {
+     @include tablet-media {
+    margin-right: 16px;
+     }
+  }
+
+
+
+ 
+
+
+
+ 
+
+
