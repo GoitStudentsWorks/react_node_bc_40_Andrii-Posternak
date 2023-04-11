@@ -1,12 +1,44 @@
 @import '../../index.scss';
 
-.tWrapper {
-  @include to-tablet-media {
-  }
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  @include tablet-media {
-  }
+  height: 44px;
 
-  @include desktop-media {
+  font-weight: 700;
+  line-height: calc(17 / 14);
+  letter-spacing: 0.04em;
+
+  border: none;
+  border-radius: 30px;
+
+  &:hover,
+  &:focus {
+    box-shadow: $boxShadow;
   }
+}
+
+.active {
+  composes: button;
+
+  color: $lightTextColor;
+  background-color: $accentBgnColor;
+}
+
+.primary {
+  composes: button;
+
+  color: $accentTextColor;
+  border: 1px solid $accentBgnColor;
+  background-color: transparent;
+}
+
+.small {
+  width: 180px;
+}
+
+.large {
+  width: 210px;
 }

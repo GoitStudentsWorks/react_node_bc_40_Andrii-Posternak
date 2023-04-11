@@ -1,0 +1,13 @@
+@import '../../index.scss';
+
+.formWrapper {
+  margin-top: 40px;
+
+  @include tablet-media {
+    margin-top: 160px;
+  }
+
+  @include desktop-media {
+    margin-top: 150px;
+  }
+}
