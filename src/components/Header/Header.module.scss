@@ -1,12 +1,19 @@
 @import '../../index.scss';
 
-.tWrapper {
-  @include to-tablet-media {
-  }
-
-  @include tablet-media {
-  }
-
-  @include desktop-media {
-  }
+.header {
+  position: relative;
+  border-bottom: solid 1px $decorLine;
 }
+
+.inner {
+  @include centeredFlex($jusCon: space-between);
+}
+
+// @include to-tablet-media {
+// }
+
+// @include tablet-media {
+// }
+
+// @include desktop-media {
+// }
