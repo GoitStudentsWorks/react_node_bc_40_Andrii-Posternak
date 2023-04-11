@@ -1,12 +1,74 @@
 @import '../../index.scss';
 
-.tWrapper {
-  @include to-tablet-media {
-  }
+.heading {
+  margin-bottom: 55px;
+
+  font-weight: 700;
+  line-height: calc(17 / 14);
+  letter-spacing: 0.04em;
+  color: $accentTextColor;
+
+  text-align: center;
+  text-transform: uppercase;
 
   @include tablet-media {
+    text-align: left;
   }
+}
 
-  @include desktop-media {
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  width: 100%;
+
+  @include tablet-media {
+    width: 240px;
+  }
+}
+
+.label {
+  font-weight: 700;
+  line-height: calc(17 / 14);
+  letter-spacing: 0.04em;
+}
+
+.text {
+  &::after {
+    content: '*';
+    margin-left: 8px;
+    font-weight: 400;
+  }
+}
+
+.input {
+  display: block;
+  width: 100%;
+  height: 20px;
+
+  color: $mainTextColor;
+  font-size: 12px;
+
+  border: none;
+  border-bottom: 1px solid $decorLine;
+
+  &:focus {
+    border-bottom: 1px solid $activeDecorLine;
+    outline: none;
+  }
+}
+
+.buttonWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  margin-top: 60px;
+
+  @include tablet-media {
+    flex-direction: row;
+    gap: 32px;
   }
 }
