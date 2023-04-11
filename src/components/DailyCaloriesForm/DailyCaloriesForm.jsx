@@ -2,8 +2,9 @@
 
 import { Formik, Form, Field } from 'formik';
 import { PersistFormikValues } from 'formik-persist-values';
-import * as yup from 'yup';
+
 import styles from './DailyCaloriesForm.module.scss';
+import { calorieSchema } from 'helpers/validation';
 
 export const DailyCaloriesForm = () => {
   const InputField = ({ label, type, value, name, onChange, onBlur }) => (
@@ -16,7 +17,7 @@ export const DailyCaloriesForm = () => {
         onChange={onChange}
         onBlur={onBlur}
       />
-      <div>{label}</div>
+      <div className={styles.labelText}>{label}</div>
     </label>
   );
 
@@ -31,39 +32,11 @@ export const DailyCaloriesForm = () => {
         onBlur={onBlur}
       />
       <label htmlFor={id}>{value}</label>
-      <div>
-        <div></div>
+      <div className={styles.check}>
+        <div className={styles.inside}></div>
       </div>
     </li>
   );
-
-  const validationsSchema = yup.object().shape({
-    height: yup
-      .number()
-      .typeError('Повинно бути число')
-      .min(100, 'Мінімальне значення 100 см')
-      .max(220, 'Максимальне значення 220 см')
-      .required("Обов'язкове поле"),
-    age: yup
-      .number()
-      .typeError('Повинно бути число')
-      .min(18, 'Мінімальне значення 18 років')
-      .max(90, 'Максимальне значення 90 років')
-      .required("Обов'язкове поле"),
-    weight: yup
-      .number()
-      .typeError('Повинно бути число')
-      .min(45, 'Мінімальне значення 45 кг')
-      .max(200, 'Максимальне значення 200 кг')
-      .required("Обов'язкове поле"),
-    desiredWeight: yup
-      .number()
-      .typeError('Повинно бути число')
-      .min(40, 'Мінімальне значення 40 кг')
-      .max(200, 'Максимальне значення 200 кг')
-      .required("Обов'язкове поле"),
-    bloodType: yup.number().required("Обов'язкове поле"),
-  });
 
   return (
     <>
@@ -76,7 +49,7 @@ export const DailyCaloriesForm = () => {
           bloodType: '',
         }}
         validateOnBlur
-        validationSchema={validationsSchema}
+        validationSchema={calorieSchema}
       >
         {({
           values,
