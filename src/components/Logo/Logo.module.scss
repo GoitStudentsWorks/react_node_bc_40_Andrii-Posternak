@@ -1,14 +1,14 @@
-// @import '../../index.scss';
+@import '../../index.scss';
 
-// .tWrapper {
-//   color: red;
+.wrapper {
+  @include desktop-media {
+    padding-top: 80px;
+  }
+}
 
-//   @include to-tablet-media {
-//   }
-
-//   @include tablet-media {
-//   }
-
-//   @include desktop-media {
-//   }
-// }
+.line {
+  border-bottom: 1px solid $decorLine;
+  transform: rotate(90deg);
+  width: 32px;
+  margin: 9px 0 9px 20px;
+}

@@ -3,17 +3,46 @@
 .header {
   position: relative;
   border-bottom: solid 1px $decorLine;
+
+  @include desktop-media {
+    border-bottom: none;
+  }
+}
+
+.wrapper {
+  @include tablet-media {
+    @include centeredFlex($aliIte: center);
+  }
+
+  @include desktop-media {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+  }
+}
+
+.wrapperReg {
+  @include desktop-media {
+    width: 100%;
+  }
 }
 
 .inner {
   @include centeredFlex($jusCon: space-between);
+
+  @include desktop-media {
+    align-items: flex-end;
+  }
 }
 
-// @include to-tablet-media {
-// }
+.bgn {
+  @include to-tablet-media {
+    position: absolute;
+    top: 83px;
+    width: 100vw;
+    height: 40px;
 
-// @include tablet-media {
-// }
-
-// @include desktop-media {
-// }
+    background-color: $mobileMenuBgnLineColor;
+  }
+}

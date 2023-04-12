@@ -1,3 +1,41 @@
+@import '../../index.scss';
+
 .wrapper {
-  position: absolute;
+  @include centeredFlex($jusCon: flex-end);
+  flex-grow: 1;
+  gap: 2px;
+
+  padding: 12px 0;
+
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+
+  z-index: 1;
+
+  @include tablet-media {
+    position: static;
+    margin-right: 48px;
+  }
+
+  @include desktop-media {
+    margin-right: 0;
+    padding: 0;
+  }
+}
+
+.line {
+  border-bottom: 1px solid $decorLine;
+  transform: rotate(90deg);
+  width: 32px;
+}
+
+.active {
+  color: $secondaryTextColor;
+}
+
+.default {
+  color: inherit;
 }
