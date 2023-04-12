@@ -17,7 +17,7 @@ import { dailyFoodReducer } from 'redux/dailyFood/dailyFoodSlice';
 const authPersistConfig = {
   key: 'token',
   storage,
-  whitelist: ['token'],
+  whitelist: ['idToken'],
 };
 
 export const store = configureStore({
