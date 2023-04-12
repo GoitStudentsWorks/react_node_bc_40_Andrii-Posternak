@@ -58,3 +58,5 @@ const authSlice = createSlice({
 });
 
 export const authReducer = authSlice.reducer;
+
+export const selectAuthStatus = state => state.auth.isAuthStatus;
