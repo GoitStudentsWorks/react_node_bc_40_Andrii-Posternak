@@ -1,11 +1,12 @@
 import { DailyCaloriesForm } from 'components/DailyCaloriesForm/DailyCaloriesForm';
+import styles from './MainPage.module.scss';
 
 export const MainPage = () => {
   return (
-    <div className="container">
-      <h1>main page</h1>
-
-      <DailyCaloriesForm />
-    </div>
+    <>
+      <div className={styles.mainPage}>
+        <DailyCaloriesForm />
+      </div>
+    </>
   );
 };
