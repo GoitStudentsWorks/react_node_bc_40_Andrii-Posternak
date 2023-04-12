@@ -1,13 +1,16 @@
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
 
 import { Button } from 'components/Button/Button';
 import styles from './LoginForm.module.scss';
 import { routes } from 'utils/routes';
 import { loginSchema } from 'helpers/validation';
+import { loginUser } from 'redux/auth/authOperations';
 
 export const LoginForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { handleSubmit, errors, handleChange, values, submitCount } = useFormik(
     {
@@ -16,7 +19,7 @@ export const LoginForm = () => {
         password: '',
       },
       onSubmit: values => {
-        console.log(values);
+        dispatch(loginUser(values));
       },
       validationSchema: loginSchema,
     }

@@ -1,23 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { registerUserApi, loginUserApi, logoutUserApi } from 'services/authApi';
-import { getCurrentUserApi } from 'services/userApi';
 
-export const registerUser = createAsyncThunk(
-  'auth/registerUser',
-  async (newUser, thunkAPI) => {
-    try {
-      return await registerUserApi(newUser);
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+import { loginUserApi, logoutUserApi } from 'services/authApi';
+import { setToken, unsetToken } from 'services/axiosConfig';
+import { getCurrentUserApi } from 'services/userApi';
 
 export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async (userData, thunkAPI) => {
     try {
-      return await loginUserApi(userData);
+      const response = await loginUserApi(userData);
+      setToken(response.token);
+      return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -28,7 +21,13 @@ export const logoutUser = createAsyncThunk(
   'auth/logoutUser',
   async (_, thunkAPI) => {
     try {
-      return await logoutUserApi();
+      const idToken = thunkAPI.getState().auth.idToken;
+      if (!idToken) {
+        return thunkAPI.rejectWithValue("User doesn't exist");
+      }
+
+      await logoutUserApi();
+      unsetToken(idToken);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -39,7 +38,13 @@ export const getCurrentUser = createAsyncThunk(
   'auth/getCurrentUser',
   async (_, thunkAPI) => {
     try {
-      return await getCurrentUserApi();
+      const idToken = thunkAPI.getState().auth.idToken;
+      if (!idToken) {
+        return thunkAPI.rejectWithValue("User doesn't exist");
+      }
+      setToken(idToken);
+      const response = await getCurrentUserApi();
+      return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
