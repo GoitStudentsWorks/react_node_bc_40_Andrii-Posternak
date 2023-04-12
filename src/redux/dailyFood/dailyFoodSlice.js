@@ -26,4 +26,4 @@ const dailyFoodSlice = createSlice({
   },
 });
 
-export const dailyCalorieReducer = dailyFoodSlice.reducer;
+export const dailyFoodReducer = dailyFoodSlice.reducer;
