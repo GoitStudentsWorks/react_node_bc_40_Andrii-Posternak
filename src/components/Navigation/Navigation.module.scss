@@ -1,27 +1,18 @@
 @import '../../index.scss';
 
-.tWrapper {
-  @include to-tablet-media {
-  }
-
-  @include tablet-media {
-  }
+.nav {
+  @include centeredFlex($jusCon: space-between);
+  padding: 30px 0px 26px;
 
   @include desktop-media {
+    padding: 0;
   }
-}
-
-.nav {
-  padding: 38px 0px 25px;
-  display: flex;
-  justify-content: space-between;
 }
 
 .menu {
   cursor: pointer;
   border: none;
   background-color: transparent;
-  stroke: var(--main-color);
 }
 
 .menu svg {
@@ -29,29 +20,59 @@
   height: 24px;
 }
 
-.menu:hover {
-  stroke: var(--accent-color);
+.menu svg:hover {
+  transform: scale(1.2);
 }
 
 .link {
-  text-decoration: none;
-  font-family: inherit;
-  font-weight: 700;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.2;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+
   color: $mainTextColor;
   transition: $animation;
 }
 
 .active {
-  color: $secondaryTextColor;
+  color: $lightTextColor;
+
+  @include desktop-media {
+    color: $secondaryTextColor;
+  }
 }
 
 .regList {
   @include centeredFlex($jusCon: flex-end);
-  -webkit-box-align: center;
-  -webkit-box-pack: end;
   gap: 14px;
+
+  @include tablet-media {
+    gap: 24px;
+  }
+
+  @include desktop-media {
+    margin-left: 16px;
+  }
+}
+
+.regLink {
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  color: $mainTextColor;
+  transition: $animation;
+}
+
+.activeReg {
+  color: $secondaryTextColor;
+}
+
+.list {
+  @include desktop-media {
+    display: flex;
+    gap: 24px;
+    margin-left: 20px;
+  }
 }

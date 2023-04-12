@@ -1,4 +1,4 @@
-import styles from './Logo.module.scss';
+import style from './Logo.module.scss';
 import { useMedia } from 'react-use';
 import { Link } from 'react-router-dom';
 import logoMobile from '../../assets/images/logo/logoMobile.svg';
@@ -20,14 +20,24 @@ export const Logo = () => {
       return logoDesktop;
     }
   };
-
+  const isAuth = true;
   return (
-    <div>
-      <div className={styles.tWrapper}>
-        <Link to={routes.home}>
-          <img src={getLogo()} alt="logo" />
-        </Link>
+    <>
+      <div className={style.wrapper}>
+        <div>
+          {!isAuth && (
+            <Link to={routes.home}>
+              <img src={getLogo()} alt="logo" />
+            </Link>
+          )}
+          {isAuth && (
+            <Link to={routes.diary}>
+              <img src={getLogo()} alt="logo" />
+            </Link>
+          )}
+        </div>
       </div>
-    </div>
+      {isDesktop && <div className={style.line}></div>}
+    </>
   );
 };
