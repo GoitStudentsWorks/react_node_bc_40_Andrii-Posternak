@@ -3,10 +3,31 @@
 .header {
   position: relative;
   border-bottom: solid 1px $decorLine;
+
+  @include desktop-media {
+    border-bottom: none;
+  }
+}
+
+.wrapper {
+  @include tablet-media {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .inner {
   @include centeredFlex($jusCon: space-between);
+}
+
+.bgn {
+  @include to-tablet-media {
+    position: absolute;
+    top: 83px;
+    width: 100vw;
+    height: 40px;
+    background-color: $mobileMenuBgnLineColor;
+  }
 }
 
 // @include to-tablet-media {

@@ -1,3 +1,46 @@
+@import '../../index.scss';
+
 .wrapper {
-  position: absolute;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: 0.04em;
+  justify-content: flex-end;
+  text-transform: capitalize;
+
+  gap: 2px;
+  flex-grow: 1;
+  z-index: 1;
+  padding: 12px 0;
+
+  @include tablet-media {
+    position: static;
+    margin-right: 48px;
+  }
 }
+
+.line {
+  border-bottom: 1px solid $decorLine;
+  transform: rotate(90deg);
+  width: 32px;
+}
+
+.active {
+  color: $secondaryTextColor;
+}
+
+.default {
+  color: inherit;
+}
+
+// @include to-tablet-media {
+// }
+
+// @include tablet-media {
+// }
+
+// @include desktop-media {
+// }

@@ -6,17 +6,25 @@ import { useMedia } from 'react-use';
 
 export const Header = () => {
   const isAuth = true;
-  const isTablet = useMedia('(max-width: 1279px)');
+  const isMobile = useMedia('(max-width: 767px)');
+  const isTablet = useMedia('(min-width: 768px)');
 
   return (
-    <header className={isTablet && style.header}>
+    <header className={style.header}>
       <div className="container">
         <div className={style.inner}>
           <Logo />
-          <Navigation />
+          <div className={style.wrapper}>
+            {isAuth && isTablet && <UserInfo />}
+            <Navigation />
+          </div>
         </div>
-        {isAuth && <UserInfo />}
       </div>
+      {isAuth && isMobile && (
+        <div className={style.bgn}>
+          <UserInfo />
+        </div>
+      )}
     </header>
   );
 };
