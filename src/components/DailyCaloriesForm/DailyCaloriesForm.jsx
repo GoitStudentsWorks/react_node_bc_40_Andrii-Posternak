@@ -1,5 +1,3 @@
-// import { DailyCalorieIntake } from 'components/DailyCalorieIntake/DailyCalorieIntake';
-
 import { Formik, Form, Field } from 'formik';
 import { PersistFormikValues } from 'formik-persist-values';
 

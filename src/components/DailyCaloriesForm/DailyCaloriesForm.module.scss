@@ -1,7 +1,5 @@
 @import '../../index.scss';
 
-
-
 .caloriesForm {
   width: 100%;
   margin: auto 0;
@@ -259,17 +257,12 @@ input[type='radio']:checked~label {
     line-height: 1.2;
   }
  @include desktop-media  {
-
     height: auto;
     min-height: auto;
     width: 745px;
-  
-
     font-size: 34px;
   }
   }
-
-
    .radioButton:not(:last-child) {
      @include tablet-media {
     margin-right: 16px;
