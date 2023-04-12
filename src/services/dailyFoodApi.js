@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export const getProductsFromDBApi = async () => {
-  const response = await axios.get('/products');
+export const getProductsFromDBApi = async search => {
+  const response = await axios.get('/products', { params: { search } });
   return response.data;
 };
 

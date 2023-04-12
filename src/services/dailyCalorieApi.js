@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getCalorieNormApi = async calcParams => {
+export const getCalorieAuthApi = async calcParams => {
   const response = await axios.post('/calorie', calcParams);
   return response.data;
 };

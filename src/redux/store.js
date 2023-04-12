@@ -1,45 +1,40 @@
-// import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-// import {
-//   persistStore,
-//   persistReducer,
-//   FLUSH,
-//   REHYDRATE,
-//   PAUSE,
-//   PERSIST,
-//   PURGE,
-//   REGISTER,
-// } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage';
-// // import userReducer from './user/userReducer';
-// // import mealsReducer from './meals/mealsReducer';
-// // import foodReducer from './food/foodReducer';
+import { configureStore } from '@reduxjs/toolkit';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { authReducer } from 'redux/auth/authSlice';
+import { dailyCalorieReducer } from 'redux/dailyCalorie/dailyCalorieSlice';
+import { dailyFoodReducer } from 'redux/dailyFood/dailyFoodSlice';
 
-// const middleware = [
-//   ...getDefaultMiddleware({
-//     serializableCheck: {
-//       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//     },
-//   }),
-// ];
+const authPersistConfig = {
+  key: 'token',
+  storage,
+  whitelist: ['token'],
+};
 
-// const userPersistConfig = {
-//   key: 'userInfo',
-//   storage,
-//   whitelist: ['token', 'publicUser'],
-// };
+export const store = configureStore({
+  reducer: {
+    dailyCalorie: dailyCalorieReducer,
+    dailyFood: dailyFoodReducer,
+    auth: persistReducer(authPersistConfig, authReducer),
+  },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 
-// const store = configureStore({
-//   reducer: {
-//     // meals: mealsReducer,
-//     // user: persistReducer(userPersistConfig, userReducer),
-//     // food: foodReducer,
-//   },
-//   middleware,
-//   // devTools: process.env.NODE_ENV === 'development',
-// });
+  // middleware: getDefaultMiddleware => getDefaultMiddleware(),
+  // devTools: process.env.NODE_ENV === 'development',
+});
 
-// // const persistor = persistStore(store);
-
-// // const exportStore = { store, persistor };
-
-// // export default exportStore;
+export const persistor = persistStore(store);
