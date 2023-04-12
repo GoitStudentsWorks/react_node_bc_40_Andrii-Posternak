@@ -20,14 +20,21 @@ export const Logo = () => {
       return logoDesktop;
     }
   };
-
+  const isAuth = true;
   return (
     <>
       <div className={style.wrapper}>
         <div>
-          <Link to={routes.home}>
-            <img src={getLogo()} alt="logo" />
-          </Link>
+          {!isAuth && (
+            <Link to={routes.home}>
+              <img src={getLogo()} alt="logo" />
+            </Link>
+          )}
+          {isAuth && (
+            <Link to={routes.diary}>
+              <img src={getLogo()} alt="logo" />
+            </Link>
+          )}
         </div>
       </div>
       {isDesktop && <div className={style.line}></div>}
