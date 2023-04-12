@@ -1,12 +1,181 @@
-@import '../../index.scss';
+ @import '../../index.scss';
 
-.tWrapper {
-  @include to-tablet-media {
-  }
-
-  @include tablet-media {
-  }
-
-  @include desktop-media {
-  }
+.overlay {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(33, 33, 33, 0.12);
+  z-index: 1200;
 }
+
+.btnContainer {
+  background-color: $secondaryBgnColor;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $mainBgnColor;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: calc(25 / 18);
+  text-align: center;
+  padding-bottom: 42px;
+  color: $secondaryTextColor;
+}
+
+.modalContainer {
+  padding: 40px 20px 0 20px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+.icon {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+}
+
+.closeIcon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.caloriesContainer {
+  border-bottom: 1px solid $decorLine;
+  margin-bottom: 20px;
+  margin-left: 89px;
+  margin-right: 89px;
+}
+
+.calories {
+  font-weight: 700;
+  font-size: 48px;
+  color: $darkTextColor;
+  display: block;
+  padding-bottom: 38px;
+  text-align: center;
+  line-height: calc(57 / 48);
+}
+
+.caloriesText {
+  padding-bottom: 38px;
+  text-align: center;
+  font-size: 16px;
+  line-height: calc(19 / 16);
+}
+
+.secondaryTitle {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: calc(17 / 14);
+  margin-bottom: 20px;
+  text-align: center;
+  margin-top: -8px;
+  color: $secondaryTextColor;
+}
+
+.btn {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.list {
+  height: 100px;
+  padding-left: 20px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+  &::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 2px;
+}
+
+&::-webkit-scrollbar {
+  width: 6px;
+  background-color: transparent;
+}
+
+&::-webkit-scrollbar-thumb {
+  background-color: $accentBgnColor;
+  border-radius: 5px;
+}
+
+&::-webkit-scrollbar-thumb:hover {
+  background: $accentBgnColor;
+}
+}
+
+.listItem {
+  font-weight: 800;
+  font-size: 14px;
+  line-height: calc(17 / 14);
+  color: $mainTextColor;
+}
+
+
+ @include tablet-media {
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .modal {
+    max-width: 672px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    padding: 64px 82px;
+    height: 572px;
+    
+  }
+
+  .btnWrap {
+    display: flex;
+    justify-content: center;
+//  margin-left: auto;
+//  margin-right: auto;
+ 
+
+  }
+
+  .title {
+    font-weight: 700;
+    font-size: 26px;
+    line-height: calc(36 / 26);
+  }
+
+  .modalContainer {
+    padding: 0;
+  }
+ }
+
+ .listCenter{
+ margin: auto;
+ margin-left: 89px;
+ }
