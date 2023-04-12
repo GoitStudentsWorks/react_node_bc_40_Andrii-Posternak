@@ -1,14 +1,23 @@
 import { DailyCaloriesForm } from 'components/DailyCaloriesForm/DailyCaloriesForm';
+import styles from './MainPage.module.scss';
+import { useState } from 'react';
 import { Modal } from 'components/Modal/Modal';
 
-
 export const MainPage = () => {
-  return (
-    <div className="container">
-      <h1>main page</h1>
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-      <DailyCaloriesForm />
-      <Modal/>
-    </div>
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+  const onClose = () => {
+    setIsModalOpen(false);
+  };
+  return (
+    <>
+      <div className={styles.mainPage}>
+        <DailyCaloriesForm handleModalOpen={handleModalOpen} />
+        {isModalOpen && <Modal onClose={onClose} isModalOpen={isModalOpen} />}
+      </div>
+    </>
   );
 };
