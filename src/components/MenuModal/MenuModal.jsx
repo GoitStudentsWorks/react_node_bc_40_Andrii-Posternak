@@ -8,7 +8,7 @@ export const MenuModal = memo(({ isActive, onClick }) => {
   return (
     <>
       <div className={style.modal}>
-        <ul>
+        <ul className={style.list}>
           <li>
             <NavLink to={routes.diary} onClick={onClick} className={isActive}>
               Diary

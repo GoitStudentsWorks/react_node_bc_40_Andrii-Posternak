@@ -11,13 +11,29 @@
 
 .wrapper {
   @include tablet-media {
-    display: flex;
-    align-items: center;
+    @include centeredFlex($aliIte: center);
+  }
+
+  @include desktop-media {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+  }
+}
+
+.wrapperReg {
+  @include desktop-media {
+    width: 100%;
   }
 }
 
 .inner {
   @include centeredFlex($jusCon: space-between);
+
+  @include desktop-media {
+    align-items: flex-end;
+  }
 }
 
 .bgn {
@@ -26,15 +42,7 @@
     top: 83px;
     width: 100vw;
     height: 40px;
+
     background-color: $mobileMenuBgnLineColor;
   }
 }
-
-// @include to-tablet-media {
-// }
-
-// @include tablet-media {
-// }
-
-// @include desktop-media {
-// }

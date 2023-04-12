@@ -11,6 +11,9 @@ import { RxCross1 } from 'react-icons/rx';
 const getActive = ({ isActive }) =>
   isActive ? `${style.active} ${style.link}` : style.link;
 
+const getActiveReg = ({ isActive }) =>
+  isActive ? `${style.activeReg} ${style.regLink}` : style.regLink;
+
 export const Navigation = () => {
   // const isAuth = useSelector();
   const isTablet = useMedia('(max-width: 1279px)');
@@ -31,7 +34,7 @@ export const Navigation = () => {
           </button>
         ) : (
           <>
-            <ul>
+            <ul className={style.list}>
               <li>
                 <NavLink to={routes.diary} className={getActive}>
                   Diary
@@ -48,12 +51,12 @@ export const Navigation = () => {
       ) : (
         <ul className={style.regList}>
           <li>
-            <NavLink className={getActive} to={routes.login}>
+            <NavLink className={getActiveReg} to={routes.login}>
               Log in
             </NavLink>
           </li>
           <li>
-            <NavLink className={getActive} to={routes.register}>
+            <NavLink className={getActiveReg} to={routes.register}>
               Registration
             </NavLink>
           </li>
