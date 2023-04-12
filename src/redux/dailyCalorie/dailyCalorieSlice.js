@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   getCalorieAuth,
   getCalorie,
-} from 'redux/products/dailyCalorieOperations';
+} from 'redux/dailyCalorie/dailyCalorieOperations';
 
 const calorieInitialState = {
   userId: null,

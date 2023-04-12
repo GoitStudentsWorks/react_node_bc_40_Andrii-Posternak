@@ -4,7 +4,7 @@ import {
   getEatenProducts,
   addEatenProduct,
   deleteEatenProduct,
-} from 'redux/products/dailyFoodOperations';
+} from 'redux/dailyFood/dailyFoodOperations';
 
 const dailyFoodInitialState = {
   currentDate: new Date().toDateString(),
