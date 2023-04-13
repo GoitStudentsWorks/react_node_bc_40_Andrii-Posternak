@@ -1,10 +1,12 @@
 import { useFormik } from 'formik';
 import { useNavigate } from 'react-router-dom';
+import Notiflix from 'notiflix';
 
 import { Button } from 'components/Button/Button';
 import styles from './RegistrationForm.module.scss';
 import { routes } from 'utils/routes';
 import { registerSchema } from 'helpers/validation';
+import { registerUserApi } from 'services/authApi';
 
 export const RegistrationForm = () => {
   const navigate = useNavigate();
@@ -16,8 +18,16 @@ export const RegistrationForm = () => {
         email: '',
         password: '',
       },
-      onSubmit: values => {
-        console.log(values);
+      onSubmit: async (values, { setFieldError }) => {
+        try {
+          await registerUserApi(values);
+          navigate(routes.login, { replace: true });
+          Notiflix.Notify.success('Registration has been successful');
+        } catch (error) {
+          const serverResponse = error.response.data;
+          setFieldError('email', 'Email already exists');
+          Notiflix.Notify.failure(`${serverResponse.message}. Try again`);
+        }
       },
       validationSchema: registerSchema,
     }

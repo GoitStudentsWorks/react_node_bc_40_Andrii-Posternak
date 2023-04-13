@@ -1,7 +1,5 @@
 @import '../../index.scss';
 
-
-
 .caloriesForm {
   width: 100%;
   margin: auto 0;
@@ -9,15 +7,15 @@
   padding: 32px 65px 0 20px;
   font-family: Verdana, Arial, sans-serif;
 
- @include tablet-media {
+  @include tablet-media {
     width: 704px;
     padding-top: 100px;
     padding-left: 32px;
     padding-right: 32px;
   }
 
-  @include desktop-media  {
-    padding-top: 267px;
+  @include desktop-media {
+    padding-top: 145px;
   }
 }
 
@@ -29,7 +27,7 @@ div .form_button {
     text-align: left;
   }
 
-  @include desktop-media  {
+  @include desktop-media {
     text-align: right;
     margin-right: 80px;
   }
@@ -76,18 +74,18 @@ div .form_button {
   color: #ccccf0;
   transition: all 0.3s;
 
- @include tablet-media {
+  @include tablet-media {
     width: 240px;
     padding-right: 32px;
   }
 }
 
-.caloriesForm input:focus~.labelText {
+.caloriesForm input:focus ~ .labelText {
   font-size: 12px;
   transform: translateY(-35px);
 }
 
-.caloriesForm input:valid~.labelText {
+.caloriesForm input:valid ~ .labelText {
   font-size: 12px;
   color: $mainTextColor;
   transform: translateY(-35px);
@@ -97,11 +95,10 @@ div .form_button {
   margin-bottom: 15px;
 
   @include tablet-media {
-  .labelContainer {
-    margin-bottom: 25px;
+    .labelContainer {
+      margin-bottom: 25px;
+    }
   }
-  }
-
 }
 
 .caloriesForm input::-webkit-scrollbar-thumb {
@@ -214,74 +211,58 @@ div .form_button {
   margin: auto;
 }
 
-input[type='radio']:checked~.check {
+input[type='radio']:checked ~ .check {
   border: 1px solid $decorLine;
 }
 
-input[type='radio']:checked~.check::before {
+input[type='radio']:checked ~ .check::before {
   background: $accentTextColor;
 }
 
-input[type='radio']:checked~label {
+input[type='radio']:checked ~ label {
   font-weight: bold;
   color: $accentTextColor;
 }
-  .form_button {
-     @include tablet-media {
+.form_button {
+  @include tablet-media {
     margin-left: 0;
     text-align: right;
-     }
   }
+}
 
-    .formContainerMain {
-       @include tablet-media {
+.formContainerMain {
+  @include tablet-media {
     display: flex;
     width: 544px;
     margin-top: 68px;
-       }
+  }
 
-       @include desktop-media {
+  @include desktop-media {
     max-width: 704px;
   }
-  }
+}
 
-
-   .formContainerLeft,
-  .formContainerRight {
-     @include tablet-media {
+.formContainerLeft,
+.formContainerRight {
+  @include tablet-media {
     width: 50%;
   }
-  }
+}
 
- .caloriesForm h1 {
+.caloriesForm h1 {
   @include tablet-media {
     font-size: 34px;
     line-height: 1.2;
   }
- @include desktop-media  {
-
+  @include desktop-media {
     height: auto;
     min-height: auto;
     width: 745px;
-  
-
     font-size: 34px;
   }
-  }
-
-
-   .radioButton:not(:last-child) {
-     @include tablet-media {
+}
+.radioButton:not(:last-child) {
+  @include tablet-media {
     margin-right: 16px;
-     }
   }
-
-
-
- 
-
-
-
- 
-
-
+}
