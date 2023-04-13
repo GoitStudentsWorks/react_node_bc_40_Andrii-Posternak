@@ -1,0 +1,18 @@
+@import '../../index.scss';
+
+.btnContainer {
+  background-color: $mobileMenuBgnLineColor;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+
+  @include tablet-media {
+    display: none;
+  }
+}
+  .calculatorPage { 
+     @include desktop-media  {
+    margin-top: -167px;
+  }
+  }
