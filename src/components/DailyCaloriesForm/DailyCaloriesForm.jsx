@@ -42,7 +42,7 @@ export const DailyCaloriesForm = ({ handleModalOpen }) => {
   );
   const dispatch = useDispatch();
   const authStatus = useSelector(selectAuthStatus);
-  // console.log('authStatus :', authStatus);
+
   return (
     <>
       <Formik
@@ -58,7 +58,7 @@ export const DailyCaloriesForm = ({ handleModalOpen }) => {
         onSubmit={(values, actions) => {
           const bloodType = +values.bloodType;
           const allValue = { ...values, bloodType };
-          // console.log('values :', allValue);
+
           if (authStatus) {
             dispatch(getCalorieAuth(allValue));
           } else {
@@ -205,8 +205,6 @@ export const DailyCaloriesForm = ({ handleModalOpen }) => {
           </Form>
         )}
       </Formik>
-
-      {/* <DailyCalorieIntake /> */}
     </>
   );
 };

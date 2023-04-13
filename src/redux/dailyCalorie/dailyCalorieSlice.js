@@ -1,14 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  getCalorieAuth,
-  // getCalorie,
-} from 'redux/dailyCalorie/dailyCalorieOperations';
+  getCurrentUser,
+  loginUser,
+  logoutUser,
+} from 'redux/auth/authOperations';
+import { getCalorieAuth } from 'redux/dailyCalorie/dailyCalorieOperations';
 
 const calorieInitialState = {
   userId: null,
   calorieNorm: null,
   notRecFood: [],
-  // isModalOpen: false,
   isLoading: false,
   error: null,
 };
@@ -21,10 +22,19 @@ const dailyCalorieSlice = createSlice({
       .addCase(getCalorieAuth.fulfilled, (state, action) => {
         state.userId = action.payload._id;
       })
-      // .addCase(getCalorie.fulfilled, (state, action) => {})
-      //  розкрити секрет подвійного карента вкінці і рефреша
-      // операція при логіні записує! фулфілд  кейс
-      //  операція при гет карент записує!  фулфілд  кейс
+      .addCase(getCurrentUser.fulfilled, (state, action) => {
+        state.userId = action.payload._id;
+        state.calorieNorm = action.payload.dailyRate;
+        state.notRecFood = action.payload.notRecFood;
+      })
+      .addCase(loginUser.fulfilled, (state, action) => {
+        state.userId = action.payload._id;
+        state.calorieNorm = action.payload.dailyRate;
+        state.notRecFood = action.payload.notRecFood;
+      })
+      .addCase(logoutUser.fulfilled, (state, _) => {
+        state = calorieInitialState;
+      })
       .addMatcher(
         ({ type }) => {
           return type.endsWith('pending') && type.startsWith('calorie');

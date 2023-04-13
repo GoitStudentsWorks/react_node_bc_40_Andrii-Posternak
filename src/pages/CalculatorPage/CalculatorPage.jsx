@@ -1,6 +1,7 @@
 import { UserInfo } from 'components/UserInfo/UserInfo';
 import scss from './CalculatorPage.module.scss';
 import { DailyCaloriesForm } from 'components/DailyCaloriesForm/DailyCaloriesForm';
+import { RightSideBar } from 'components/RightSideBar/RightSideBar';
 
 export const CalculatorPage = () => {
   return (
@@ -9,6 +10,7 @@ export const CalculatorPage = () => {
         <UserInfo className={scss.navigation__list} />
       </div>
       <DailyCaloriesForm />
+      <RightSideBar />
     </div>
   );
 };

@@ -13,6 +13,8 @@ import {
   selectNotRecFood,
 } from 'redux/dailyCalorie/dailyCalorieSlice';
 import { Loader } from 'components/Loader/Loader';
+import { routes } from 'utils/routes';
+import { NavLink } from 'react-router-dom';
 const modalRoot = document.querySelector('#modal-root');
 
 export const Modal = ({ onClose, isModalOpen }) => {
@@ -93,10 +95,12 @@ export const Modal = ({ onClose, isModalOpen }) => {
                 </div>
               </div>
               <div className={scss.btnWrap}>
-                <Button size={'large'} mainStyle={'active'} type={'button'}>
-                  {/* Replace */}
-                  Start losing weight
-                </Button>
+                <NavLink to={routes.login}>
+                  <Button size={'large'} mainStyle={'active'} type={'button'}>
+                    {/* Replace */}
+                    Start losing weight
+                  </Button>
+                </NavLink>
               </div>
             </>
           )}

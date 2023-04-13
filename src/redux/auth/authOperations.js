@@ -10,7 +10,7 @@ export const loginUser = createAsyncThunk(
     try {
       const response = await loginUserApi(userData);
       setToken(response.token);
-      // console.log('response  логін:', response);
+
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -45,7 +45,7 @@ export const getCurrentUser = createAsyncThunk(
       }
       setToken(idToken);
       const response = await getCurrentUserApi();
-      // console.log('response  карент :', response);
+
       return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
