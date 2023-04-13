@@ -4,8 +4,12 @@ import { PersistFormikValues } from 'formik-persist-values';
 import styles from './DailyCaloriesForm.module.scss';
 import { calorieSchema } from 'helpers/validation';
 import { Button } from 'components/Button/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectAuthStatus } from 'redux/auth/authSlice';
+import { getCalorie } from 'redux/dailyCalorie/dailyCalorieOperations';
+import { getCalorieAuth } from 'redux/dailyCalorie/dailyCalorieOperations';
 
-export const DailyCaloriesForm = () => {
+export const DailyCaloriesForm = ({ handleModalOpen }) => {
   const InputField = ({ label, type, value, name, onChange, onBlur }) => (
     <label>
       <Field
@@ -36,6 +40,8 @@ export const DailyCaloriesForm = () => {
       </div>
     </li>
   );
+  const dispatch = useDispatch();
+  const authStatus = useSelector(selectAuthStatus);
 
   return (
     <>
@@ -43,12 +49,23 @@ export const DailyCaloriesForm = () => {
         initialValues={{
           height: '',
           age: '',
-          weight: '',
+          currentWeight: '',
           desiredWeight: '',
           bloodType: '',
         }}
         validateOnBlur
         validationSchema={calorieSchema}
+        onSubmit={(values, actions) => {
+          const bloodType = +values.bloodType;
+          const allValue = { ...values, bloodType };
+
+          if (authStatus) {
+            dispatch(getCalorieAuth(allValue));
+          } else {
+            dispatch(getCalorie(allValue));
+            handleModalOpen();
+          }
+        }}
       >
         {({
           values,
@@ -98,15 +115,15 @@ export const DailyCaloriesForm = () => {
                   <InputField
                     label="Current weight *"
                     type="number"
-                    name={'weight'}
+                    name={'currentWeight'}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.weight}
+                    value={values.currentWeight}
                   />
                   <div className={styles.caloriesFormErrorContainer}>
-                    {touched.weight && errors.weight && (
+                    {touched.currentWeight && errors.currentWeight && (
                       <p className={styles.caloriesFormError}>
-                        {errors.weight}
+                        {errors.currentWeight}
                       </p>
                     )}
                   </div>
@@ -188,8 +205,6 @@ export const DailyCaloriesForm = () => {
           </Form>
         )}
       </Formik>
-
-      {/* <DailyCalorieIntake /> */}
     </>
   );
 };

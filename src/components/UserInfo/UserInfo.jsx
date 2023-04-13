@@ -4,7 +4,6 @@ import { routes } from 'utils/routes';
 import { useMedia } from 'react-use';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from 'redux/auth/authOperations';
-import { deleteUserInfro } from 'redux/auth/authSlice';
 
 export const UserInfo = () => {
   const isMobile = useMedia('(max-width: 767px)');
@@ -13,7 +12,6 @@ export const UserInfo = () => {
 
   const logout = () => {
     dispatch(logoutUser());
-    dispatch(deleteUserInfro());
   };
 
   return (

@@ -6,9 +6,24 @@ import { createPortal } from 'react-dom';
 // import { Loader } from 'components/Loader/Loader';
 import { useEffect } from 'react';
 import { useWindowSize } from 'react-use';
+import { useSelector } from 'react-redux';
+import {
+  selectCalorieNorm,
+  selectIsLoadingCalorie,
+  selectNotRecFood,
+} from 'redux/dailyCalorie/dailyCalorieSlice';
+import { Loader } from 'components/Loader/Loader';
+import { routes } from 'utils/routes';
+import { NavLink } from 'react-router-dom';
 const modalRoot = document.querySelector('#modal-root');
 
 export const Modal = ({ onClose, isModalOpen }) => {
+  const calorieNorm = useSelector(selectCalorieNorm);
+  const notRecFood = useSelector(selectNotRecFood);
+  const isLoading = useSelector(selectIsLoadingCalorie);
+
+  // console.log('calorieNorm :', calorieNorm);
+  // console.log('notRecFood :', notRecFood);
   const { width } = useWindowSize();
 
   const handleBackdropClick = event => {
@@ -50,37 +65,45 @@ export const Modal = ({ onClose, isModalOpen }) => {
           ) : (
             <GrClose className={scss.closeIcon} onClick={() => onClose()} />
           )}
-
-          <div className={scss.modalContainer}>
-            <h2 className={scss.title}>
-              Your recommended daily calorie intake is
-            </h2>
-            <div className={scss.caloriesContainer}>
-              <span className={scss.calories}>
-                {/* Replace */}
-                2000
-                <span className={scss.caloriesText}> ккал</span>
-              </span>
-            </div>
-            <div className={scss.listCenter}>
-              <h2 className={scss.secondaryTitle}>Foods you should not eat</h2>
-              <ol className={scss.list}>
-                {/* Replace */}
-                <li className={scss.listItem}>Product 1</li>
-                <li className={scss.listItem}>Product 2</li>
-                <li className={scss.listItem}>Product 3</li>
-                <li className={scss.listItem}>Product 4</li>
-                <li className={scss.listItem}>Product 5</li>
-                <li className={scss.listItem}>Product 6</li>
-              </ol>
-            </div>
-          </div>
-          <div className={scss.btnWrap}>
-            <Button size={'large'} mainStyle={'active'} type={'button'}>
-              {/* Replace */}
-              Start losing weight
-            </Button>
-          </div>
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <>
+              <div className={scss.modalContainer}>
+                <h2 className={scss.title}>
+                  Your recommended daily calorie intake is
+                </h2>
+                <div className={scss.caloriesContainer}>
+                  <span className={scss.calories}>
+                    {calorieNorm}
+                    {/* 2000 */}
+                    <span className={scss.caloriesText}> ккал</span>
+                  </span>
+                </div>
+                <div className={scss.listCenter}>
+                  <h2 className={scss.secondaryTitle}>
+                    Foods you should not eat
+                  </h2>
+                  <ul className={scss.list}>
+                    {notRecFood.length > 0 &&
+                      notRecFood.map((el, i) => (
+                        <li className={scss.listItem} key={i}>
+                          {i + 1}. {el.en}
+                        </li>
+                      ))}
+                  </ul>
+                </div>
+              </div>
+              <div className={scss.btnWrap}>
+                <NavLink to={routes.login}>
+                  <Button size={'large'} mainStyle={'active'} type={'button'}>
+                    {/* Replace */}
+                    Start losing weight
+                  </Button>
+                </NavLink>
+              </div>
+            </>
+          )}
         </div>
         {/* )} */}
       </div>

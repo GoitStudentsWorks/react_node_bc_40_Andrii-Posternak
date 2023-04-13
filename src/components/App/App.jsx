@@ -6,6 +6,11 @@ import { SharedLayout } from 'components/SharedLayout/SharedLayout';
 import { routes } from 'utils/routes';
 import { PrivateRoute } from 'components/PrivateRoute/PrivateRoute';
 import { PublicRoute } from 'components/PublicRoute/PublicRoute';
+import {
+  selectAuthStatus,
+  selectFetchingCurrentUser,
+} from 'redux/auth/authSlice';
+import { Loader } from 'components/Loader/Loader';
 
 const MainPage = lazy(() =>
   import('pages/MainPage/MainPage').then(module => ({
@@ -36,37 +41,46 @@ const RegistrationPage = lazy(() =>
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isAuth = useSelector(state => state.auth.isAuthStatus);
+  const isFetchingUser = useSelector(selectFetchingCurrentUser);
+  const isAuth = useSelector(selectAuthStatus);
 
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
 
   return (
-    <Routes>
-      <Route path={routes.home} element={<SharedLayout />}>
-        <Route index element={isAuth ? <CalculatorPage /> : <MainPage />} />
-        <Route
-          path={routes.register}
-          element={<PublicRoute component={<RegistrationPage />} />}
-        />
-        <Route
-          path={routes.login}
-          element={<PublicRoute component={<LoginPage />} />}
-        />
-        <Route
-          path={routes.diary}
-          element={<PrivateRoute component={<DiaryPage />} />}
-        />
-        <Route
-          path={routes.calculator}
-          element={<PrivateRoute component={<CalculatorPage />} />}
-        />
-        <Route
-          path="*"
-          element={<Navigate to={isAuth ? routes.calculator : routes.home} />}
-        />
-      </Route>
-    </Routes>
+    <>
+      {!isFetchingUser ? (
+        <Routes>
+          <Route path={routes.home} element={<SharedLayout />}>
+            <Route index element={<PublicRoute component={<MainPage />} />} />
+            <Route
+              path={routes.register}
+              element={<PublicRoute component={<RegistrationPage />} />}
+            />
+            <Route
+              path={routes.login}
+              element={<PublicRoute component={<LoginPage />} />}
+            />
+            <Route
+              path={routes.diary}
+              element={<PrivateRoute component={<DiaryPage />} />}
+            />
+            <Route
+              path={routes.calculator}
+              element={<PrivateRoute component={<CalculatorPage />} />}
+            />
+            <Route
+              path="*"
+              element={
+                <Navigate to={isAuth ? routes.calculator : routes.home} />
+              }
+            />
+          </Route>
+        </Routes>
+      ) : (
+        <Loader />
+      )}
+    </>
   );
 };
