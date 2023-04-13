@@ -1,15 +1,14 @@
 import React from 'react';
 import { DiaryProductsListItem } from 'components/DiaryProductsListItem/DiaryProductsListItem';
 import { Loader } from 'components/Loader/Loader';
+import s from './DiaryProductsList.module.scss';
 
 export const DiaryProductsList = () => {
   return (
     <div
     // className={s.listContainer}
     >
-      <ul
-      // className={s.filteredList}
-      >
+      <ul className={s.filteredList}>
         {/* {isLoading === 'pending' ? (
           <Loader />
         ) : array?.length > 0 ? (

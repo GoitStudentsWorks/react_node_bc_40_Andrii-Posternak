@@ -1,3 +1,5 @@
+import s from './DiaryProductsListItem.module.scss';
+
 export const DiaryProductsListItem = () => {
   return (
     <>
@@ -14,26 +16,90 @@ export const DiaryProductsListItem = () => {
           +
         </button>
       </li> */}
-      <li
-      // className={s.Item}
-      >
-        <span
-        // className={s.Title}
-        >
-          Eggplant
-        </span>
-        <span
-        // className={s.Weight}
-        >
-          100 g
-        </span>
-        <span
-        // className={s.Calories}
-        >
-          320 kcal
-        </span>
+      <li className={s.Item}>
+        <span className={s.Title}>Eggplant</span>
+        <span className={s.Weight}>100 g</span>
+        <span className={s.Calories}>320 kcal</span>
         <button
-          // className={s.Button}
+          className={s.Button}
+          type="button"
+          // id={id}
+          // onClick={deleteProduct}
+        >
+          +
+        </button>
+      </li>
+      <li className={s.Item}>
+        <span className={s.Title}>Eggplant</span>
+        <span className={s.Weight}>100 g</span>
+        <span className={s.Calories}>320 kcal</span>
+        <button
+          className={s.Button}
+          type="button"
+          // id={id}
+          // onClick={deleteProduct}
+        >
+          +
+        </button>
+      </li>
+      <li className={s.Item}>
+        <span className={s.Title}>Eggplant</span>
+        <span className={s.Weight}>100 g</span>
+        <span className={s.Calories}>320 kcal</span>
+        <button
+          className={s.Button}
+          type="button"
+          // id={id}
+          // onClick={deleteProduct}
+        >
+          +
+        </button>
+      </li>
+      <li className={s.Item}>
+        <span className={s.Title}>Eggplant</span>
+        <span className={s.Weight}>100 g</span>
+        <span className={s.Calories}>320 kcal</span>
+        <button
+          className={s.Button}
+          type="button"
+          // id={id}
+          // onClick={deleteProduct}
+        >
+          +
+        </button>
+      </li>
+      <li className={s.Item}>
+        <span className={s.Title}>Eggplant</span>
+        <span className={s.Weight}>100 g</span>
+        <span className={s.Calories}>320 kcal</span>
+        <button
+          className={s.Button}
+          type="button"
+          // id={id}
+          // onClick={deleteProduct}
+        >
+          +
+        </button>
+      </li>
+      <li className={s.Item}>
+        <span className={s.Title}>Eggplant</span>
+        <span className={s.Weight}>100 g</span>
+        <span className={s.Calories}>320 kcal</span>
+        <button
+          className={s.Button}
+          type="button"
+          // id={id}
+          // onClick={deleteProduct}
+        >
+          +
+        </button>
+      </li>
+      <li className={s.Item}>
+        <span className={s.Title}>Eggplant</span>
+        <span className={s.Weight}>100 g</span>
+        <span className={s.Calories}>320 kcal</span>
+        <button
+          className={s.Button}
           type="button"
           // id={id}
           // onClick={deleteProduct}

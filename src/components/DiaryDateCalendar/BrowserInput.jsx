@@ -13,38 +13,38 @@ export const BrowserInput = function BrowserInput(props) {
     //   className={scss.containerCal}
     >
       <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '1px',
-          width: '100%',
-          [theme.breakpoints.up('sm')]: {
-            gap: 0,
-          },
-          [theme.breakpoints.up('md')]: {
-            gap: 0,
-          },
-          '& input': {
-            width: '140px',
-            [theme.breakpoints.up('sm')]: {
-              width: 240,
-            },
-            [theme.breakpoints.up('md')]: {
-              width: 240,
-            },
-          },
+        // sx={{
+        //   display: 'flex',
+        //   flexDirection: 'column',
+        //   alignItems: 'center',
+        //   gap: '1px',
+        //   width: '100%',
+        //   [theme.breakpoints.up('sm')]: {
+        //     gap: 0,
+        //   },
+        //   [theme.breakpoints.up('md')]: {
+        //     gap: 0,
+        //   },
+        //   '& input': {
+        //     width: '140px',
+        //     [theme.breakpoints.up('sm')]: {
+        //       width: 240,
+        //     },
+        //     [theme.breakpoints.up('md')]: {
+        //       width: 240,
+        //     },
+        //   },
 
-          fontFamily: 'Verdana',
-          border: 'none',
-          outline: 'none',
-          bgcolor: 'background.paper',
-          fontSize: '34px',
-          fontWeight: 700,
-          '&::placeholder': {
-            color: 'black',
-          },
-        }}
+        //   fontFamily: 'Verdana',
+        //   border: 'none',
+        //   outline: 'none',
+        //   bgcolor: 'background.paper',
+        //   fontSize: '34px',
+        //   fontWeight: 700,
+        //   '&::placeholder': {
+        //     color: 'black',
+        //   },
+        // }}
         ref={InputProps?.ref}
       >
         <input ref={inputRef} {...inputProps} {...other} />

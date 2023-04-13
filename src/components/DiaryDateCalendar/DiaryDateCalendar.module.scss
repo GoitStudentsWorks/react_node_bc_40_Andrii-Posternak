@@ -37,10 +37,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   padding: 3px 5px;
   width: 190px;
   background: transparent;
-
+margin-bottom: 32px;
 
     @include tablet-media {
           font-size: 34px !important;
             width: 290px;
+            margin-bottom: 60px;
+
     }
 }
