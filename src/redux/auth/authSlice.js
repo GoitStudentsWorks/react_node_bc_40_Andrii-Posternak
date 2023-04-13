@@ -55,6 +55,17 @@ const authSlice = createSlice({
         }
       );
   },
+  reducers: {
+    deleteUserInfro(state, action) {
+      state.isAuthStatus = false;
+      state.idToken = null;
+      state.user = {
+        name: '',
+        email: '',
+      };
+    }
+  },
 });
 
 export const authReducer = authSlice.reducer;
+export const { deleteUserInfro } = authSlice.actions;

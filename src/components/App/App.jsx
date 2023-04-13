@@ -1,6 +1,6 @@
 import { lazy, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUser } from 'redux/auth/authOperations';
 import { SharedLayout } from 'components/SharedLayout/SharedLayout';
 import { routes } from 'utils/routes';
@@ -36,6 +36,7 @@ const RegistrationPage = lazy(() =>
 
 export const App = () => {
   const dispatch = useDispatch();
+  const isAuth = useSelector(state => state.auth.isAuthStatus);
 
   useEffect(() => {
     dispatch(getCurrentUser());
@@ -44,7 +45,7 @@ export const App = () => {
   return (
     <Routes>
       <Route path={routes.home} element={<SharedLayout />}>
-        <Route index element={<MainPage />} />
+        <Route index element={isAuth ? <CalculatorPage /> : <MainPage />} />
         <Route
           path={routes.register}
           element={<PublicRoute component={<RegistrationPage />} />}
@@ -61,7 +62,10 @@ export const App = () => {
           path={routes.calculator}
           element={<PrivateRoute component={<CalculatorPage />} />}
         />
-        <Route path="*" element={<Navigate to={routes.home} />} />
+        <Route
+          path="*"
+          element={<Navigate to={isAuth ? routes.calculator : routes.home} />}
+        />
       </Route>
     </Routes>
   );
