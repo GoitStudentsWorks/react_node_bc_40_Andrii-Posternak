@@ -1,12 +1,48 @@
 @import '../../index.scss';
 
-.tWrapper {
-  @include to-tablet-media {
+.blockWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include tablet-only-media {
+    flex-direction: row;
+    gap: 100px;
   }
+}
+
+.heading {
+  margin-bottom: 20px;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: calc(17 / 14);
+  letter-spacing: 0.04em;
+  color: $secondaryTextColor;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  width: 100%;
+
+  font-weight: 400;
 
   @include tablet-media {
+    width: 270px;
   }
+}
 
-  @include desktop-media {
-  }
+.foodList {
+  composes: list;
+
+  height: 112px;
+  overflow-y: auto;
+}
+
+.calorieItem {
+  display: flex;
+  justify-content: space-between;
 }
