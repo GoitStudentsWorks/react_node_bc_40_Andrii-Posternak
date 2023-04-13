@@ -5,7 +5,9 @@ export const getCalorieAuth = createAsyncThunk(
   'calorie/getCalorieAuth',
   async (calcParams, thunkAPI) => {
     try {
-      return await getCalorieAuthApi(calcParams);
+      const result = await getCalorieAuthApi(calcParams);
+
+      return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -16,7 +18,9 @@ export const getCalorie = createAsyncThunk(
   'calorie/getCalorie',
   async (calcParams, thunkAPI) => {
     try {
-      return await getCalorieApi(calcParams);
+      const result = await getCalorieApi(calcParams);
+
+      return result;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

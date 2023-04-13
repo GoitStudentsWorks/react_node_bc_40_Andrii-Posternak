@@ -1,0 +1,7 @@
+@import '../../index.scss';
+
+.calculatorPage {
+  @include to-tablet-media {
+    padding-top: 42px;
+  }
+}

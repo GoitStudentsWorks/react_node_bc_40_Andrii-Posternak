@@ -28,17 +28,23 @@ export const LoginForm = () => {
   return (
     <>
       <p className={styles.heading}>Log in</p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.caloriesForm}>
         <div className={styles.formWrapper}>
-          <label className={styles.label}>
+          <label className={styles.labelText}>
             <span className={styles.text}>Email</span>
-            <input
-              type="email"
-              name="email"
-              className={styles.input}
-              onChange={handleChange}
-              value={values.email}
-            />
+            <div className={styles.formContainerMain}>
+              <div className={styles.formContainerLeft}>
+                <div className={styles.labelContainer}>
+                  <input
+                    type="email"
+                    name="email"
+                    className={styles.input}
+                    onChange={handleChange}
+                    value={values.email}
+                  />
+                </div>
+              </div>
+            </div>
             {submitCount > 0 && errors.email && (
               <span className={styles.error}>{errors.email}</span>
             )}
