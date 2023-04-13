@@ -6,7 +6,10 @@ import { SharedLayout } from 'components/SharedLayout/SharedLayout';
 import { routes } from 'utils/routes';
 import { PrivateRoute } from 'components/PrivateRoute/PrivateRoute';
 import { PublicRoute } from 'components/PublicRoute/PublicRoute';
-import { selectFetchingCurrentUser } from 'redux/auth/authSlice';
+import {
+  selectAuthStatus,
+  selectFetchingCurrentUser,
+} from 'redux/auth/authSlice';
 import { Loader } from 'components/Loader/Loader';
 
 const MainPage = lazy(() =>
@@ -39,6 +42,7 @@ const RegistrationPage = lazy(() =>
 export const App = () => {
   const dispatch = useDispatch();
   const isFetchingUser = useSelector(selectFetchingCurrentUser);
+  const isAuth = useSelector(selectAuthStatus);
 
   useEffect(() => {
     dispatch(getCurrentUser());
@@ -66,7 +70,12 @@ export const App = () => {
               path={routes.calculator}
               element={<PrivateRoute component={<CalculatorPage />} />}
             />
-            <Route path="*" element={<Navigate to={routes.home} />} />
+            <Route
+              path="*"
+              element={
+                <Navigate to={isAuth ? routes.calculator : routes.home} />
+              }
+            />
           </Route>
         </Routes>
       ) : (

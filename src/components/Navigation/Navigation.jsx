@@ -6,7 +6,7 @@ import style from './Navigation.module.scss';
 import { MenuModal } from 'components/MenuModal/MenuModal';
 import { useState } from 'react';
 import { RxCross1 } from 'react-icons/rx';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const getActive = ({ isActive }) =>
   isActive ? `${style.active} ${style.link}` : style.link;
@@ -15,9 +15,8 @@ const getActiveReg = ({ isActive }) =>
   isActive ? `${style.activeReg} ${style.regLink}` : style.regLink;
 
 export const Navigation = () => {
-  // const isAuth = useSelector();
+  const isAuth = useSelector(state => state.auth.isAuthStatus);
   const isTablet = useMedia('(max-width: 1279px)');
-  const isAuth = true;
 
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
 
