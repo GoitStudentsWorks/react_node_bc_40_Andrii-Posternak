@@ -1,10 +1,10 @@
-import style from './Logo.module.scss';
 import { useMedia } from 'react-use';
 import { Link } from 'react-router-dom';
+import { routes } from 'utils/routes';
+import style from './Logo.module.scss';
 import logoMobile from '../../assets/images/logo/logoMobile.svg';
 import logoTablet from '../../assets/images/logo/logoTablet.svg';
 import logoDesktop from '../../assets/images/logo/logoDesktop.svg';
-import { routes } from 'utils/routes';
 
 export const Logo = () => {
   const isMobile = useMedia('(max-width: 767px)');
@@ -25,16 +25,9 @@ export const Logo = () => {
     <>
       <div className={style.wrapper}>
         <div>
-          {!isAuth && (
-            <Link to={routes.home}>
-              <img src={getLogo()} alt="logo" />
-            </Link>
-          )}
-          {isAuth && (
-            <Link to={routes.diary}>
-              <img src={getLogo()} alt="logo" />
-            </Link>
-          )}
+          <Link to={isAuth ? routes.diary : routes.home}>
+            <img src={getLogo()} alt="logo" />
+          </Link>
         </div>
       </div>
       {isDesktop && <div className={style.line}></div>}
