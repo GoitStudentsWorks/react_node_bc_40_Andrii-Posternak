@@ -4,10 +4,8 @@ import {
   loginUser,
   logoutUser,
 } from 'redux/auth/authOperations';
-import { getCalorieAuth } from 'redux/dailyCalorie/dailyCalorieOperations';
 
 const calorieInitialState = {
-  userId: null,
   calorieNorm: null,
   notRecFood: [],
   isLoading: false,
@@ -19,18 +17,14 @@ const dailyCalorieSlice = createSlice({
   initialState: calorieInitialState,
   extraReducers: builder => {
     builder
-      .addCase(getCalorieAuth.fulfilled, (state, action) => {
-        state.userId = action.payload._id;
-      })
+
       .addCase(getCurrentUser.fulfilled, (state, action) => {
-        state.userId = action.payload._id;
         state.calorieNorm = action.payload.dailyRate;
         state.notRecFood = action.payload.notRecFood;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        state.userId = action.payload._id;
-        state.calorieNorm = action.payload.dailyRate;
-        state.notRecFood = action.payload.notRecFood;
+        state.calorieNorm = action.payload.user.dailyRate;
+        state.notRecFood = action.payload.user.notRecFood;
       })
       .addCase(logoutUser.fulfilled, (state, _) => {
         state = calorieInitialState;

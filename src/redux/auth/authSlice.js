@@ -35,7 +35,6 @@ const authSlice = createSlice({
         state.isLoading = false;
       })
       .addCase(logoutUser.fulfilled, (state, _) => {
-        // state = authInitialState;
         return { ...authInitialState, isFetchingCurrentUser: false };
       })
       .addCase(getCurrentUser.pending, (state, { payload }) => {
