@@ -23,10 +23,10 @@ export const DiaryPage = () => {
         <DiaryDateCalendar />
         {width > 768 ? <DiaryAddProductForm /> : ''}
         <DiaryProductsList />
-        <div className={styles.SidebarSection}>
-          <div className={styles.SidebarWrap}>
-            <RightSideBar />
-          </div>
+      </div>
+      <div className={styles.SidebarSection}>
+        <div className={styles.SidebarWrap}>
+          <RightSideBar />
         </div>
       </div>
     </div>
