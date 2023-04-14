@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useWindowSize } from 'react-use';
 import { useDispatch, useSelector } from 'react-redux';
+import Notiflix from 'notiflix';
 import {
   addEatenProduct,
   getProductsFromDB,
@@ -12,6 +13,7 @@ export const DiaryAddProductForm = () => {
   const { width } = useWindowSize();
   const dispatch = useDispatch();
   const searchedProduct = useSelector(state => state.dailyFood.searchedProduct);
+  const error = useSelector(state => state.dailyFood.error);
 
   const [product, setProduct] = useState('');
   const [weight, setWeight] = useState('');
@@ -21,6 +23,9 @@ export const DiaryAddProductForm = () => {
     dispatch(addEatenProduct({ productName: product, weight }));
     setProduct('');
     setWeight('');
+    if (error) {
+      Notiflix.Notify.failure('There is no such product in the database');
+    }
   };
 
   const handleChange = e => {

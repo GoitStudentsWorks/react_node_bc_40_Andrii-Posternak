@@ -36,15 +36,14 @@ const dailyFoodSlice = createSlice({
       })
       .addMatcher(
         action =>
-          action.type.startsWith('dailyFood') &&
-          action.type.endsWith('pending'),
+          action.type.startsWith('products') && action.type.endsWith('pending'),
         state => {
           state.isLoading = true;
         }
       )
       .addMatcher(
         action =>
-          action.type.startsWith('dailyFood') &&
+          action.type.startsWith('products') &&
           action.type.endsWith('fulfilled'),
         state => {
           state.isLoading = false;
@@ -53,7 +52,7 @@ const dailyFoodSlice = createSlice({
       )
       .addMatcher(
         action =>
-          action.type.startsWith('dailyFood') &&
+          action.type.startsWith('products') &&
           action.type.endsWith('rejected'),
         (state, action) => {
           state.isLoading = false;

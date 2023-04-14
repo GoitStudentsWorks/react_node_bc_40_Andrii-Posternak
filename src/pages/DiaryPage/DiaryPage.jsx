@@ -5,8 +5,8 @@ import { getEatenProducts } from 'redux/dailyFood/dailyFoodOperations';
 import { DiaryAddProductForm } from 'components/DiaryAddProductForm/DiaryAddProductForm';
 import { DiaryDateCalendar } from 'components/DiaryDateCalendar/DiaryDateCalendar';
 import { DiaryProductsList } from 'components/DiaryProductsList/DiaryProductsList';
-import scss from './DiaryPage.module.scss';
 import { RightSideBar } from 'components/RightSideBar/RightSideBar';
+import scss from './DiaryPage.module.scss';
 
 export const DiaryPage = () => {
   const { width } = useWindowSize();
@@ -17,15 +17,15 @@ export const DiaryPage = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="container">
       <div className={scss.container}>
         <DiaryDateCalendar />
 
         {width > 768 ? <DiaryAddProductForm /> : ''}
 
         <DiaryProductsList />
+        <RightSideBar />
       </div>
-      <RightSideBar />
-    </>
+    </div>
   );
 };
