@@ -10,3 +10,18 @@
   @include desktop-media {
   }
 }
+
+.filteredList{
+  padding-left: 5px;
+  height:220px;
+  overflow-y: scroll;
+  @include to-tablet-media {
+    margin-bottom: 60px;
+  }
+        @include tablet-media {
+        max-width: 610px;
+        max-height: 260px;
+      }
+    
+      
+}
