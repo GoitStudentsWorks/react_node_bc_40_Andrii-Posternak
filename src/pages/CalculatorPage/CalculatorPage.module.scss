@@ -4,4 +4,73 @@
   @include to-tablet-media {
     padding-top: 42px;
   }
+    @include desktop-media {
+      display: flex;
+    }
 }
+.SidebarSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  background-color: #F0F1F3;
+   @include desktop-media {
+    width: 517px;
+    position: fixed;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    right: 0;
+}
+}
+
+
+
+.SidebarWrap {
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+
+
+    @include tablet-media {
+    padding: 80px 32px;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 96px;
+    background-image: url(../../components/RightSideBar/sidebarBg/sidebar-leaves-tab-1x.png);
+
+    @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+      background-image: url(../../components/RightSideBar/sidebarBg/sidebar-leaves-tab-2x.png);
+    }
+
+    background-repeat: no-repeat;
+    background-size: 370px 350px;
+    background-position: right 0 bottom 0;
+  }
+
+ @include desktop-media {
+    width: 588px;
+    height: auto;
+    padding: 292px 123px 0 106px;
+    flex-direction: column;
+    gap: 60px;
+    background-image: url(../../components/RightSideBar/sidebarBg/sidebar-leaves-desk-1x.png);
+
+    @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+      background-image: url(../../components/RightSideBar/sidebarBg/sidebar-leaves-desk-2x.png);
+    }
+
+    background-repeat: no-repeat;
+    background-size: 517px auto;
+    background-position: right 0 top 20px;
+  }
+
+}
+

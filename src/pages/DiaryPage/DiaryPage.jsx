@@ -7,6 +7,7 @@ import { DiaryDateCalendar } from 'components/DiaryDateCalendar/DiaryDateCalenda
 import { DiaryProductsList } from 'components/DiaryProductsList/DiaryProductsList';
 import { RightSideBar } from 'components/RightSideBar/RightSideBar';
 import scss from './DiaryPage.module.scss';
+import styles from '../CalculatorPage/CalculatorPage.module.scss';
 
 export const DiaryPage = () => {
   const { width } = useWindowSize();
@@ -20,11 +21,13 @@ export const DiaryPage = () => {
     <div className="container">
       <div className={scss.container}>
         <DiaryDateCalendar />
-
         {width > 768 ? <DiaryAddProductForm /> : ''}
-
         <DiaryProductsList />
-        <RightSideBar />
+        <div className={styles.SidebarSection}>
+          <div className={styles.SidebarWrap}>
+            <RightSideBar />
+          </div>
+        </div>
       </div>
     </div>
   );
