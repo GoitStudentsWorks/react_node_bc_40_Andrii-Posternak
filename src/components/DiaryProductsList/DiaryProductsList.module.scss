@@ -11,17 +11,36 @@
   }
 }
 
-.filteredList{
+.filteredList {
   padding-left: 5px;
-  height:220px;
+  height: 220px;
   overflow-y: scroll;
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 2px;
+  }
+
+  &::-webkit-scrollbar {
+    max-width: 6px;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $accentBgnColor;
+    border-radius: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: $accentBgnColor;
+  }
+
   @include to-tablet-media {
     margin-bottom: 60px;
   }
-        @include tablet-media {
-        max-width: 610px;
-        max-height: 260px;
-      }
-    
-      
+
+  @include tablet-media {
+    max-width: 610px;
+    max-height: 260px;
+  }
 }

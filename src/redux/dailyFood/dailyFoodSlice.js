@@ -8,8 +8,8 @@ import {
 
 const dailyFoodInitialState = {
   currentDate: new Date().toDateString(),
-  serchedProduct: [],
-  eatenProduct: [],
+  searchedProduct: [],
+  eatenProducts: [],
   isLoading: false,
   error: null,
 };
@@ -19,10 +19,47 @@ const dailyFoodSlice = createSlice({
   initialState: dailyFoodInitialState,
   extraReducers: builder => {
     builder
-      .addCase(getProductsFromDB.fulfilled, (state, action) => {})
-      .addCase(getEatenProducts.fulfilled, (state, action) => {})
-      .addCase(addEatenProduct.fulfilled, (state, action) => {})
-      .addCase(deleteEatenProduct.fulfilled, (state, action) => {});
+      .addCase(getProductsFromDB.fulfilled, (state, action) => {
+        state.searchedProduct = action.payload;
+      })
+      .addCase(getEatenProducts.fulfilled, (state, action) => {
+        state.eatenProducts = action.payload;
+      })
+      .addCase(addEatenProduct.fulfilled, (state, action) => {
+        state.eatenProducts = [...state.eatenProducts, action.payload];
+        state.searchedProduct = [];
+      })
+      .addCase(deleteEatenProduct.fulfilled, (state, action) => {
+        state.eatenProducts = state.eatenProducts.filter(
+          product => product._id !== action.payload
+        );
+      })
+      .addMatcher(
+        action =>
+          action.type.startsWith('dailyFood') &&
+          action.type.endsWith('pending'),
+        state => {
+          state.isLoading = true;
+        }
+      )
+      .addMatcher(
+        action =>
+          action.type.startsWith('dailyFood') &&
+          action.type.endsWith('fulfilled'),
+        state => {
+          state.isLoading = false;
+          state.error = null;
+        }
+      )
+      .addMatcher(
+        action =>
+          action.type.startsWith('dailyFood') &&
+          action.type.endsWith('rejected'),
+        (state, action) => {
+          state.isLoading = false;
+          state.error = action.payload;
+        }
+      );
   },
 });
 

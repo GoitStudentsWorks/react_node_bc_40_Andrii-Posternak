@@ -8,9 +8,9 @@ import {
 
 export const getProductsFromDB = createAsyncThunk(
   'products/getFromDB',
-  async (search, thunkAPI) => {
+  async (productName, thunkAPI) => {
     try {
-      return await getProductsFromDBApi(search);
+      return await getProductsFromDBApi(productName);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -18,7 +18,7 @@ export const getProductsFromDB = createAsyncThunk(
 );
 
 export const getEatenProducts = createAsyncThunk(
-  'products/getAll',
+  'products/getEatenProducts',
   async (date, thunkAPI) => {
     try {
       return await getEatenProductsApi(date);

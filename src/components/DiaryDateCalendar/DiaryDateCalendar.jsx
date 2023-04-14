@@ -1,14 +1,14 @@
-import { useDispatch } from 'react-redux';
-import { getCurrentUser } from 'redux/auth/authOperations';
+// import { useDispatch } from 'react-redux';
+// import { getCurrentUser } from 'redux/auth/authOperations';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
-import moment from 'moment/moment';
+// import moment from 'moment/moment';
 import { BrowserInput } from './BrowserInput';
 import s from './DiaryDateCalendar.module.scss';
 
 export const DiaryDateCalendar = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   // const handleChangeDate = value => {
   //   dispatch(setDate(moment(value.$d).format('YYYY-MM-DD')));
