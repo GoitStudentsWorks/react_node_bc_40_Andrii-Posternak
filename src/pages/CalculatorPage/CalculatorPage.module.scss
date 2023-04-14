@@ -4,7 +4,6 @@
   @include to-tablet-media {
     padding-top: 42px;
   }
-
     @include desktop-media {
       display: flex;
     }
@@ -15,7 +14,6 @@
   flex-direction: column;
   gap: 60px;
   background-color: #F0F1F3;
-
    @include desktop-media {
     width: 517px;
     position: fixed;
