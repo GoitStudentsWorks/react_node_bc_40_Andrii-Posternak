@@ -1,14 +1,18 @@
 import { DailyCaloriesForm } from 'components/DailyCaloriesForm/DailyCaloriesForm';
 import { RightSideBar } from 'components/RightSideBar/RightSideBar';
-import scss from './CalculatorPage.module.scss';
+import styles from './CalculatorPage.module.scss';
 
 export const CalculatorPage = () => {
   return (
     <div className="container">
-      <div className={scss.calculatorPage}>
+      <div className={styles.calculatorPage}>
         <DailyCaloriesForm />
+        <div className={styles.SidebarSection}>
+          <div className={styles.SidebarWrap}>
+            <RightSideBar />
+          </div>
+        </div>
       </div>
-      <RightSideBar />
     </div>
   );
 };
