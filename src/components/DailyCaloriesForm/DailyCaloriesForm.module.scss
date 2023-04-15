@@ -19,6 +19,12 @@
   }
 }
 
+.caloriesPadding {
+  @include desktop-media {
+    padding-top: 293px;
+  }
+}
+
 div .form_button {
   display: block;
   text-align: center;

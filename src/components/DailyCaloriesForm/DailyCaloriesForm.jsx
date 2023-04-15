@@ -75,7 +75,14 @@ export const DailyCaloriesForm = ({ handleModalOpen }) => {
           handleBlur,
           handleSubmit,
         }) => (
-          <Form className={styles.caloriesForm} onSubmit={handleSubmit}>
+          <Form
+            className={
+              authStatus
+                ? styles.caloriesForm
+                : `${styles.caloriesForm} ${styles.caloriesPadding}`
+            }
+            onSubmit={handleSubmit}
+          >
             <h1>Calculate your daily calorie intake right now</h1>
             <div className={styles.formContainerMain}>
               <div className={styles.formContainerLeft}>

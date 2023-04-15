@@ -6,25 +6,15 @@
 
   position: absolute;
   left: 0;
-  top: 80px;
+  top: 123px;
 
-  z-index: 100;
+  z-index: 20;
 
-  padding: 20px 20px;
   width: 100%;
   height: 100vh;
 
-  background-color: $mobileMenuBgnColor;
+  background-color: $mainBgnColor;
   transition: opacity $animation;
-}
-
-.cross {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-
-  border: none;
-  background-color: transparent;
 }
 
 .list {
@@ -32,5 +22,15 @@
   align-items: center;
   flex-direction: column;
   gap: 37px;
-  margin-top: 60px;
+}
+
+.btn {
+  position: absolute;
+  top: -33px;
+  left: 213px;
+
+  padding: 10px;
+
+  border: none;
+  background-color: transparent;
 }

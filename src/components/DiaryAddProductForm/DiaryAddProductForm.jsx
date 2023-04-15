@@ -93,8 +93,8 @@ export const DiaryAddProductForm = () => {
               +
             </button>
           ) : (
-            <Button className="btn" type="submit">
-              Додати продукт
+            <Button mainStyle="active" type="submit">
+              Add
             </Button>
           )}
         </div>
