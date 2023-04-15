@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useWindowSize } from 'react-use';
 import { useDispatch, useSelector } from 'react-redux';
 import Notiflix from 'notiflix';
-import moment from 'moment';
 import {
   addEatenProduct,
   getProductsFromDB,
@@ -13,6 +12,7 @@ import {
   selectSearchedProduct,
 } from 'redux/dailyFood/dailyFoodSlice';
 import { Button } from 'components/Button/Button';
+import { showElem } from 'helpers/func';
 import s from './DiaryAddProductForm.module.scss';
 
 export const DiaryAddProductForm = () => {
@@ -52,14 +52,6 @@ export const DiaryAddProductForm = () => {
     }
   };
 
-  const showAttribute = () => {
-    if (currentDate === moment(new Date()).format('DD.MM.YYYY')) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
   return (
     <>
       <form id="form" className={s.Form} onSubmit={handleSubmit}>
@@ -74,7 +66,7 @@ export const DiaryAddProductForm = () => {
             value={product}
             onChange={event => handleFindProduct(event.target.value)}
             required
-            disabled={!showAttribute()}
+            disabled={!showElem(currentDate)}
           />
 
           <datalist id="productslist">
@@ -97,12 +89,16 @@ export const DiaryAddProductForm = () => {
             onChange={handleChange}
             pattern="^[1-9]\d*$"
             required
-            disabled={!showAttribute()}
+            disabled={!showElem(currentDate)}
           />
         </div>
         <div>
           {width > 768 ? (
-            <button className={s.btn} type="submit" disabled={!showAttribute()}>
+            <button
+              className={s.btn}
+              type="submit"
+              disabled={!showElem(currentDate)}
+            >
               +
             </button>
           ) : (

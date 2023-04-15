@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 // import moment from 'moment/moment';
 import { useDispatch, useSelector } from 'react-redux';
 import { getEatenProducts } from 'redux/dailyFood/dailyFoodOperations';
-import { selectCurrentDate } from 'redux/dailyFood/dailyFoodSlice';
+import { changeDate, selectCurrentDate } from 'redux/dailyFood/dailyFoodSlice';
 import { BrowserInput } from './BrowserInput';
 import s from './DiaryDateCalendar.module.scss';
 import './calendarStyle.scss';
@@ -21,6 +21,7 @@ export const DiaryDateCalendar = () => {
     const selectedDay = moment(value.$d).format('DD.MM.YYYY');
     // dispatch(setDate(moment(value.$d).format('YYYY-MM-DD')));
     dispatch(getEatenProducts(selectedDay));
+    dispatch(changeDate(selectedDay));
   };
 
   // const getCurrentDate = () => {
