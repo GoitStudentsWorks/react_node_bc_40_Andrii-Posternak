@@ -5,7 +5,7 @@ import {
   addEatenProduct,
   deleteEatenProduct,
 } from 'redux/dailyFood/dailyFoodOperations';
-import moment from 'moment/moment';
+import moment from 'moment';
 
 const dailyFoodInitialState = {
   currentDate: moment(new Date()).format('DD.MM.YYYY'),

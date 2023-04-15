@@ -1,0 +1,20 @@
+@import '../../index.scss';
+
+.MuiBox-root {
+  align-items: center;
+  display: flex;
+  @include tablet-media {
+    align-items: baseline;
+  }
+}
+
+.css-1laqsz7-MuiInputAdornment-root {
+  margin-bottom: 30px;
+}
+
+.DiaryDateCalendar_inputCalendar__Fjm60 {
+  width: 130px;
+  @include tablet-media {
+    width: 230px;
+  }
+}

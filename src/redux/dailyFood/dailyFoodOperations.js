@@ -26,6 +26,13 @@ export const getEatenProducts = createAsyncThunk(
       return thunkAPI.rejectWithValue(error.message);
     }
   }
+  // {
+  //   condition: (_, { getState }) => {
+  //     const eatProd = getState().dailyFood.eatenProducts;
+
+  //     return eatProd.length > 0 ? false : true;
+  //   },
+  // }
 );
 
 export const addEatenProduct = createAsyncThunk(

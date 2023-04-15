@@ -9,8 +9,9 @@ import { getEatenProducts } from 'redux/dailyFood/dailyFoodOperations';
 import { selectCurrentDate } from 'redux/dailyFood/dailyFoodSlice';
 import { BrowserInput } from './BrowserInput';
 import s from './DiaryDateCalendar.module.scss';
+import './calendarStyle.scss';
 
-import moment from 'moment/moment';
+import moment from 'moment';
 
 export const DiaryDateCalendar = () => {
   const currentDate = useSelector(selectCurrentDate);
