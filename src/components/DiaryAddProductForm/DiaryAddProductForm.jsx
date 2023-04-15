@@ -102,9 +102,11 @@ export const DiaryAddProductForm = () => {
               +
             </button>
           ) : (
-            <Button mainStyle="active" type="submit">
-              Add
-            </Button>
+            <div className={s.btnWrap}>
+              <Button mainStyle="active" type="submit">
+                Add
+              </Button>
+            </div>
           )}
         </div>
       </form>

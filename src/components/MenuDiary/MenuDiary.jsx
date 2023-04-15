@@ -6,7 +6,7 @@ import style from './MenuDiary.module.scss';
 
 export const MenuDiary = memo(({ onClick }) => {
   return (
-    <>
+    <div className="container">
       <div className={style.modal}>
         <div className={style.list}>
           <button className={style.btn} onClick={onClick}>
@@ -15,7 +15,7 @@ export const MenuDiary = memo(({ onClick }) => {
           <DiaryAddProductForm />
         </div>
       </div>
-    </>
+    </div>
   );
 });
 
