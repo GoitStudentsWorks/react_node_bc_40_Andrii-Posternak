@@ -1,15 +1,6 @@
 @import '../../index.scss';
 
-.tWrapper {
-  @include tablet-media {
-  }
 
-  @include tablet-media {
-  }
-
-  @include desktop-media {
-  }
-}
 input[type='date'] {
   background: transparent;
   color: white;

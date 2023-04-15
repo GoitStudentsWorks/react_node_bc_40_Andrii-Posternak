@@ -42,10 +42,10 @@ export const DiaryPage = () => {
             </button>
           )}
         </div>
-        <div className={styles.SidebarSection}>
-          <div className={styles.SidebarWrap}>
-            <RightSideBar />
-          </div>
+      </div>
+      <div className={styles.SidebarSection}>
+        <div className={styles.SidebarWrap}>
+          <RightSideBar />
         </div>
       </div>
       {isMenuOpen && <MenuDiary onClick={isToggle} />}
