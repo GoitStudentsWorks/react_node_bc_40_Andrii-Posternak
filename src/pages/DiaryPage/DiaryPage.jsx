@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useWindowSize } from 'react-use';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getEatenProducts } from 'redux/dailyFood/dailyFoodOperations';
+import { selectCurrentDate } from 'redux/dailyFood/dailyFoodSlice';
 import { DiaryAddProductForm } from 'components/DiaryAddProductForm/DiaryAddProductForm';
 import { DiaryDateCalendar } from 'components/DiaryDateCalendar/DiaryDateCalendar';
 import { DiaryProductsList } from 'components/DiaryProductsList/DiaryProductsList';
@@ -12,10 +13,11 @@ import styles from '../CalculatorPage/CalculatorPage.module.scss';
 export const DiaryPage = () => {
   const { width } = useWindowSize();
   const dispatch = useDispatch();
+  const currentDate = useSelector(selectCurrentDate);
 
   useEffect(() => {
-    dispatch(getEatenProducts(new Date().toDateString()));
-  }, [dispatch]);
+    dispatch(getEatenProducts(currentDate));
+  }, [dispatch, currentDate]);
 
   return (
     <div className="container">

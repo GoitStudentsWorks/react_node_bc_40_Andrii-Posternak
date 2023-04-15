@@ -5,14 +5,14 @@
   flex-direction: column;
   gap: 40px;
 
-  @include tablet-only-media  {
+  @include tablet-only-media {
     flex-direction: row;
     gap: 100px;
   }
-//  @include desktop-media {
-//     flex-direction: row;
-//     gap: 100px;
-//   }
+  //  @include desktop-media {
+  //     flex-direction: row;
+  //     gap: 100px;
+  //   }
 }
 
 .heading {
@@ -49,4 +49,12 @@
 .calorieItem {
   display: flex;
   justify-content: space-between;
+}
+
+.warning {
+  color: red;
+}
+
+.norm {
+  color: green;
 }

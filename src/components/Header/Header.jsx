@@ -1,12 +1,13 @@
 import { useMedia } from 'react-use';
+import { useSelector } from 'react-redux';
+import { selectAuthStatus } from 'redux/auth/authSlice';
 import { Logo } from 'components/Logo/Logo';
 import { UserInfo } from 'components/UserInfo/UserInfo';
 import { Navigation } from 'components/Navigation/Navigation';
 import style from './Header.module.scss';
-import { useSelector } from 'react-redux';
 
 export const Header = () => {
-  const isAuth = useSelector(state => state.auth.isAuthStatus);
+  const isAuth = useSelector(selectAuthStatus);
   const isMobile = useMedia('(max-width: 767px)');
   const isTablet = useMedia('(min-width: 768px)');
 
