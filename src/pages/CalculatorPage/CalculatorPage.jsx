@@ -15,15 +15,17 @@ export const CalculatorPage = () => {
   }, [dispatch, currentDate]);
 
   return (
-    <div className="container">
-      <div className={styles.calculatorPage}>
-        <DailyCaloriesForm />
-        <div className={styles.SidebarSection}>
-          <div className={styles.SidebarWrap}>
-            <RightSideBar />
-          </div>
+    <>
+      <div className="container">
+        <div className={styles.calculatorPage}>
+          <DailyCaloriesForm />
         </div>
       </div>
-    </div>
+      <div className={styles.SidebarSection}>
+        <div className={styles.SidebarWrap}>
+          <RightSideBar />
+        </div>
+      </div>
+    </>
   );
 };
