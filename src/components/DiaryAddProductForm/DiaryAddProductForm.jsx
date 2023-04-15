@@ -6,14 +6,18 @@ import {
   addEatenProduct,
   getProductsFromDB,
 } from 'redux/dailyFood/dailyFoodOperations';
+import {
+  selectError,
+  selectSearchedProduct,
+} from 'redux/dailyFood/dailyFoodSlice';
 import { Button } from 'components/Button/Button';
 import s from './DiaryAddProductForm.module.scss';
 
 export const DiaryAddProductForm = () => {
   const { width } = useWindowSize();
   const dispatch = useDispatch();
-  const searchedProduct = useSelector(state => state.dailyFood.searchedProduct);
-  const error = useSelector(state => state.dailyFood.error);
+  const searchedProduct = useSelector(selectSearchedProduct);
+  const error = useSelector(selectError);
 
   const [product, setProduct] = useState('');
   const [weight, setWeight] = useState('');
@@ -40,7 +44,9 @@ export const DiaryAddProductForm = () => {
 
   const handleFindProduct = product => {
     setProduct(product);
-    if (product.length >= 2) dispatch(getProductsFromDB(product));
+    if (product.length >= 2) {
+      dispatch(getProductsFromDB(product));
+    }
   };
 
   return (

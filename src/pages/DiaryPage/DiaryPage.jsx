@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useMedia, useWindowSize } from 'react-use';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getEatenProducts } from 'redux/dailyFood/dailyFoodOperations';
+import { selectCurrentDate } from 'redux/dailyFood/dailyFoodSlice';
 import { DiaryAddProductForm } from 'components/DiaryAddProductForm/DiaryAddProductForm';
 import { DiaryDateCalendar } from 'components/DiaryDateCalendar/DiaryDateCalendar';
 import { DiaryProductsList } from 'components/DiaryProductsList/DiaryProductsList';
@@ -14,10 +15,11 @@ export const DiaryPage = () => {
   const { width } = useWindowSize();
   const dispatch = useDispatch();
   const isMobile = useMedia('(max-width: 767px)');
+  const currentDate = useSelector(selectCurrentDate);
 
   useEffect(() => {
-    dispatch(getEatenProducts(new Date().toDateString()));
-  }, [dispatch]);
+    dispatch(getEatenProducts(currentDate));
+  }, [dispatch, currentDate]);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

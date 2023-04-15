@@ -5,9 +5,10 @@ import {
   addEatenProduct,
   deleteEatenProduct,
 } from 'redux/dailyFood/dailyFoodOperations';
+import moment from 'moment/moment';
 
 const dailyFoodInitialState = {
-  currentDate: new Date().toDateString(),
+  currentDate: moment(new Date()).format('DD.MM.YYYY'),
   searchedProduct: [],
   eatenProducts: [],
   isLoading: false,
@@ -24,6 +25,11 @@ const dailyFoodSlice = createSlice({
       })
       .addCase(getEatenProducts.fulfilled, (state, action) => {
         state.eatenProducts = action.payload;
+        if (action.payload.length !== 0) {
+          state.currentDate = moment(action.payload[0].date).format(
+            'DD.MM.YYYY'
+          );
+        }
       })
       .addCase(addEatenProduct.fulfilled, (state, action) => {
         state.eatenProducts = [...state.eatenProducts, action.payload];
@@ -63,3 +69,8 @@ const dailyFoodSlice = createSlice({
 });
 
 export const dailyFoodReducer = dailyFoodSlice.reducer;
+
+export const selectCurrentDate = state => state.dailyFood.currentDate;
+export const selectSearchedProduct = state => state.dailyFood.searchedProduct;
+export const selectEatenProducts = state => state.dailyFood.eatenProducts;
+export const selectError = state => state.dailyFood.error;

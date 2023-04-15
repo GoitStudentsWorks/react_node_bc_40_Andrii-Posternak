@@ -13,11 +13,11 @@ export const MainPage = () => {
     setIsModalOpen(false);
   };
   return (
-    <>
+    <div className="container">
       <div className={styles.mainPage}>
         <DailyCaloriesForm handleModalOpen={handleModalOpen} />
         {isModalOpen && <Modal onClose={onClose} isModalOpen={isModalOpen} />}
       </div>
-    </>
+    </div>
   );
 };

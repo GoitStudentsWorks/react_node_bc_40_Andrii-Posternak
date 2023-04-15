@@ -1,27 +1,46 @@
 import { useSelector } from 'react-redux';
-import styles from './RightSideBar.module.scss';
 import {
   selectCalorieNorm,
   selectNotRecFood,
 } from 'redux/dailyCalorie/dailyCalorieSlice';
+import {
+  selectCurrentDate,
+  selectEatenProducts,
+} from 'redux/dailyFood/dailyFoodSlice';
+import styles from './RightSideBar.module.scss';
 
 export const RightSideBar = () => {
   const notRecFood = useSelector(selectNotRecFood);
   const calorieNorm = useSelector(selectCalorieNorm);
+  const currentDate = useSelector(selectCurrentDate);
+  const eatenProducts = useSelector(selectEatenProducts);
+
+  const consumed = eatenProducts.reduce((acc, item) => {
+    acc += item.calories;
+    return Math.round(acc);
+  }, 0);
+  const left = calorieNorm - consumed;
+  const interest = Math.round((consumed / calorieNorm) * 100);
 
   return (
     <>
       <div className={styles.blockWrapper}>
         <div>
-          <h2 className={styles.heading}>Summary for 20.06.2020</h2>
+          <h2 className={styles.heading}>Summary for {currentDate}</h2>
           <ul className={styles.list}>
             <li className={styles.calorieItem}>
               <span>Left</span>
-              <span>000 kcal</span>
+              <span>{left > 0 ? left : '000'} kcal </span>
             </li>
             <li className={styles.calorieItem}>
               <span>Consumed</span>
-              <span>000 kcal</span>
+              <span
+                className={
+                  consumed > calorieNorm ? styles.warning : styles.norm
+                }
+              >
+                {consumed ? consumed : '000'} kcal
+              </span>
             </li>
             <li className={styles.calorieItem}>
               <span>Daily rate</span>
@@ -29,7 +48,7 @@ export const RightSideBar = () => {
             </li>
             <li className={styles.calorieItem}>
               <span>n% of normal</span>
-              <span>000 kcal</span>
+              <span>{interest ? interest : '000'} %</span>
             </li>
           </ul>
         </div>

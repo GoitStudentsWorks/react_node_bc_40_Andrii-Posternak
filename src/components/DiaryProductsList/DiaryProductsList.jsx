@@ -1,13 +1,14 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteEatenProduct } from 'redux/dailyFood/dailyFoodOperations';
 import { nanoid } from 'nanoid';
+import { deleteEatenProduct } from 'redux/dailyFood/dailyFoodOperations';
+import { selectEatenProducts } from 'redux/dailyFood/dailyFoodSlice';
 import { DiaryProductsListItem } from 'components/DiaryProductsListItem/DiaryProductsListItem';
 import s from './DiaryProductsList.module.scss';
 
 export const DiaryProductsList = () => {
   const dispatch = useDispatch();
-  const eatenProducts = useSelector(state => state.dailyFood.eatenProducts);
+  const eatenProducts = useSelector(selectEatenProducts);
 
   const handleDeleteProduct = id => {
     dispatch(deleteEatenProduct(id));
