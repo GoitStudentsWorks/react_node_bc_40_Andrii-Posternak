@@ -2,7 +2,7 @@
 
 .overlay {
   position: fixed;
-  top: 80px;
+  top: 73px;
   left: 0;
   width: 100%;
   height: 100%;
@@ -46,8 +46,11 @@
 
 .icon {
   position: absolute;
-  top: 15px;
+  top: 11px;
   left: 20px;
+
+  height: 20px;
+  width: 20px;
 }
 
 .closeIcon {
@@ -56,6 +59,13 @@
   right: 20px;
   width: 20px;
   height: 20px;
+
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.2);
+    transition: $animation;
+  }
 }
 
 .caloriesContainer {

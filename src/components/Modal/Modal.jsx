@@ -1,7 +1,6 @@
 import scss from './Modal.module.scss';
 import { Button } from 'components/Button/Button';
 import { GrClose } from 'react-icons/gr';
-import { BsArrowReturnLeft } from 'react-icons/bs';
 import { createPortal } from 'react-dom';
 // import { Loader } from 'components/Loader/Loader';
 import { useEffect } from 'react';
@@ -15,6 +14,7 @@ import {
 import { Loader } from 'components/Loader/Loader';
 import { routes } from 'utils/routes';
 import { NavLink } from 'react-router-dom';
+import { TbArrowBack } from 'react-icons/tb';
 const modalRoot = document.querySelector('#modal-root');
 
 export const Modal = ({ onClose, isModalOpen }) => {
@@ -57,10 +57,7 @@ export const Modal = ({ onClose, isModalOpen }) => {
         <div className={scss.modal}>
           {width < 768 ? (
             <div className={scss.btnContainer}>
-              <BsArrowReturnLeft
-                className={scss.icon}
-                onClick={() => onClose()}
-              />
+              <TbArrowBack className={scss.icon} onClick={() => onClose()} />
             </div>
           ) : (
             <GrClose className={scss.closeIcon} onClick={() => onClose()} />
