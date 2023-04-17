@@ -22,6 +22,8 @@
 
 .menu svg:hover {
   transform: scale(1.2);
+  color: $accentTextColor;
+  transition: $animation;
 }
 
 .link {
@@ -32,6 +34,11 @@
 
   color: $mainTextColor;
   transition: $animation;
+
+  &:hover {
+    color: $accentTextColor;
+    transition: $animation;
+  }
 }
 
 .active {
@@ -63,6 +70,11 @@
 
   color: $mainTextColor;
   transition: $animation;
+
+  &:hover {
+    color: $accentTextColor;
+    transition: $animation;
+  }
 }
 
 .activeReg {

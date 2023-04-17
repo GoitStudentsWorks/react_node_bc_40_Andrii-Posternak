@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useWindowSize } from 'react-use';
 import { useDispatch, useSelector } from 'react-redux';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 import Notiflix from 'notiflix';
 import {
   addEatenProduct,
@@ -46,7 +48,6 @@ export const DiaryAddProductForm = () => {
   };
 
   const handleFindProduct = product => {
-    setProduct(product);
     if (product.length >= 2) {
       dispatch(getProductsFromDB(product));
     }
@@ -55,43 +56,47 @@ export const DiaryAddProductForm = () => {
   return (
     <>
       <form id="form" className={s.Form} onSubmit={handleSubmit}>
-        <div className={s.FieldProduct}>
-          <input
-            className={s.Input}
-            list="productslist"
-            placeholder="Enter product name"
-            autoComplete="off"
-            type="text"
-            name="productName"
-            value={product}
-            onChange={event => handleFindProduct(event.target.value)}
-            required
-            disabled={!showElem(currentDate)}
-          />
-
-          <datalist id="productslist">
-            {searchedProduct?.length > 0 &&
-              searchedProduct.map(product => (
-                <option key={product._id} value={product.title.ua}>
-                  {product.title.ua}
-                </option>
-              ))}
-          </datalist>
-        </div>
+        <Autocomplete
+          id="free-solo-2-demo"
+          freeSolo
+          disableClearable
+          disabled={!showElem(currentDate)}
+          name="productName"
+          value={product}
+          onChange={(e, v) => {
+            setProduct(v);
+          }}
+          options={searchedProduct.map(option => option.title.ua)}
+          renderInput={params => (
+            <TextField
+              {...params}
+              label="Enter product name"
+              key={product._id}
+              required
+              onChange={event => handleFindProduct(event.target.value)}
+              InputProps={{
+                ...params.InputProps,
+                type: 'search',
+              }}
+            />
+          )}
+        />
 
         <div className={s.FieldWeight}>
-          <input
-            className={s.Input}
-            placeholder="Grams"
-            type="number"
+          <TextField
+            id="weight"
+            fullWidth
+            autoComplete="off"
+            label="Grams"
             name="weight"
+            type="text"
             value={weight}
             onChange={handleChange}
-            pattern="^[1-9]\d*$"
             required
             disabled={!showElem(currentDate)}
           />
         </div>
+
         <div>
           {width > 768 ? (
             <button

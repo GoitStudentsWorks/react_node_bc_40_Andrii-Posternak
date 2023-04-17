@@ -57,4 +57,9 @@
 
 .default {
   color: inherit;
+
+  &:hover {
+    color: $accentTextColor;
+    transition: $animation;
+  }
 }
