@@ -43,7 +43,7 @@
   composes: list;
 
   height: 112px;
-  overflow: scroll;
+  overflow-x: scroll;
 
   &::-webkit-scrollbar-track {
     background-color: darken($secondaryBgnColor, 7%);

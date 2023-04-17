@@ -150,11 +150,21 @@
   border-radius: 50%;
   border: none;
   color: $mainBgnColor;
-  background: $activeDecorLine;
+  background: $accentBgnColor;
 
   &:hover,
   &:focus {
     box-shadow: $boxShadow;
+  }
+}
+
+.btnDisable {
+  composes: btn;
+  background-color: lighten($accentBgnColor, 10%);
+  cursor: auto;
+
+  &:hover {
+    box-shadow: none;
   }
 }
 
