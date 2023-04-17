@@ -93,7 +93,7 @@ export const DailyCaloriesForm = ({ handleModalOpen }) => {
                 <div className={styles.labelContainer}>
                   <InputField
                     label="Height *"
-                    type="number"
+                    type="text"
                     name={'height'}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -110,7 +110,7 @@ export const DailyCaloriesForm = ({ handleModalOpen }) => {
                 <div className={styles.labelContainer}>
                   <InputField
                     label="Age *"
-                    type="number"
+                    type="text"
                     name={'age'}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -125,7 +125,7 @@ export const DailyCaloriesForm = ({ handleModalOpen }) => {
                 <div className={styles.labelContainer}>
                   <InputField
                     label="Current weight *"
-                    type="number"
+                    type="text"
                     name={'currentWeight'}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -144,7 +144,7 @@ export const DailyCaloriesForm = ({ handleModalOpen }) => {
                 <div className={styles.labelContainer}>
                   <InputField
                     label="Desired weight *"
-                    type="number"
+                    type="text"
                     name={'desiredWeight'}
                     onChange={handleChange}
                     onBlur={handleBlur}

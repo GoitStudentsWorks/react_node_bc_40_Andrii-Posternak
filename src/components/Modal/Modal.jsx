@@ -83,8 +83,21 @@ export const Modal = ({ onClose, isModalOpen }) => {
                         </li>
                       ))}
                   </ul>
+                  <div className={scss.btnWrap}>
+                    <NavLink to={routes.login}>
+                      <Button
+                        size={'large'}
+                        mainStyle={'active'}
+                        type={'button'}
+                      >
+                        {/* Replace */}
+                        Start losing weight
+                      </Button>
+                    </NavLink>
+                  </div>
                 </div>
               </div>
+
               <div className={scss.btnWrap}>
                 <NavLink to={routes.login}>
                   <Button size={'large'} mainStyle={'active'} type={'button'}>
