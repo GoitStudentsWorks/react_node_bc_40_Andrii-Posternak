@@ -46,7 +46,7 @@
   overflow-y: scroll;
 
   &::-webkit-scrollbar-track {
-    background-color: transparent;
+    background-color: darken($secondaryBgnColor, 7%);
     border-radius: 2px;
   }
 
@@ -56,12 +56,12 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $accentBgnColor;
+    background-color: $mobileMenuBgnColor;
     border-radius: 5px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: $accentBgnColor;
+    background: $mobileMenuBgnColor;
   }
 }
 
