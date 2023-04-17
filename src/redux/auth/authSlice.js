@@ -24,6 +24,10 @@ const authSlice = createSlice({
     resetIsRefreshing(state, _) {
       state.isFetchingCurrentUser = false;
     },
+    resetToken(state, _) {
+      console.log('slice');
+      state.idToken = null;
+    },
   },
   extraReducers: builder => {
     builder
@@ -83,3 +87,5 @@ export const authReducer = authSlice.reducer;
 export const selectAuthStatus = state => state.auth.isAuthStatus;
 export const selectFetchingCurrentUser = state =>
   state.auth.isFetchingCurrentUser;
+
+export const { resetToken } = authSlice.actions;

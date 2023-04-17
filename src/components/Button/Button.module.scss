@@ -35,6 +35,17 @@
   background-color: transparent;
 }
 
+.disable {
+  composes: button;
+  color: $lightTextColor;
+  background-color: lighten($accentBgnColor, 10%);
+  cursor: auto;
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
 .small {
   width: 180px;
 }
