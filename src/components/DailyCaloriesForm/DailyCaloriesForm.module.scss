@@ -9,13 +9,13 @@
 
   @include tablet-media {
     width: 704px;
-    padding: 100px 32px 50px;
+    padding: 100px 0 50px;
  
   }
 
   @include desktop-media {
     
-     padding: 145px 32px 111px;
+     padding: 145px 0 111px;
   }
 }
 
@@ -25,19 +25,7 @@
   }
 }
 
-div .form_button {
-  display: block;
-  text-align: center;
 
-  @include tablet-media {
-    text-align: left;
-  }
-
-  @include desktop-media {
-    text-align: right;
-    margin-right: 80px;
-  }
-}
 
 .caloriesForm h1 {
   min-width: 280px;
@@ -128,7 +116,7 @@ div .form_button {
   font-weight: normal;
   font-size: 0.75rem;
   line-height: 1.6;
-  color: red;
+  color: rgb(254, 173, 173);
 }
 
 .radioButtonContainer {
@@ -230,9 +218,17 @@ input[type='radio']:checked ~ label {
   color: $accentTextColor;
 }
 .form_button {
-  @include tablet-media {
-    margin-left: 0;
+
+    display: flex;justify-content: center;
+  text-align: center;
+
+  @include tablet-media { display: block;
+    text-align: left;
+  }
+
+  @include desktop-media {
     text-align: right;
+    margin-left: 339px;
   }
 }
 

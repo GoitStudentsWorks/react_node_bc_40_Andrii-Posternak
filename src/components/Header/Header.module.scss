@@ -1,6 +1,7 @@
 @import '../../index.scss';
 
 .header {
+  z-index: 2;
   position: relative;
   border-bottom: solid 1px $decorLine;
 
