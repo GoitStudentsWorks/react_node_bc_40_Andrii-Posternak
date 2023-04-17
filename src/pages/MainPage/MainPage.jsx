@@ -14,10 +14,10 @@ export const MainPage = () => {
   };
   return (
     <div className={styles.mainPage}>
-      {/* <div className="container"> */}
+      <div className="container">
       <DailyCaloriesForm handleModalOpen={handleModalOpen} />
       {isModalOpen && <Modal onClose={onClose} isModalOpen={isModalOpen} />}
     </div>
-    // </div>
+    </div>
   );
 };
