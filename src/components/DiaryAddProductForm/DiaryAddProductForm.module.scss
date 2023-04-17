@@ -134,24 +134,6 @@
   margin-bottom: 60px;
 }
 
-// .fieldRow {
-//   display: flex;
-//   flex-direction: row;
-//   width: 400px;
-//   //
-//   margin-top: 60px;
-
-//   @include tablet-media {
-//     flex-direction: column;
-//     width: 100%;
-//     align-items: center;
-//   }
-// }
-
-// .FieldWeight input::placeholder {
-// text-align: end;
-// }
-
 .Input::placeholder {
   position: relative;
   left: -5px;
@@ -174,8 +156,6 @@
   &:focus {
     box-shadow: $boxShadow;
   }
-
-  // box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
 }
 
 .btnWrap {
@@ -184,13 +164,87 @@
   justify-content: center;
 }
 
-.tWrapper {
-  @include to-tablet-media {
-  }
+.Form :global .MuiAutocomplete-root {
+  width: 100%;
 
   @include tablet-media {
+    width: 240px;
+    margin-right: 22px;
   }
 
   @include desktop-media {
+    margin-right: 48px;
   }
 }
+
+.Form :global .MuiInputBase-root {
+  font-family: 'Verdana';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: calc(17 / 14);
+  letter-spacing: 0.04em;
+  color: $secondaryTextColor;
+
+  height: 48px;
+}
+
+// .Form :global .css-l3ln04-MuiAutocomplete-root .MuiOutlinedInput-root {
+//   padding: 5px;
+// }
+
+// .Form
+//   :global
+//   .css-l3ln04-MuiAutocomplete-root
+//   .MuiOutlinedInput-root
+//   .MuiAutocomplete-input {
+//   padding: 0;
+// }
+
+.Form .FieldWeight :global .MuiInputBase-root {
+  padding: 6px 9px 2px 9px;
+}
+
+.Form .FieldWeight :global .MuiInputBase-input {
+  padding: 7.5px 4px 7.5px 6px;
+  width: 100%;
+}
+
+.Form :global .MuiInputBase-input.Mui-disabled {
+  background-color: $secondaryBgnColor;
+}
+
+.Form :global .MuiOutlinedInput-notchedOutline {
+  border: none;
+  border-bottom: 1px solid $decorLine;
+  border-radius: 0;
+}
+
+.Form
+  :global
+  .css-md26zr-MuiInputBase-root-MuiOutlinedInput-root.Mui-focused
+  .MuiOutlinedInput-notchedOutline {
+  border-bottom: 1px solid $activeDecorLine;
+}
+
+.Form :global .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
+  font-family: 'Verdana';
+  font-weight: 700;
+  font-size: 14px;
+  line-height: calc(17 / 14);
+  letter-spacing: 0.04em;
+  color: $mainTextColor;
+}
+
+.Form :global .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: $mainTextColor;
+}
+
+// MuiAutocomplete-root css-l3ln04-MuiAutocomplete-root  MuiFocused
+// MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root    MuiFocused
+// MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiAutocomplete-inputRoot css-md26zr-MuiInputBase-root-MuiOutlinedInput-root  Mui-disabled
+//MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputTypeSearch MuiAutocomplete-input MuiAutocomplete-inputFocused css-1g24dm6-MuiInputBase-input-MuiOutlinedInput-input
+//MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline
+//css-ihdtdm
+//notranslate
+
+//MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined MuiFormLabel-colorPrimary Mui-required MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root
