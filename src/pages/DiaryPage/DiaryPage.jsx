@@ -19,7 +19,7 @@ export const DiaryPage = () => {
 
   useEffect(() => {
     dispatch(getEatenProducts(currentDate));
-  }, [dispatch, currentDate]);
+  });
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
