@@ -2,7 +2,7 @@ import scss from './Modal.module.scss';
 import { Button } from 'components/Button/Button';
 import { GrClose } from 'react-icons/gr';
 import { createPortal } from 'react-dom';
-// import { Loader } from 'components/Loader/Loader';
+
 import { useEffect } from 'react';
 import { useWindowSize } from 'react-use';
 import { useSelector } from 'react-redux';
@@ -22,8 +22,6 @@ export const Modal = ({ onClose, isModalOpen }) => {
   const notRecFood = useSelector(selectNotRecFood);
   const isLoading = useSelector(selectIsLoadingCalorie);
 
-  // console.log('calorieNorm :', calorieNorm);
-  // console.log('notRecFood :', notRecFood);
   const { width } = useWindowSize();
 
   const handleBackdropClick = event => {
@@ -50,10 +48,6 @@ export const Modal = ({ onClose, isModalOpen }) => {
   return createPortal(
     <>
       <div className={scss.overlay} onClick={handleBackdropClick}>
-        {/* {error && <p> Oops, some error occured... Message: {error}</p>} */}
-        {/* {isLoading === 'pending' ? (
-          <Loader />
-        ) : ( */}
         <div className={scss.modal}>
           {width < 768 ? (
             <div className={scss.btnContainer}>
@@ -73,7 +67,7 @@ export const Modal = ({ onClose, isModalOpen }) => {
                 <div className={scss.caloriesContainer}>
                   <span className={scss.calories}>
                     {calorieNorm}
-                    {/* 2000 */}
+
                     <span className={scss.caloriesText}> ккал</span>
                   </span>
                 </div>
@@ -89,20 +83,22 @@ export const Modal = ({ onClose, isModalOpen }) => {
                         </li>
                       ))}
                   </ul>
+                  <div className={scss.btnWrap}>
+                    <NavLink to={routes.login}>
+                      <Button
+                        size={'large'}
+                        mainStyle={'active'}
+                        type={'button'}
+                      >
+                        Start losing weight
+                      </Button>
+                    </NavLink>
+                  </div>
                 </div>
-              </div>
-              <div className={scss.btnWrap}>
-                <NavLink to={routes.login}>
-                  <Button size={'large'} mainStyle={'active'} type={'button'}>
-                    {/* Replace */}
-                    Start losing weight
-                  </Button>
-                </NavLink>
               </div>
             </>
           )}
         </div>
-        {/* )} */}
       </div>
     </>,
     modalRoot

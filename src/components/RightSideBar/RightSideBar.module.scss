@@ -9,10 +9,10 @@
     flex-direction: row;
     gap: 100px;
   }
-  //  @include desktop-media {
-  //     flex-direction: row;
-  //     gap: 100px;
-  //   }
+   @include desktop-media {
+      flex-direction: column;
+      gap: 100px;
+    }
 }
 
 .heading {
@@ -43,10 +43,10 @@
   composes: list;
 
   height: 112px;
-  overflow-y: scroll;
+  overflow: scroll;
 
   &::-webkit-scrollbar-track {
-    background-color: transparent;
+    background-color: darken($secondaryBgnColor, 7%);
     border-radius: 2px;
   }
 
@@ -56,12 +56,12 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $accentBgnColor;
+    background-color: $mobileMenuBgnColor;
     border-radius: 5px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: $accentBgnColor;
+    background: $mobileMenuBgnColor;
   }
 }
 

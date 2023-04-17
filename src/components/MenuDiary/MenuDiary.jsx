@@ -10,7 +10,7 @@ export const MenuDiary = memo(({ onClick }) => {
       <div className={style.modal}>
         <div className={style.list}>
           <button className={style.btn} onClick={onClick}>
-            <TbArrowBack />
+            <TbArrowBack className={style.icon} />
           </button>
           <DiaryAddProductForm />
         </div>

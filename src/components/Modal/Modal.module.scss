@@ -11,46 +11,88 @@
   align-items: center;
   background-color: rgba(33, 33, 33, 0.12);
   z-index: 1200;
+
+  @include tablet-media {
+    top: 0;
+  }
 }
 
 .btnContainer {
   background-color: $secondaryBgnColor;
   width: 100%;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  // padding-top: 20px;
+  // padding-bottom: 20px;
 }
 
 .modal {
   position: absolute;
-  top: 0;
+  top: 37px;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: $mainBgnColor;
+
+  @media screen and (max-width: 767px) {
+    padding-top: 40px;
+  }
+
+  @include tablet-media {
+    max-width: 672px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    padding: 64px 82px;
+    height: 572px;
+  }
 }
 
 .title {
+  // font-weight: 700;
   font-size: 18px;
-  font-weight: 700;
   line-height: calc(25 / 18);
   text-align: center;
-  padding-bottom: 42px;
+  // padding-bottom: 42px;
+  margin-bottom: 42px;
   color: $secondaryTextColor;
+
+  @include tablet-media {
+    font-size: 26px;
+    line-height: calc(36 / 26);
+    margin-bottom: 20px;
+  }
 }
 
 .modalContainer {
-  padding: 40px 20px 0 20px;
+  // padding: 40px 20px 0 20px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 320px;
+  padding: 0 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include tablet-media {
+    width: 330px;
+    padding: 0;
+  }
 }
 
 .icon {
   position: absolute;
-  top: 11px;
-  left: 20px;
+  top: -27px;
+  left: 203px;
 
   height: 20px;
   width: 20px;
+
+  color: black;
+
+  &:hover {
+    color: $accentBgnColor;
+  }
 }
 
 .closeIcon {
@@ -73,6 +115,12 @@
   margin-bottom: 20px;
   margin-left: 89px;
   margin-right: 89px;
+  padding-bottom: 32px;
+  width: 100%;
+
+  @include tablet-media {
+    margin-bottom: 12px;
+  }
 }
 
 .calories {
@@ -80,13 +128,13 @@
   font-size: 48px;
   color: $darkTextColor;
   display: block;
-  padding-bottom: 38px;
+  // padding-bottom: 38px;
   text-align: center;
   line-height: calc(57 / 48);
 }
 
 .caloriesText {
-  padding-bottom: 38px;
+  // padding-bottom: 38px;
   text-align: center;
   font-size: 16px;
   line-height: calc(19 / 16);
@@ -98,7 +146,7 @@
   line-height: calc(17 / 14);
   margin-bottom: 20px;
   text-align: center;
-  margin-top: -8px;
+  // margin-top: -8px;
   color: $secondaryTextColor;
 }
 
@@ -108,8 +156,9 @@
 }
 
 .list {
-  height: 100px;
-  padding-left: 20px;
+  height: 130px;
+  // padding-left: 20px;
+  // margin-bottom: 40px;
   margin-bottom: 40px;
   display: flex;
 
@@ -117,8 +166,12 @@
   gap: 10px;
   overflow-y: scroll;
 
+  // @include tablet-media {
+  //   margin-bottom: 15px;
+  // }
+
   &::-webkit-scrollbar-track {
-    background-color: transparent;
+    background-color: $secondaryBgnColor;
     border-radius: 2px;
   }
 
@@ -128,59 +181,49 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $accentBgnColor;
+    background-color: $mobileMenuBgnColor;
     border-radius: 5px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: $accentBgnColor;
+    background: $mobileMenuBgnColor;
   }
 }
 
 .listItem {
-  font-weight: 800;
+  font-weight: 400;
   font-size: 14px;
   line-height: calc(17 / 14);
+  letter-spacing: 0.04em;
   color: $mainTextColor;
 }
 
-@include tablet-media {
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .modal {
-    max-width: 672px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    padding: 64px 82px;
-    height: 572px;
-  }
-
-  .btnWrap {
-    display: flex;
-    justify-content: center;
-    //  margin-left: auto;
-    //  margin-right: auto;
-  }
-
-  .title {
-    font-weight: 700;
-    font-size: 26px;
-    line-height: calc(36 / 26);
-  }
-
-  .modalContainer {
-    padding: 0;
-  }
+.btnWrap {
+  display: flex;
+  justify-content: center;
 }
 
-.listCenter {
-  margin: auto;
-  margin-left: 89px;
-}
+// @include tablet-media {
+//   .overlay {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//   }
+
+//   .modal {
+//     max-width: 672px;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%) scale(1);
+//     padding: 64px 82px;
+//     height: 572px;
+//   }
+
+//   .title {
+//     font-weight: 700;
+//     font-size: 26px;
+//     line-height: calc(36 / 26);
+//   }
+// }

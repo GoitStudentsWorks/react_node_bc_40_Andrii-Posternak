@@ -41,9 +41,12 @@
 
 .large {
   width: 210px;
-margin-top: 25px;
-    @include desktop-media {
-   
-  margin-left: 339px;
-}
+  // margin-top: 25px;
+  //   margin: auto;
+  //   @include tablet-media  {
+  //    margin: 25px 0 0;
+  //     }
+  //     @include desktop-media {
+  //   margin-left: 339px;
+  // }
 }

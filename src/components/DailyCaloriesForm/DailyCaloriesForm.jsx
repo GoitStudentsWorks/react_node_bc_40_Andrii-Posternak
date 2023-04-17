@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthStatus } from 'redux/auth/authSlice';
 import { getCalorie } from 'redux/dailyCalorie/dailyCalorieOperations';
 import { getCalorieAuth } from 'redux/dailyCalorie/dailyCalorieOperations';
+import { useNavigate } from 'react-router-dom';
+import { routes } from 'utils/routes';
 
 export const DailyCaloriesForm = ({ handleModalOpen }) => {
   const InputField = ({ label, type, value, name, onChange, onBlur }) => (
@@ -41,6 +43,7 @@ export const DailyCaloriesForm = ({ handleModalOpen }) => {
     </li>
   );
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const authStatus = useSelector(selectAuthStatus);
 
   return (
@@ -61,6 +64,7 @@ export const DailyCaloriesForm = ({ handleModalOpen }) => {
 
           if (authStatus) {
             dispatch(getCalorieAuth(allValue));
+            navigate(routes.diary);
           } else {
             dispatch(getCalorie(allValue));
             handleModalOpen();
@@ -89,7 +93,7 @@ export const DailyCaloriesForm = ({ handleModalOpen }) => {
                 <div className={styles.labelContainer}>
                   <InputField
                     label="Height *"
-                    type="number"
+                    type="text"
                     name={'height'}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -106,7 +110,7 @@ export const DailyCaloriesForm = ({ handleModalOpen }) => {
                 <div className={styles.labelContainer}>
                   <InputField
                     label="Age *"
-                    type="number"
+                    type="text"
                     name={'age'}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -121,7 +125,7 @@ export const DailyCaloriesForm = ({ handleModalOpen }) => {
                 <div className={styles.labelContainer}>
                   <InputField
                     label="Current weight *"
-                    type="number"
+                    type="text"
                     name={'currentWeight'}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -140,7 +144,7 @@ export const DailyCaloriesForm = ({ handleModalOpen }) => {
                 <div className={styles.labelContainer}>
                   <InputField
                     label="Desired weight *"
-                    type="number"
+                    type="text"
                     name={'desiredWeight'}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -198,17 +202,12 @@ export const DailyCaloriesForm = ({ handleModalOpen }) => {
               </div>
             </div>
             <div className={styles.form_button}>
-              <Button
-                size={'large'}
-                mainStyle={'active'}
-                type={'submit'}
-                // handleClick={''}
-              >
+              <Button size={'large'} mainStyle={'active'} type={'submit'}>
                 Start losing weight
               </Button>
             </div>
 
-            <PersistFormikValues name="calc-form" ignoreValues="bloodType" />
+            <PersistFormikValues name="calc-form" />
           </Form>
         )}
       </Formik>
