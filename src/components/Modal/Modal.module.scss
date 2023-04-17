@@ -83,6 +83,10 @@
 
   height: 20px;
   width: 20px;
+
+  &:hover {
+    color: $accentBgnColor;
+  }
 }
 
 .closeIcon {
