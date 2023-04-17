@@ -26,15 +26,14 @@
 }
 
 .SidebarWrap {
-   margin: 0 auto;
+  margin: 0 auto;
   padding: 40px 20px;
   display: flex;
   flex-direction: column;
-  gap: 60px;  
-   @include to-tablet-media {
-   width: 320px;
+  gap: 60px;
+  @media screen and (max-width: 767px) {
+    width: 320px;
   }
-
 
   @include tablet-media {
         width: 768px;
