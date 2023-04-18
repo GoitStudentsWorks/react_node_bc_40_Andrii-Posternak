@@ -1,29 +1,17 @@
-// @import '../../index.scss';
 @import 'stylesheet/_mixins.scss';
 @import 'stylesheet/_vars.scss';
 @import 'stylesheet/_fonts.scss';
 
-.tWrapper {
-  @include to-tablet-media {
-  }
-
-  @include tablet-media {
-  }
-
-  @include desktop-media {
-  }
-}
 .Item {
   display: flex;
   flex-direction: row;
   align-items: center;
   width: 100%;
   height: 44px;
-  // padding: 0 40px 0 0;
   color: $secondaryTextColor;
+
   @include tablet-media {
     height: 52px;
-    // padding-right: 0;
   }
 }
 

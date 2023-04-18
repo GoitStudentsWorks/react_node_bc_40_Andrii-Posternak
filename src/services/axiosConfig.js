@@ -14,9 +14,6 @@ axios.defaults.baseURL = 'https://slim-mom-backend-tf5k.onrender.com/api';
 // export * from './dailyFoodApi';
 // export * from './userApi';
 
-// const navigate = useNavigate();
-// navigate(routes.login);
-
 export const setToken = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
@@ -43,7 +40,6 @@ axios.interceptors.response.use(
       store.dispatch(resetToken());
       unsetToken();
       const path = history.location.path;
-      // history.go('/slim-mom-frontend/login');
       history.go(`${path}${routes.login}`);
     }
     return Promise.reject(error);

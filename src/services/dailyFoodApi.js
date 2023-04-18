@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-// axios.defaults.baseURL = 'https://slim-mom-backend-tf5k.onrender.com/api';
-
 export const getProductsFromDBApi = async productName => {
   const response = await axios.get('/products', { params: { productName } });
   return response.data;

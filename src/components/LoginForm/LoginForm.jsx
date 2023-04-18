@@ -73,10 +73,6 @@ export const LoginForm = () => {
           <Button
             type="submit"
             mainStyle="active"
-            // handleClick={e => {
-            //   e.preventDefault();
-            //   console.log('login');
-            // }}
           >
             Log in
           </Button>

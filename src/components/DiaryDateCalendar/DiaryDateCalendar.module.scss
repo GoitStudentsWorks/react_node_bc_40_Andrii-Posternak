@@ -1,8 +1,7 @@
-// @import '../../index.scss';
 @import 'stylesheet/_mixins.scss';
 @import 'stylesheet/_vars.scss';
-.calendar_box{
-  @include to-tablet-media{
+.calendar_box {
+  @include to-tablet-media {
     margin-top: 80px;
   }
 }
@@ -42,9 +41,6 @@ input[type='date']::-webkit-calendar-picker-indicator {
     margin-top: 100px;
   }
 
-  // @include to-tablet-media {
-  //   margin-top: 80px;
-  // }
   @include desktop-media {
     margin-top: 147px;
   }

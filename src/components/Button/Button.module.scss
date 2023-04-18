@@ -1,5 +1,3 @@
-// @import '../../index.scss';
-// @import 'stylesheet/_mixins.scss';
 @import 'stylesheet/_vars.scss';
 
 .button {
@@ -54,12 +52,4 @@
 
 .large {
   width: 210px;
-  // margin-top: 25px;
-  //   margin: auto;
-  //   @include tablet-media  {
-  //    margin: 25px 0 0;
-  //     }
-  //     @include desktop-media {
-  //   margin-left: 339px;
-  // }
 }

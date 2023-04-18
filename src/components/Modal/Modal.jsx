@@ -68,7 +68,7 @@ export const Modal = ({ onClose, isModalOpen }) => {
                   <span className={scss.calories}>
                     {calorieNorm}
 
-                    <span className={scss.caloriesText}> ккал</span>
+                    <span className={scss.caloriesText}> kcal</span>
                   </span>
                 </div>
                 <div className={scss.listCenter}>
