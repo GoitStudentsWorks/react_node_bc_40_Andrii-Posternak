@@ -28,6 +28,9 @@ const authSlice = createSlice({
       console.log('slice');
       state.idToken = null;
     },
+    clearError(state, _) {
+      state.error = null;
+    },
   },
   extraReducers: builder => {
     builder
@@ -88,4 +91,4 @@ export const selectAuthStatus = state => state.auth.isAuthStatus;
 export const selectFetchingCurrentUser = state =>
   state.auth.isFetchingCurrentUser;
 
-export const { resetToken } = authSlice.actions;
+export const { resetToken, clearError } = authSlice.actions;

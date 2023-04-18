@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import Notiflix from 'notiflix';
 
 import { Button } from 'components/Button/Button';
 import styles from './LoginForm.module.scss';
@@ -9,12 +8,12 @@ import { routes } from 'utils/routes';
 import { loginSchema } from 'helpers/validation';
 import { loginUser } from 'redux/auth/authOperations';
 import { Loader } from 'components/Loader/Loader';
+import { clearError } from 'redux/auth/authSlice';
 
 export const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const error = useSelector(state => state.auth.error);
   const isLoading = useSelector(state => state.auth.isLoading);
 
   const { handleSubmit, errors, handleChange, values, submitCount } = useFormik(
@@ -24,10 +23,8 @@ export const LoginForm = () => {
         password: '',
       },
       onSubmit: values => {
+        dispatch(clearError());
         dispatch(loginUser(values));
-        if (error) {
-          Notiflix.Notify.failure(`Email or password is wrong. Try again`);
-        }
       },
       validationSchema: loginSchema,
     }
