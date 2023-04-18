@@ -98,7 +98,7 @@ export const DiaryAddProductForm = () => {
         </div>
 
         <div>
-          {width > 768 ? (
+          {width >= 768 ? (
             <button
               className={!showElem(currentDate) ? s.btnDisable : s.btn}
               type="submit"

@@ -19,7 +19,7 @@ export const DiaryProductsList = () => {
   };
 
   return (
-    <div>
+    <>
       {eatenProducts?.length > 0 ? (
         <ul className={s.filteredList}>
           {[...eatenProducts]
@@ -45,6 +45,6 @@ export const DiaryProductsList = () => {
           )}
         </>
       )}
-    </div>
+    </>
   );
 };

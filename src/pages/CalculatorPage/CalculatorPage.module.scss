@@ -2,9 +2,8 @@
 @import 'stylesheet/_vars.scss';
 
 .calculatorPage {
-  @include to-tablet-media {
-    padding-top: 42px;
-  }
+  padding-top: 42px;
+
   @include desktop-media {
     display: flex;
   }

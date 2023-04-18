@@ -39,7 +39,7 @@ export const DiaryPage = () => {
     <>
       <div className="container ">
         <DiaryDateCalendar />
-        {width > 768 ? <DiaryAddProductForm /> : ''}
+        {width >= 768 ? <DiaryAddProductForm /> : ''}
         <DiaryProductsList />
         <div className={scss.wrapperBtn}>
           {isMobile && (

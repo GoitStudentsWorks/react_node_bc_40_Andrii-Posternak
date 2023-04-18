@@ -6,6 +6,13 @@
   height: 220px;
   overflow-y: scroll;
   overflow-x: hidden;
+  margin-bottom: 60px;
+
+  @include tablet-media {
+    max-width: 610px;
+    max-height: 260px;
+    margin-bottom: 55px;
+  }
 
   &::-webkit-scrollbar-track {
     background-color: transparent;
@@ -24,19 +31,6 @@
 
   &::-webkit-scrollbar-thumb:hover {
     background: $mobileMenuBgnColor;
-  }
-
-  @include to-tablet-media {
-    margin-bottom: 60px;
-  }
-
-  @include tablet-media {
-    max-width: 610px;
-    max-height: 260px;
-  }
-
-  @include desktop-media {
-    margin-bottom: 55px;
   }
 }
 

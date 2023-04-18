@@ -1,10 +1,16 @@
 @import 'stylesheet/_mixins.scss';
 @import 'stylesheet/_vars.scss';
+
 .calendar_box {
-  @include to-tablet-media {
-    margin-top: 80px;
+  // @include to-tablet-media {
+  //   margin-top: 80px;
+  // }
+  margin-top: 80px;
+  @include tablet-media {
+    margin-top: 0;
   }
 }
+
 input[type='date'] {
   background: transparent;
   color: white;
