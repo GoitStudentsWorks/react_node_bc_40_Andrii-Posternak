@@ -45,7 +45,13 @@
     max-height: 260px;
   }
 
-  @include desktop-media{
+  @include desktop-media {
     margin-bottom: 55px;
+  }
+}
+
+.notification {
+  @media screen and (max-width: 1279px) {
+    padding-bottom: 60px;
   }
 }
