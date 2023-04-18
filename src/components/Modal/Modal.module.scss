@@ -83,7 +83,7 @@
 .icon {
   position: absolute;
   top: -27px;
-  left: 203px;
+  left: calc((100vw - 280px) / 2);
 
   height: 20px;
   width: 20px;

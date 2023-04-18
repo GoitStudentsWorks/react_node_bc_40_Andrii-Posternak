@@ -4,8 +4,8 @@
   @include centeredFlex($jusCon: flex-start);
   flex-direction: column;
 
-  // position: absolute;
-  position: fixed;
+  position: absolute;
+  // position: fixed;
 
   left: 0;
   top: 123px;

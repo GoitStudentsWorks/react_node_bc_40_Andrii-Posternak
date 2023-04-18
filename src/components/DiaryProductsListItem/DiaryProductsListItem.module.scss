@@ -47,18 +47,16 @@
     margin-right: 8px;
   }
 
-  @include tablet-media{
+  @include tablet-media {
     margin-right: 22px;
   }
 
-     @include desktop-media {
-       margin-right: 48px;
-     }
+  @include desktop-media {
+    margin-right: 48px;
+  }
 }
 
 .Weight {
-  
-
   height: 100%;
   width: 107px;
 
@@ -67,8 +65,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 52px;
-
-  text-align: right;
+  text-align: center;
 
   white-space: nowrap;
   overflow: hidden;
@@ -80,13 +77,13 @@
     margin-right: 8px;
   }
 
-    @include tablet-media{
+  @include tablet-media {
     margin-right: 46px;
   }
 
-     @include desktop-media {
-       margin-right: 32px;
-     }
+  @include desktop-media {
+    margin-right: 32px;
+  }
 }
 
 .Calories {
@@ -101,7 +98,7 @@
   font-size: 14px;
   line-height: 52px;
   color: #212121;
-  text-align: right;
+  text-align: center;
 
   white-space: nowrap;
   overflow: hidden;
