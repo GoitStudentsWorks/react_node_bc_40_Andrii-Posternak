@@ -26,18 +26,20 @@ export const DiaryDateCalendar = () => {
   const getCurrentDate = currentDate.split('.').reverse().join('-');
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DatePicker
-        className={s.inputCalendar}
-        format="DD.MM.YYYY"
-        value={dayjs(getCurrentDate)}
-        label="Custom input"
-        slots={{
-          textField: BrowserInput,
-        }}
-        style={{ fontSize: '26px' }}
-        onChange={handleChangeDate}
-      />
-    </LocalizationProvider>
+    <div className={s.calendar_box}>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DatePicker
+          className={s.inputCalendar}
+          format="DD.MM.YYYY"
+          value={dayjs(getCurrentDate)}
+          label="Custom input"
+          slots={{
+            textField: BrowserInput,
+          }}
+          style={{ fontSize: '26px' }}
+          onChange={handleChangeDate}
+        />
+      </LocalizationProvider>
+    </div>
   );
 };
