@@ -25,6 +25,14 @@ export const DiaryPage = () => {
 
   const isToggle = () => {
     setIsMenuOpen(state => !state);
+
+    const body = document.querySelector('body');
+
+    if (!isMenuOpen) {
+      body.classList.add('body__overflow');
+    } else {
+      body.classList.remove('body__overflow');
+    }
   };
 
   return (
