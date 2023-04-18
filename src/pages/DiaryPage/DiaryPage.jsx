@@ -29,12 +29,12 @@ export const DiaryPage = () => {
 
   return (
     <>
-      <div className="container">
-        <div className={scss.container}>
-          <DiaryDateCalendar />
-          {width > 768 ? <DiaryAddProductForm /> : ''}
-          <DiaryProductsList />
-        </div>
+      <div className="container ">
+        {/* <div className={scss.page_container}> */}
+        <DiaryDateCalendar />
+        {width > 768 ? <DiaryAddProductForm /> : ''}
+        <DiaryProductsList />
+        {/* </div> */}
         <div className={scss.wrapperBtn}>
           {isMobile && (
             <button className={scss.btn} type="button" onClick={isToggle}>

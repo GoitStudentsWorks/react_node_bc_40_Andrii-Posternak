@@ -15,6 +15,7 @@
   padding-left: 5px;
   height: 220px;
   overflow-y: scroll;
+  overflow-x: hidden;
 
   &::-webkit-scrollbar-track {
     background-color: transparent;
@@ -42,5 +43,9 @@
   @include tablet-media {
     max-width: 610px;
     max-height: 260px;
+  }
+
+  @include desktop-media{
+    margin-bottom: 55px;
   }
 }
