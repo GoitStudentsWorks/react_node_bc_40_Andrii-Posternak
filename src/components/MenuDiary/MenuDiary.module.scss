@@ -1,4 +1,6 @@
-@import '../../index.scss';
+// @import '../../index.scss';
+@import 'stylesheet/_mixins.scss';
+@import 'stylesheet/_vars.scss';
 
 .modal {
   @include centeredFlex($jusCon: flex-start);
