@@ -19,35 +19,27 @@ export const DiaryDateCalendar = () => {
   const dispatch = useDispatch();
   const handleChangeDate = value => {
     const selectedDay = moment(value.$d).format('DD.MM.YYYY');
-    // dispatch(setDate(moment(value.$d).format('YYYY-MM-DD')));
     dispatch(getEatenProducts(selectedDay));
     dispatch(changeDate(selectedDay));
   };
 
-  // const getCurrentDate = () => {
-  //   const dateObj = new Date();
-  //   const year = dateObj.getFullYear();
-  //   const month = ('0' + (dateObj.getMonth() + 1)).slice(-2);
-  //   const day = ('0' + dateObj.getDate()).slice(-2);
-  //   return `${year}-${month}-${day}`;
-  // };
-
   const getCurrentDate = currentDate.split('.').reverse().join('-');
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DatePicker
-        className={s.inputCalendar}
-        format="DD.MM.YYYY"
-        // defaultValue={dayjs(getCurrentDate())}
-        value={dayjs(getCurrentDate)}
-        label="Custom input"
-        slots={{
-          textField: BrowserInput,
-        }}
-        style={{ fontSize: '26px' }}
-        onChange={handleChangeDate}
-      />
-    </LocalizationProvider>
+    <div className={s.calendar_box}>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DatePicker
+          className={s.inputCalendar}
+          format="DD.MM.YYYY"
+          value={dayjs(getCurrentDate)}
+          label="Custom input"
+          slots={{
+            textField: BrowserInput,
+          }}
+          style={{ fontSize: '26px' }}
+          onChange={handleChangeDate}
+        />
+      </LocalizationProvider>
+    </div>
   );
 };

@@ -66,7 +66,7 @@ export const DiaryAddProductForm = () => {
           onChange={(e, v) => {
             setProduct(v);
           }}
-          options={searchedProduct.map(option => option.title.ua)}
+          options={searchedProduct.map(option => option.title.en)}
           renderInput={params => (
             <TextField
               {...params}
@@ -98,9 +98,9 @@ export const DiaryAddProductForm = () => {
         </div>
 
         <div>
-          {width > 768 ? (
+          {width >= 768 ? (
             <button
-              className={s.btn}
+              className={!showElem(currentDate) ? s.btnDisable : s.btn}
               type="submit"
               disabled={!showElem(currentDate)}
             >
@@ -108,7 +108,11 @@ export const DiaryAddProductForm = () => {
             </button>
           ) : (
             <div className={s.btnWrap}>
-              <Button mainStyle="active" type="submit">
+              <Button
+                disabled={!showElem(currentDate)}
+                mainStyle={!showElem(currentDate) ? 'disable' : 'active'}
+                type="submit"
+              >
                 Add
               </Button>
             </div>

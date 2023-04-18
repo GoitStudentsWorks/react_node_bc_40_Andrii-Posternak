@@ -1,20 +1,20 @@
-@import '../../index.scss';
+@import 'stylesheet/_mixins.scss';
+@import 'stylesheet/_vars.scss';
 
-.container {
-  // max-width: 763px;
-  // margin: 0;
 
-  // @include to-tablet-media {
+
+.page_container{
+  width: 100px;
+}
+
+.container_ {
   padding: 80px 0 60px;
-  // }
 
   @include tablet-media {
-    // padding: 100px 126px 55px 32px;
     padding: 100px 32px 55px;
   }
 
   @include desktop-media {
-    // padding: 147px 124px 55px 16px;
     padding: 147px 0 55px;
   }
 }
@@ -26,14 +26,22 @@
   border-radius: 50%;
   border: none;
   color: $mainBgnColor;
-  background: $activeDecorLine;
+  background: $accentBgnColor;
 
   &:hover,
   &:focus {
     box-shadow: $boxShadow;
   }
+}
 
-  // box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+.btnDisable {
+  composes: btn;
+  background-color: lighten($accentBgnColor, 10%);
+  cursor: auto;
+
+  &:hover {
+    box-shadow: none;
+  }
 }
 
 .wrapperBtn {

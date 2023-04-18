@@ -7,9 +7,15 @@ import styles from './RegistrationForm.module.scss';
 import { routes } from 'utils/routes';
 import { registerSchema } from 'helpers/validation';
 import { registerUserApi } from 'services/authApi';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from 'redux/auth/authOperations';
+import { Loader } from 'components/Loader/Loader';
 
 export const RegistrationForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const isLoading = useSelector(state => state.auth.isLoading);
 
   const { handleSubmit, errors, handleChange, values, submitCount } = useFormik(
     {
@@ -21,7 +27,9 @@ export const RegistrationForm = () => {
       onSubmit: async (values, { setFieldError }) => {
         try {
           await registerUserApi(values);
-          navigate(routes.login, { replace: true });
+          dispatch(
+            loginUser({ email: values.email, password: values.password })
+          );
           Notiflix.Notify.success('Registration has been successful');
         } catch (error) {
           const serverResponse = error.response.data;
@@ -36,6 +44,7 @@ export const RegistrationForm = () => {
   return (
     <>
       <p className={styles.heading}>Register</p>
+      {isLoading && <Loader />}
       <form onSubmit={handleSubmit}>
         <div className={styles.formWrapper}>
           <label className={styles.label}>

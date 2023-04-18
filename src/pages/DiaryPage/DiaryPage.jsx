@@ -19,22 +19,28 @@ export const DiaryPage = () => {
 
   useEffect(() => {
     dispatch(getEatenProducts(currentDate));
-  }, [dispatch, currentDate]);
+  });
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const isToggle = () => {
     setIsMenuOpen(state => !state);
+
+    const body = document.querySelector('body');
+
+    if (!isMenuOpen) {
+      body.classList.add('body__overflow');
+    } else {
+      body.classList.remove('body__overflow');
+    }
   };
 
   return (
     <>
-      <div className="container">
-        <div className={scss.container}>
-          <DiaryDateCalendar />
-          {width > 768 ? <DiaryAddProductForm /> : ''}
-          <DiaryProductsList />
-        </div>
+      <div className="container ">
+        <DiaryDateCalendar />
+        {width >= 768 ? <DiaryAddProductForm /> : ''}
+        <DiaryProductsList />
         <div className={scss.wrapperBtn}>
           {isMobile && (
             <button className={scss.btn} type="button" onClick={isToggle}>

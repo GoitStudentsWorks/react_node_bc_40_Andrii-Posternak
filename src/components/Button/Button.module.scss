@@ -1,4 +1,4 @@
-@import '../../index.scss';
+@import 'stylesheet/_vars.scss';
 
 .button {
   display: flex;
@@ -35,18 +35,21 @@
   background-color: transparent;
 }
 
+.disable {
+  composes: button;
+  color: $lightTextColor;
+  background-color: lighten($accentBgnColor, 10%);
+  cursor: auto;
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
 .small {
   width: 180px;
 }
 
 .large {
   width: 210px;
-  // margin-top: 25px;
-  //   margin: auto;
-  //   @include tablet-media  {
-  //    margin: 25px 0 0;
-  //     }
-  //     @include desktop-media {
-  //   margin-left: 339px;
-  // }
 }

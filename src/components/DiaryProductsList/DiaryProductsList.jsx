@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { nanoid } from 'nanoid';
 import { deleteEatenProduct } from 'redux/dailyFood/dailyFoodOperations';
 import {
   selectCurrentDate,
@@ -20,14 +19,14 @@ export const DiaryProductsList = () => {
   };
 
   return (
-    <div>
+    <>
       {eatenProducts?.length > 0 ? (
         <ul className={s.filteredList}>
           {[...eatenProducts]
             .sort((a, b) => b.date.localeCompare(a.date))
             .map(product => (
               <DiaryProductsListItem
-                key={nanoid()}
+                key={product._id}
                 product={product}
                 handleDeleteProduct={handleDeleteProduct}
               />
@@ -46,6 +45,6 @@ export const DiaryProductsList = () => {
           )}
         </>
       )}
-    </div>
+    </>
   );
 };

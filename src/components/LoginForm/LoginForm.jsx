@@ -1,16 +1,20 @@
 import { useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Button } from 'components/Button/Button';
 import styles from './LoginForm.module.scss';
 import { routes } from 'utils/routes';
 import { loginSchema } from 'helpers/validation';
 import { loginUser } from 'redux/auth/authOperations';
+import { Loader } from 'components/Loader/Loader';
+import { clearError } from 'redux/auth/authSlice';
 
 export const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const isLoading = useSelector(state => state.auth.isLoading);
 
   const { handleSubmit, errors, handleChange, values, submitCount } = useFormik(
     {
@@ -19,6 +23,7 @@ export const LoginForm = () => {
         password: '',
       },
       onSubmit: values => {
+        dispatch(clearError());
         dispatch(loginUser(values));
       },
       validationSchema: loginSchema,
@@ -28,6 +33,7 @@ export const LoginForm = () => {
   return (
     <>
       <p className={styles.heading}>Log in</p>
+      {isLoading && <Loader />}
       <form onSubmit={handleSubmit} className={styles.caloriesForm}>
         <div className={styles.formWrapper}>
           <label className={styles.labelText}>
@@ -67,10 +73,6 @@ export const LoginForm = () => {
           <Button
             type="submit"
             mainStyle="active"
-            // handleClick={e => {
-            //   e.preventDefault();
-            //   console.log('login');
-            // }}
           >
             Log in
           </Button>

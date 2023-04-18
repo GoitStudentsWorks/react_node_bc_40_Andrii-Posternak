@@ -1,4 +1,5 @@
-@import '../../index.scss';
+@import 'stylesheet/_mixins.scss';
+@import 'stylesheet/_vars.scss';
 
 .caloriesForm {
   width: 100%;
@@ -10,12 +11,10 @@
   @include tablet-media {
     width: 704px;
     padding: 100px 0 50px;
- 
   }
 
   @include desktop-media {
-    
-     padding: 145px 0 111px;
+    padding: 145px 0 111px;
   }
 }
 
@@ -24,8 +23,6 @@
     padding-top: 293px;
   }
 }
-
-
 
 .caloriesForm h1 {
   min-width: 280px;
@@ -218,11 +215,12 @@ input[type='radio']:checked ~ label {
   color: $accentTextColor;
 }
 .form_button {
-
-    display: flex;justify-content: center;
+  display: flex;
+  justify-content: center;
   text-align: center;
 
-  @include tablet-media { display: block;
+  @include tablet-media {
+    display: block;
     text-align: left;
   }
 

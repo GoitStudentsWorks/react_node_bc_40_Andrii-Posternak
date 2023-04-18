@@ -1,4 +1,5 @@
-@import '../../index.scss';
+@import 'stylesheet/_mixins.scss';
+@import 'stylesheet/_vars.scss';
 
 .icon {
   width: 23px;
@@ -9,37 +10,20 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start !important;
-  // padding-top: 80px;
-  // padding-left: 20px;
-  // padding-right: 20px !important;
-  // width: calc(100% - 517px);
   width: 100%;
   margin-top: 80px;
-  // padding: 0 20px;
-
   margin-bottom: 69px;
 
   @include tablet-media {
     flex-direction: row;
     align-items: center;
     margin-top: 0;
-    // margin-top: 100px;
-    // padding-top: 0;
-    // padding-left: 32px;
-    // padding-right: 0;
   }
 
   @include desktop-media {
-    // margin-top: 60px;
-    // padding-left: 16px;
   }
 
   @include to-tablet-media {
-    // flex-direction: column;
-    // width: 100%;
-    // margin-top: 80px;
-    // margin-bottom: 60px;
-    // padding: 0 20px;
   }
 }
 
@@ -62,7 +46,7 @@
   @include tablet-media {
     margin-top: 0;
     margin-bottom: 0;
-    margin-right: 67px;
+    margin-right: 87px;
     width: 107px;
   }
 
@@ -81,7 +65,6 @@
   border-bottom: 1px solid #e0e0e0;
   color: #212121;
   outline: none;
-  // margin-bottom: 60px;
 
   @include tablet-media {
     margin-bottom: 0;
@@ -96,17 +79,6 @@
   &:valid ~ label {
     top: 0px;
   }
-
-  // &::-webkit-outer-spin-button,
-  // &::-webkit-inner-spin-button {
-  //   -webkit-appearance: none;
-  //   margin: 0;
-  //   padding: 10px;
-  // }
-
-  // &[type='number'] {
-  //   -moz-appearance: textfield;
-  // }
 }
 
 .LabelWeight {
@@ -150,11 +122,21 @@
   border-radius: 50%;
   border: none;
   color: $mainBgnColor;
-  background: $activeDecorLine;
+  background: $accentBgnColor;
 
   &:hover,
   &:focus {
     box-shadow: $boxShadow;
+  }
+}
+
+.btnDisable {
+  composes: btn;
+  background-color: lighten($accentBgnColor, 10%);
+  cursor: auto;
+
+  &:hover {
+    box-shadow: none;
   }
 }
 

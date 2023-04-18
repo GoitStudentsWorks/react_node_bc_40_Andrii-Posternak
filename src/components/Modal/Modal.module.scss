@@ -1,4 +1,5 @@
-@import '../../index.scss';
+@import 'stylesheet/_mixins.scss';
+@import 'stylesheet/_vars.scss';
 
 .overlay {
   position: fixed;
@@ -20,8 +21,6 @@
 .btnContainer {
   background-color: $secondaryBgnColor;
   width: 100%;
-  // padding-top: 20px;
-  // padding-bottom: 20px;
 }
 
 .modal {
@@ -47,11 +46,9 @@
 }
 
 .title {
-  // font-weight: 700;
   font-size: 18px;
   line-height: calc(25 / 18);
   text-align: center;
-  // padding-bottom: 42px;
   margin-bottom: 42px;
   color: $secondaryTextColor;
 
@@ -63,7 +60,6 @@
 }
 
 .modalContainer {
-  // padding: 40px 20px 0 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -83,7 +79,7 @@
 .icon {
   position: absolute;
   top: -27px;
-  left: 203px;
+  left: calc((100vw - 280px) / 2);
 
   height: 20px;
   width: 20px;
@@ -128,13 +124,11 @@
   font-size: 48px;
   color: $darkTextColor;
   display: block;
-  // padding-bottom: 38px;
   text-align: center;
   line-height: calc(57 / 48);
 }
 
 .caloriesText {
-  // padding-bottom: 38px;
   text-align: center;
   font-size: 16px;
   line-height: calc(19 / 16);
@@ -146,7 +140,6 @@
   line-height: calc(17 / 14);
   margin-bottom: 20px;
   text-align: center;
-  // margin-top: -8px;
   color: $secondaryTextColor;
 }
 
@@ -157,18 +150,12 @@
 
 .list {
   height: 130px;
-  // padding-left: 20px;
-  // margin-bottom: 40px;
   margin-bottom: 40px;
   display: flex;
 
   flex-direction: column;
   gap: 10px;
   overflow-y: scroll;
-
-  // @include tablet-media {
-  //   margin-bottom: 15px;
-  // }
 
   &::-webkit-scrollbar-track {
     background-color: $secondaryBgnColor;
@@ -202,28 +189,3 @@
   display: flex;
   justify-content: center;
 }
-
-// @include tablet-media {
-//   .overlay {
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//   }
-
-//   .modal {
-//     max-width: 672px;
-//     top: 50%;
-//     left: 50%;
-//     transform: translate(-50%, -50%) scale(1);
-//     padding: 64px 82px;
-//     height: 572px;
-//   }
-
-//   .title {
-//     font-weight: 700;
-//     font-size: 26px;
-//     line-height: calc(36 / 26);
-//   }
-// }
