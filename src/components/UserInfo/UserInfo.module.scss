@@ -21,6 +21,13 @@
   }
 }
 
+.container {
+  width: $mobile;
+  min-width: 320px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .wrapper {
   @include centeredFlex($jusCon: flex-end);
   flex-grow: 1;
