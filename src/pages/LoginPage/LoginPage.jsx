@@ -14,9 +14,11 @@ export const LoginPage = () => {
   }, [error]);
 
   return (
-    <div className="container">
-      <div className={styles.formWrapper}>
-        <LoginForm />
+    <div className={styles.loginPage}>
+      <div className="container">
+        <div className={styles.formWrapper}>
+          <LoginForm />
+        </div>
       </div>
     </div>
   );
