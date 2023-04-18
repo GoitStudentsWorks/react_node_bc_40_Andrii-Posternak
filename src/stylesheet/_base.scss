@@ -16,7 +16,9 @@ body {
   font-size: 14px;
   color: $mainTextColor;
 }
-
+.body__overflow {
+  overflow: hidden;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
