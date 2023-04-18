@@ -1,12 +1,3 @@
-@import '../../index.scss';
-
-.tWrapper {
-  @include to-tablet-media {
-  }
-
-  @include tablet-media {
-  }
-
-  @include desktop-media {
-  }
-}
+// @import '../../index.scss';
+// @import 'stylesheet/_mixins.scss';
+// @import 'stylesheet/_vars.scss';
